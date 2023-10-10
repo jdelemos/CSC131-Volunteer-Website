@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>Sample Form</title>
+  </head>
+  <body>
+    <form action = "/action_page.php">
+      <label> Email: </label> <br>
+      <input type = "email" name = "email" maxlength = "100">
+      <br>
+      <label> First Name:</label> <br>
+      <input type = "text" name = "firstName" maxlength = "30">
+      <br>
+      <label> Middle Name: </label> <br>
+      <input type = "text" name = "middleName" maxlength = "30">
+      <br>
+      <label> Last Name:</label> <br>
+      <input type = "text" name = "lastName" maxlength = "30">
+      <br>
+      <label> Phone Number: </label> <br>
+      <input type = "text" name = "phoneNumber" maxlength = "10">
+      <br>
+      <label> Emergency Contact: </label> <br>
+      <input type = "text" name = "emergencyContact" maxlength = "100">
+      <br>
+      <label> Event Position/Department: </label> <br>
+      <input type = "text" name = "eventPosition" maxlength = "100">
+      <br>
+      <p> Will you be volunteering to drive?: 
+        <br>
+        <input type = "radio" name = "driver" value = "Yes"/>
+        <input type = radio name = "driver" value = "No"/>
+      </p>
+      <p> If necessary can the school perform a background check?: 
+        <br>
+        <input type = "radio" name = "background" value = "Yes"/>
+        <input type = "radio" name = "background" value = "No"/>
+      </p>
+      <label>Birthday:</label> <br>
+      <input type = "date" name = "birthday">
+      <br>
+      <p> Do you understand that if at any point during volunteering you notice signs of or hear of child abuse or neglect including:
+        physical abuse, sexual assault, sexual exploitation, statutory rape, neglect, willful harming or injuring or endangering a child,
+        or unlawful corporal punishment; it's your responsibility to contact the campus police ad report the issue?
+        <br>
+        <input type = "radio" name = "understanding" value = "Yes"/>
+        <input type = "radio" name = "understanding" value = "No"/>
+      </p>
+      <label> Signature: </label> <br>
+      <input type = "text" name = "signature" maxlength = "150">
+      <br>
+    </form>
+  </body>
+</html> 

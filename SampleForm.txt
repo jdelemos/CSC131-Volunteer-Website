@@ -7,14 +7,8 @@
       <label> Email: </label> <br>
       <input type = "email" name = "email" maxlength = "100">
       <br>
-      <label> First Name:</label> <br>
+      <label> First and Last Name:</label> <br>
       <input type = "text" name = "firstName" maxlength = "30">
-      <br>
-      <label> Middle Name: </label> <br>
-      <input type = "text" name = "middleName" maxlength = "30">
-      <br>
-      <label> Last Name:</label> <br>
-      <input type = "text" name = "lastName" maxlength = "30">
       <br>
       <label> Phone Number: </label> <br>
       <input type = "text" name = "phoneNumber" maxlength = "10">

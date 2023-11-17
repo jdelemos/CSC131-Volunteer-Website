@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS to set the background image */
+    body {
+      background-image: url('https://media.discordapp.net/attachments/1146309293717585986/1149910831878901820/R.png?ex=655830ea&is=6545bbea&hm=cba88a7ea20126e180aedbaaf021725501e16dbfa7c39b080e65c29d25613ab1&=&width=2058&height=1372'); /* Replace 'your-image-url.jpg' with the actual URL of your image */
+      background-size: cover; 
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      height: 100vh
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* CSS for the centered rectangle */
+    .centered-rectangle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Center the rectangle both horizontally and vertically */
+      aspect-ratio: 521/334.43; 
+      height: 30.96574074vh; /* Adjust the height as needed */
+      background-color: rgba(9, 72, 23, 0.8); /* Background color with transparency */
+      fill-opacity: 80;
+      text-align: center;
+      line-height: 100px;
+    }
+    .centered-rectangle .logo {
+      width: 22.9731286%;
+      margin-top: 6.5%;
+      position: absolute;
+      top: 13%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .centered-rectangle .login-button {
+      width: 81.53166987%;
+      position: absolute;
+      top: 65%; /* Adjust the value as needed */
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .centered-rectangle p {
+      color: white;
+      font-size: 24px;
+      position: absolute;
+      top: 90%; /* Adjust the value as needed */
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+  </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Centered rectangle -->
+        <div class="centered-rectangle">
+          <!-- Content inside the rectangle -->
+          <img class="logo" src="images/logo.png" alt="My Image">
+          <img class="login-button" src="images/loginbutton.png" alt="login-button">
+          <p>Return to Home</p>
+        </div>
+      </div>
+</body>
+</html>

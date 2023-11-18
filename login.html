@@ -1,75 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <style>
-    /* CSS to set the background image */
-    body {
-      background-image: url('https://media.discordapp.net/attachments/1146309293717585986/1149910831878901820/R.png?ex=655830ea&is=6545bbea&hm=cba88a7ea20126e180aedbaaf021725501e16dbfa7c39b080e65c29d25613ab1&=&width=2058&height=1372'); /* Replace 'your-image-url.jpg' with the actual URL of your image */
-      background-size: cover; 
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      margin: 0;
-      padding: 0;
-      height: 100vh
-    }
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* CSS to set the background image */
+        :root {
+            --base-resolution-width: 1920;
+            --scaling-factor: 1; /* Default scaling factor */
+        }
 
-    .container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
+        body {
+            background-image: url('https://media.discordapp.net/attachments/1146309293717585986/1149910831878901820/R.png?ex=655830ea&is=6545bbea&hm=cba88a7ea20126e180aedbaaf021725501e16dbfa7c39b080e65c29d25613ab1&=&width=2058&height=1372');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
 
-    /* CSS for the centered rectangle */
-    .centered-rectangle {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); /* Center the rectangle both horizontally and vertically */
-      aspect-ratio: 521/334.43; 
-      height: 30.96574074vh; /* Adjust the height as needed */
-      background-color: rgba(9, 72, 23, 0.8); /* Background color with transparency */
-      fill-opacity: 80;
-      text-align: center;
-      line-height: 100px;
-    }
-    .centered-rectangle .logo {
-      width: 22.9731286%;
-      margin-top: 6.5%;
-      position: absolute;
-      top: 13%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
 
-    .centered-rectangle .login-button {
-      width: 81.53166987%;
-      position: absolute;
-      top: 65%; /* Adjust the value as needed */
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .centered-rectangle p {
-      color: white;
-      font-size: 24px;
-      position: absolute;
-      top: 90%; /* Adjust the value as needed */
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+        /* CSS for the centered rectangle */
+        .centered-rectangle {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            aspect-ratio: 521/334.43;
+            height: calc(334px * var(--scaling-factor));
+            background-color: rgba(9, 72, 23, 0.8);
+            fill-opacity: 80;
+            text-align: center;
+            line-height: 100px;
+        }
 
-  </style>
+        .centered-rectangle .logo {
+            width: 22.9731286%;
+            margin-top: 6.5%;
+            position: absolute;
+            top: 13%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .centered-rectangle .login-button {
+            width: 81.53166987%;
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .centered-rectangle p {
+            color: #C4B581;
+            font-size: calc(24px*var(--scaling-factor));
+            position: fixed;
+            transform: translate(-50%, -50%);
+            text-decoration: underline;
+            white-space: nowrap;
+            top: 88%;
+            left: 84%;
+        }
+    </style>
+    <script>
+        // Get the user's screen width
+        var screenWidth = window.screen.width;
+
+        // Set the base resolution width
+        var baseResolutionWidth = 1920;
+
+        // Calculate the scaling factor
+        var scalingFactor = screenWidth / baseResolutionWidth;
+
+        // Set the scaling factor as a CSS variable
+        document.documentElement.style.setProperty('--scaling-factor', scalingFactor);
+    </script>
 </head>
+
 <body>
     <div class="container">
         <!-- Centered rectangle -->
         <div class="centered-rectangle">
-          <!-- Content inside the rectangle -->
-          <img class="logo" src="images/logo.png" alt="My Image">
-          <img class="login-button" src="images/loginbutton.png" alt="login-button">
-          <p>HI</p>
+            <!-- Content inside the rectangle -->
+            <img class="logo" src="images/logo.png" alt="My Image">
+            <img class="login-button" src="images/loginbutton.png" onclick="signIn()">
+            <p>Return to Home</p>
         </div>
-      </div>
+    </div>
 </body>
+<script src="login.js"></script>
 </html>
-
-

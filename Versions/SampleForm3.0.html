@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head class = "header">
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel = "stylesheet" href = "myCSSStyle3.0.css">
+    <title>Sample Form</title>
+  </head>
+  <body>
+    <div class="form-container">
+    <form id = "myForm">
+	<div class = "profileImage">
+	<img src="C:\Users\Valiant\OneDrive\Documents\SACState\FALL2023\CSC131\Project\Images\EditedProfile.png">
+	</div>
+      
+	<div class = "name">
+      <input type = "text" class ="nameO" name = "firstName" id = "name" maxlength = "30" placeholder = "First and Last Name" required>
+      	</div>
+	<div class = "email">
+      <input type = "email" class ="emailO" name = "email" id = "email" pattern = ".+@gmail\.com" maxlength = "100" placeholder = "Email" required> 
+      </div>
+	<div class = "phone">
+      <input type = "text" class ="phoneO" name = "phoneNumber" id = "phone" maxlength = "10" placeholder = "Phone Number" required>
+      	</div>
+	<div class = "address">
+      <input type = "text" class ="addressO" name = "streetAddress" id = "address" maxlength = "50" placeholder = "Street Address" required>
+      	</div>
+	<div class = "city">
+      <input type = "text" class ="cityO" name = "city" id = "city" maxlength = "30" placeholder = "City" required>
+	</div>
+      	<div class = "zipcode">
+      <input type = "text" class ="zipcodeO" name = "zipcode" id = "zipcode" maxlength = "5" placeholder = "Zip Code"  required>
+      	</div>
+	<div class = "ename">
+      <input type = "text" class ="enameO" name = "emergencyContact" id = "ename" maxlength = "100" placeholder = "Emergency Contact"  required>
+      	</div>
+	<div class = "enumber">
+      <input type = "text" class ="enumberO" name = "emrgencyNumber" id = "ephone" maxlength = "10" placeholder = "Emergency Number"  required>
+      	</div>
+	<div class = "bday">
+      <input type = "date" class = "bdayO" name = "birthday" id = "bday" placeholder = "Birthday" required>
+	</div>
+      <div class = "button">
+      <input type = "submit" class = "buttonO" name = "submit" id = "submit" value = "Submit" img = "C:\Users\Valiant\OneDrive\Documents\SACState\FALL2023\CSC131\Project\Images\SubmitButton.png">
+	</div>
+    </form>
+
+	<script>
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                
+            };
+
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Data submitted successfully!');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Error submitting data');
+            });
+        });
+    </script>
+    </div>
+  </body>
+</html> 

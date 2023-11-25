@@ -89,7 +89,35 @@
             </div>
         </form>
         <script>
+            document.getElementById('myForm').addEventListener('submit', function(event){
+                event.preventDefault();
 
+                const formData = {
+                    eventName: document.getElementById('eventName').value,
+                    startDate: document.getElementById('startDate').value,
+                    endDate: document.getElementById('endDate').value,
+                    time: document.getElementById('time').value,
+                    location: document.getElementById('location').value,
+                    capcity: document.getElementById('capacity').value,
+                    description: document.getElementById('description').value
+                };
+                fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Data submitted successfully!');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Error submitting data');
+            });
+        });
             var screenWidth = window.screen.width;
             var baseResolutionWidth = 1920;
             var scalingFactor = screenWidth / baseResolutionWidth;

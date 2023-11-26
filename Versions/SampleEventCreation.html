@@ -53,8 +53,11 @@
                 required>
             </div>
             <div class = "time">
-                <input type = "time"
+                <input type = "text"
                 class = "timeO"
+                placeholder = "Start Time"
+                onfocus = "(this.type='time')"
+                onblur = "(this.type='text')"
                 name = "time"
                 id = "time"
                 style = "margin-left: calc(1353px*var(--scaling-factor)); width: calc(140px*var(--scaling-factor));"

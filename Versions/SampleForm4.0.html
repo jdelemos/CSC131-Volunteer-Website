@@ -35,7 +35,7 @@
       <input type = "text" class ="enameO" name = "emergencyContact" id = "ename" maxlength = "100" placeholder = "Emergency Contact" style = "margin-left: calc(221px*var(--scaling-factor)); width: calc(418px*var(--scaling-factor));"  required>
       	</div>
 	<div class = "enumber">
-      <input type = "text" class ="enumberO" name = "emrgencyNumber" id = "ephone" maxlength = "10" placeholder = "Emergency Number" style = "margin-left: calc(698px*var(--scaling-factor)); width: calc(367px*var(--scaling-factor));" required>
+      <input type = "text" pattern = "[0-9]{10}" class ="enumberO" name = "emrgencyNumber" id = "ephone" maxlength = "10" placeholder = "Emergency Number" style = "margin-left: calc(698px*var(--scaling-factor)); width: calc(367px*var(--scaling-factor));" required>
       	</div>
 	<div class = "bday">
       <input type = "date" class = "bdayO" name = "birthday" id = "bday" placeholder = "Birthday" style = "margin-left: calc(1124px*var(--scaling-factor)); width: calc(524px*var(--scaling-factor));" required>

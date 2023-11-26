@@ -29,7 +29,7 @@
       <input type = "text" class ="cityO" name = "city" id = "city" maxlength = "30" placeholder = "City" style = "margin-left: calc(1101px*var(--scaling-factor)); width: calc(339px*var(--scaling-factor));"required>
 	</div>
       	<div class = "zipcode">
-      <input type = "text" class ="zipcodeO" name = "zipcode" id = "zipcode" maxlength = "5" placeholder = "Zip Code" style = "margin-left: calc(1499px*var(--scaling-factor)); width: calc(149px*var(--scaling-factor));" required>
+      <input type = "text" pattern = "[0-9]{5}" class ="zipcodeO" name = "zipcode" id = "zipcode" maxlength = "5" placeholder = "Zip Code" style = "margin-left: calc(1499px*var(--scaling-factor)); width: calc(149px*var(--scaling-factor));" required>
       	</div>
 	<div class = "ename">
       <input type = "text" class ="enameO" name = "emergencyContact" id = "ename" maxlength = "100" placeholder = "Emergency Contact" style = "margin-left: calc(221px*var(--scaling-factor)); width: calc(418px*var(--scaling-factor));"  required>

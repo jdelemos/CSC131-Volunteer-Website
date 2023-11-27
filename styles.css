@@ -1,0 +1,142 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+}
+
+body.dark-mode{
+    background-color: #ffffff;
+}
+
+.header {
+    background-color: #093813; /* Header background color */
+    display: flex;
+    align-items: center;
+    padding: calc(57px*var(--scaling-factor));
+    position: fixed;
+    width: 100%;
+    top: 0;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+.apply {
+    color: #c4B581;
+    font-size: 22px;
+    margin-left: 40px; /* Added margin */
+    cursor: pointer;
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+}
+
+.contact-us {
+    color: #c4B581;
+    font-size: 22px;
+    margin-left: 40px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+}
+
+.contact-us:hover{
+    color: #776A3F;
+}
+
+.apply:hover,
+.contact-us:hover {
+    color: #776A3F;
+}
+
+.circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #c4B581;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 117px;
+    margin-left: auto;
+    transition: background-color 0.3s;
+}
+
+.circle:hover{
+    background-color: #776A3F;
+}
+
+.logo {
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.icon img,
+.logo img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow-y: auto;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.popup-box {
+    width: 800px; 
+    height: 550px; 
+    position: relative;
+    background-color: #000; /* Use background-color instead of background */
+    color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    font-size: 24px; /* Adjust the font size as needed */
+    margin-bottom: 20px;
+}
+
+.small-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 2;
+}
+.bottom-button {
+    display: block;
+    margin-top: 20px; /* Adjust the margin as needed */
+    width: 100%; /* Adjust the width as needed */
+    height: 100%; /* Adjust the height as needed */
+    cursor: pointer;
+}
+

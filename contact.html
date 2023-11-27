@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Your Website</title>
+    <script src="popup.js"></script>
+</head>
+<body>
+
+    <header class="header">
+        <a href="landingpage.html"><div class="logo"><img src="image 3.png" alt=""></div></a>      
+        <h1 class="apply">Apply</h1>
+        <h1 class="contact-us">Contact Us</h1>
+        <div class ="circle" onclick="openPopup()">
+            <div class="login-icon">
+                <img src="user.png" alt="Login">
+            </div>
+        </div>
+    </header>
+    <div class="overlay" id="overlay">
+        <div class="popup-box">
+            <img src="image 17.png" alt="Small Button" onclick="closePopup()" class="small-button">
+            <div class="popup-content">  
+                <h2>Uh oh! It seems like we are missing 
+                    some information about you.  Click
+                    the button below to update your  
+                    personal information</h2>
+            </div>
+
+            <a href="form.html"><img src="apply button.png" alt="Go to Another Page" class="bottom-button"></a>
+        </div>
+    </div>
+    <div class="contact-container"><img src="PageDisplay.png" alt="" height="1100px" width="auto"></div>
+    <script src="scalingfactor.js"></script>
+
+</body>
+</html>

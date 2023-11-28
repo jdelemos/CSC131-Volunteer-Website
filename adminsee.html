@@ -142,6 +142,30 @@
         }
 
 
+             function addElement() {
+            // Assuming you have an API endpoint for adding elements on the server side.
+                fetch('/add-element', {
+                 method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                // You can pass any data you want to add to MongoDB here.
+                name: 'Approved',
+                }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                console.log('Element added:', data);
+                // You can update the UI or perform any other actions based on the response.
+                })
+    .catch(error => {
+        console.error('Error adding element:', error);
+                    });
+                }
+
+
+
         function displayData(data) {
             const dataContainer = document.getElementById('data-container');
 

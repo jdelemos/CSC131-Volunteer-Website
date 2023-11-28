@@ -1,30 +1,4 @@
 
-
-If you want the options to appear when the user clicks the "user button" and then disappear if the user clicks anywhere else on the page, you can use an event listener on the document body to detect clicks outside the "user button" and options. Here's an updated example:
-
-html
-Copy code
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
-    <style>
-        .title-hidden {
-            display: none;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Your HTML content here -->
-
-    <button id="userButton">User Button</button>
-    <div class="option1 title-hidden">Option 1</div>
-    <div class="option2 title-hidden">Option 2</div>
-
-    <script>
         function checkbutton() {
             // Retrieve the 'loggedIn' value from localStorage
             const loggedIn = localStorage.getItem('loggedIn');

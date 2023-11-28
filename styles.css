@@ -111,3 +111,46 @@ a {
 
     }
 }
+
+
+    .header {
+        background-color: #093813; /* Header background color */
+        display: flex;
+        align-items: center;
+        padding: calc(20px*var(--scaling-factor));
+        position: fixed;
+        width: 100%; 
+        top: 0; 
+         
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    .apply {
+        color: #c4B581;
+        font-size: calc(22px*var(--scaling-factor));
+        margin-left: calc(40px*var(--scaling-factor)); /* Added margin */
+        cursor: pointer;
+        text-decoration: none;
+        transition: text-decoration 0.3s;
+    }
+    
+    .contact-us {
+        color: #c4B581;
+        font-size: calc(22px*var(--scaling-factor));
+        margin-left: calc(40px*var(--scaling-factor)); /* Adjusted margin to move it to the right */
+        cursor: pointer;
+        text-decoration: none;
+        transition: text-decoration 0.3s;
+    }
+    
+    .contact-us:hover{
+        color: #776A3F;
+    }
+    
+    .apply:hover,
+    .contact-us:hover {
+        color: #776A3F;
+    }

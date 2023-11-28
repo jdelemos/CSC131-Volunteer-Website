@@ -11,72 +11,7 @@
 
 <style>
 
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background-color: black;
-    }
-    
-    body.dark-mode{
-        background-color: #ffffff;
-    }
-    
-    .header {
-        background-color: #093813; /* Header background color */
-        display: flex;
-        align-items: center;
-        padding: calc(20px*var(--scaling-factor));
-        position: fixed;
-        width: 100%; 
-        top: 0; 
-         
-    }
-    
-    a {
-        text-decoration: none;
-    }
-    
-    .apply {
-        color: #c4B581;
-        font-size: calc(22px*var(--scaling-factor));
-        margin-left: calc(40px*var(--scaling-factor)); /* Added margin */
-        cursor: pointer;
-        text-decoration: none;
-        transition: text-decoration 0.3s;
-    }
-    
-    .contact-us {
-        color: #c4B581;
-        font-size: calc(22px*var(--scaling-factor));
-        margin-left: calc(40px*var(--scaling-factor)); /* Adjusted margin to move it to the right */
-        cursor: pointer;
-        text-decoration: none;
-        transition: text-decoration 0.3s;
-    }
-    
-    .contact-us:hover{
-        color: #776A3F;
-    }
-    
-    .apply:hover,
-    .contact-us:hover {
-        color: #776A3F;
-    }
-    
-    .circle {
-        width: calc(64px*var(--scaling-factor));
-        height: calc(64px*var(--scaling-factor));
-        border-radius: 50%;
-        background-color: #c4B581;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        margin-right: 30px;
-        margin-left: auto;
-        transition: background-color 0.3s;
-    }
+
 
     .circle1 {
         width: calc(64px*var(--scaling-factor));
@@ -94,54 +29,7 @@
         background-color: #776A3F;
     }
     
-    
-    .circle:hover{
-        background-color: #776A3F;
-    }
-    
-    .logo {
-        margin-left: calc(30px*var(--scaling-factor));
-        cursor: pointer;
-    }
-    
-    .icon img,
-    .logo img {
-        max-width: 100%;
-        max-height: 100%;
-        height: auto;
-    }
-    
-    .contact-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-    }
-    
-    .form-container{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-    }
-    form {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: calc(10px*var(--scaling-factor));
-        text-align: center;
-    }
-    
-    input {
-        width: 100%;
-        padding: calc(10px*var(--scaling-factor));
-        box-sizing: border-box;
-        font-size: calc(24px*var(--scaling-factor));
-        color: #686868;
-        background-color: #323232;
-        border-bottom: calc(10px*var(--scaling-factor)) solid lightgray;
-    }
+
     
     
     .list-item {

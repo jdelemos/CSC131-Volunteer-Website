@@ -31,13 +31,6 @@ function checkbutton() {
         }
     }
 
-    if (titleHidden1.style.display === 'none' && titleHidden2.style.display === 'none') {
-        showTitles();
-    } else {
-        hideTitles();
-    }
-}
-
     // Check if the user is logged in
     if (loggedIn === 'true') {
         // If logged in, show additional titles

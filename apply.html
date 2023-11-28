@@ -7,6 +7,20 @@
     <title>Your Website</title>
 </head>
 <body>
+    <header class="header">
+
+        <div class="logo"><img src="images/image3.png" alt=""></div>   
+        <a href="apply"><h1 class="title">Apply</h1> </a>
+        <a href="contact"><h1 class="title">Contact Us</h1></a>
+        <h1 class="title hidden" id="update" display="none">Update Information</h1>
+        <h1 class="title hidden" id="signout"display="none">Sign Out</h1>
+
+        <div class="circle" id="userButton" onclick="checkbutton()">
+            <div class="login-icon">
+                <img src="images/user.png" alt="Login">
+            </div>
+        </div>
+    </header>
     <div class="event-box">  
         <div class="event-text">
             <div class="event-num">Event #</div>
@@ -16,35 +30,18 @@
         </div>
     </div>
     <div class="apply-box">Apply</div>
-    
 </body>
-<script>
-    // Get the user's screen width
-    var screenWidth = window.screen.width;
-
-    // Set the base resolution width
-    var baseResolutionWidth = 1920;
-
-    // Calculate the scaling factor
-    var scalingFactor = screenWidth / baseResolutionWidth;
-
-    // Set the scaling factor as a CSS variable
-    document.documentElement.style.setProperty('--scaling-factor', scalingFactor);
-</script>
     <script>
         let params = {}
-    
         let regex = /([^&=]+)=([^&]*)/g, m
-    
         while(m = regex.exec(location.href)){
             params[decodeURIComponent(m[1])]=decodeURIComponent(m[2])
         }
-    
         if(Object.keys(params).length > 0){
             localStorage.setItem('authInfo', JSON.stringify(params))
         }
-    
         // hide the access token
         window.history.pushState({},document.title,"/"+"apply")
     </script>
+    <script src="scalingfactor.js"></script>
 </html>

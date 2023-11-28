@@ -1,3 +1,12 @@
+:root {
+    --base-resolution-width: 1920;
+    --scaling-factor: 1; /* Default scaling factor */
+}
+
+a {
+    text-decoration: none;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -27,8 +36,12 @@ body.dark-mode{
     transition: text-decoration 0.3s;
 }
 
+.header .title.hidden {
+    display: none;
+}
+
 .header .title:hover{
-    text-decoration: underline;
+    color: #776A3F;
 }
 
 .header .circle {
@@ -66,10 +79,52 @@ body.dark-mode{
     height: auto;
 }
 
-a {
-    text-decoration: none;
+.landingpage .text-box{
+    margin-left: calc(78px * var(--scaling-factor));
+    margin-top: calc(200px * var(--scaling-factor));
 }
 
+.landingpage .main-text {
+    color: white;
+    font-size: calc(96px * var(--scaling-factor));
+    font-weight: bold;
+    margin-top: calc(10px * var(--scaling-factor));
+}
+
+.landingpage .text-box-mini {
+    opacity: 0;
+}
+
+.landingpage .animation-box {
+    margin-left: calc(179px * var(--scaling-factor));
+    margin-top: calc(-228px * var(--scaling-factor));
+    overflow: hidden;
+}
+
+.landingpage .animation-text {
+    background: linear-gradient(45deg, #093813 0%, #C4B581 25%, #C4B581 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    font-size: calc(96px * var(--scaling-factor));
+    font-weight: bold;
+    margin-top: 0px;
+    animation: slideUp 3s infinite;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(-100%); /* Start with no vertical translation */
+    }
+    25% {
+        transform: translateY(0%);
+    }
+    75%{
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(100%); /* Slide up by 100% of its own height */
+    }
+}
 
 .contact-container {
     display: flex;
@@ -112,45 +167,3 @@ a {
     }
 }
 
-
-    .header {
-        background-color: #093813; /* Header background color */
-        display: flex;
-        align-items: center;
-        padding: calc(20px*var(--scaling-factor));
-        position: fixed;
-        width: 100%; 
-        top: 0; 
-         
-    }
-    
-    a {
-        text-decoration: none;
-    }
-    
-    .apply {
-        color: #c4B581;
-        font-size: calc(22px*var(--scaling-factor));
-        margin-left: calc(40px*var(--scaling-factor)); /* Added margin */
-        cursor: pointer;
-        text-decoration: none;
-        transition: text-decoration 0.3s;
-    }
-    
-    .contact-us {
-        color: #c4B581;
-        font-size: calc(22px*var(--scaling-factor));
-        margin-left: calc(40px*var(--scaling-factor)); /* Adjusted margin to move it to the right */
-        cursor: pointer;
-        text-decoration: none;
-        transition: text-decoration 0.3s;
-    }
-    
-    .contact-us:hover{
-        color: #776A3F;
-    }
-    
-    .apply:hover,
-    .contact-us:hover {
-        color: #776A3F;
-    }

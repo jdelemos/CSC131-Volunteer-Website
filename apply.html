@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="apply-style.css">
+    <title>Your Website</title>
+</head>
+<body>
+    <div class="event-box">  
+        <div class="event-text">
+            <div class="event-num">Event #</div>
+            <div class="event-description">Description: </div>
+            <div class="event-date">Dates: </div>
+            <div class="event-location">Location: </div>
+        </div>
+    </div>
+    <div class="apply-box">Apply</div>
+    
+</body>
+<script>
+    // Get the user's screen width
+    var screenWidth = window.screen.width;
+
+    // Set the base resolution width
+    var baseResolutionWidth = 1920;
+
+    // Calculate the scaling factor
+    var scalingFactor = screenWidth / baseResolutionWidth;
+
+    // Set the scaling factor as a CSS variable
+    document.documentElement.style.setProperty('--scaling-factor', scalingFactor);
+</script>
+</html>

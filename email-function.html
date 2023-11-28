@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+    <body>
+        <form id="test">
+            <input type="button" id="auto" value="send" onclick="sendMail()">
+        </form>
+        <script>
+            function sendMail() {
+                var subject = "UPDATE: Volunteer application";
+                var body = "UPDATE: Your volunteer application has been accepted!";
+                window.location = "mailto:axelkh2001@hotmail.com?subject=" + subject + "&body=" + body;
+            }
+        </script>
+    </body>
+</html>

@@ -39,6 +39,13 @@ body.dark-mode{
 
 .header .title-hidden {
     display: none;
+    color:#c4B581;
+    font-size: 22px;
+    margin-left: 50px;
+    margin-right: 0px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: text-decoration 0.3s;
 }
 
 .header .title:hover{

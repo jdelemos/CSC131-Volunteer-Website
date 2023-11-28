@@ -26,3 +26,16 @@ function signIn(){
 
     form.submit()
 }
+function handleLoginState() {
+    const urlParams = new URLSearchParams(window.location.hash.substring(1));
+    const accessToken = urlParams.get('access_token');
+
+    if (accessToken) {
+        // User is logged in
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('accessToken', accessToken);
+    }
+}
+
+// Call the function to handle login state when the page loads
+handleLoginState();

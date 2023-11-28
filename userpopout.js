@@ -20,9 +20,6 @@ function checkbutton() {
             hiddenTitles.forEach(title => {
                 title.style.display = 'none';
             });
-
-            // Remove the click event listener after it's triggered once (optional)
-            document.removeEventListener('click', arguments.callee);
         });
     } else {
         // If the user is not logged in, display an alert and redirect to the login page

@@ -31,7 +31,8 @@ function checkbutton() {
         }
     }
 
-    
+    hideTitles();
+
     // Check if the user is logged in
     if (loggedIn === 'true') {
         // If logged in, show additional titles

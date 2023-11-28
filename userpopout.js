@@ -33,12 +33,9 @@ function checkbutton() {
 
     hideTitles();
 
-    // Check if the user is logged in
+        // Check if the user is logged in
     if (loggedIn === 'true') {
-        // If logged in, show additional titles
-        showTitles();
-
-        // Add a click event listener to the user button
+        // If logged in, add a click event listener to the user button
         if (userButton) {
             userButton.addEventListener('click', function (event) {
                 // Toggle titles visibility when the user button is clicked

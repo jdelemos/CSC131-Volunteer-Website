@@ -6,10 +6,23 @@
     <link rel="stylesheet" href="LandingStyle.css">
     <title>Your Website</title>
 </head>
+<script>
+        // Get the user's screen width
+        var screenWidth = window.screen.width;
+
+        // Set the base resolution width
+        var baseResolutionWidth = 1920;
+
+        // Calculate the scaling factor
+        var scalingFactor = screenWidth / baseResolutionWidth;
+
+        // Set the scaling factor as a CSS variable
+        document.documentElement.style.setProperty('--scaling-factor', scalingFactor);
+</script>
 <body>
     <header class="header">
 
-        <div class="logo"><img src="images/image 3.png" alt=""></div>   
+        <div class="logo"><img src="images/image_.png" alt=""></div>   
         <h1 class="title">Apply</h1>
         <h1 class="title">Contact Us</h1>
         <div class ="circle">
@@ -40,21 +53,20 @@
         }, 3000); // Change every 3 seconds
     </script>
 
-    <div class="slide">
-        <div class="images"><img id="slideshow" src="images/home1.png" alt=""></div>
-    </div>
+<div class="slide">
+    <div class="image"><img id="slideshow" src="images/home1.png" alt=""></div>
+</div>
 
-    <script>
-        const slideshow = document.getElementById('slideshow');
-        const images = ['images/home1.png', 'images/home2.png', 'images/home3.png'];
-        let slideIndex = 0;
+<script>
+    const slideshow = document.getElementById('slideshow');
+    const images = ['images/home1.png', 'images/home2.png', 'images/home3.png'];
+    let slideIndex = 0;
 
-        setInterval(() => {
-            slideIndex = (slideIndex + 1) % images.length;
-            slideshow.src = images[slideIndex];
-        }, 3000); // Change every 3 seconds
-    </script>
-
+    setInterval(() => {
+        slideIndex = (slideIndex + 1) % images.length;
+        slideshow.src = images[slideIndex];
+    }, 3000); // Change every 3 seconds
+</script>
 </body>
 </html>
 

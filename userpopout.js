@@ -68,7 +68,7 @@ function checkbutton() {
             console.error('userButton not found.');
         }
     }
-
+}
 
 // Call the function when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {

@@ -3,15 +3,8 @@ function checkbutton() {
     
     if (loggedIn === 'true') {
         alert('User is logged in!');
-    var titles = document.querySelectorAll('.header .title.hidden');    
-    titles.forEach(function (title) {
-       if (titlesVisible) {
-            title.style.display = 'none';
-        } else {
-            title.style.display = 'block';
-        }}
-        );
     } else {
+        alert('User is not logged in.');
         window.location.href = 'login.html';
     }
 }

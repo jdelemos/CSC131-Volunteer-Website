@@ -8,7 +8,8 @@ function checkbutton() {
             title.style.display = 'none';
         } else {
             title.style.display = 'block';
-        });
+        }}
+        );
     } else {
         window.location.href = 'login.html';
     }

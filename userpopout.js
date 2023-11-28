@@ -50,5 +50,7 @@ function checkbutton() {
     }
 }
 
-// Call the function when the page loads
-checkbutton();
+// Call the function when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    checkbutton();
+});

@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="styles.css">
     <title>Your Website</title>
     <script src="userpopout.js"></script>
+    <script>
+    document.getElementById('userCircle').addEventListener('click', toggleTitles);
+    document.addEventListener('DOMContentLoaded', function() {
+        handleLoginState();
+    });
+    </script>
 </head>
 <body>
     <header class="header">

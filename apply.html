@@ -31,4 +31,20 @@
     // Set the scaling factor as a CSS variable
     document.documentElement.style.setProperty('--scaling-factor', scalingFactor);
 </script>
+    <script>
+        let params = {}
+    
+        let regex = /([^&=]+)=([^&]*)/g, m
+    
+        while(m = regex.exec(location.href)){
+            params[decodeURIComponent(m[1])]=decodeURIComponent(m[2])
+        }
+    
+        if(Object.keys(params).length > 0){
+            localStorage.setItem('authInfo', JSON.stringify(params))
+        }
+    
+        // hide the access token
+        window.history.pushState({},document.title,"/"+"profile.html")
+    </script>
 </html>

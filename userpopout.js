@@ -2,7 +2,7 @@ function checkbutton() {
     const loggedIn = localStorage.getItem('loggedIn');
     
     if (loggedIn === 'true') {
-        console.log("Hello world!");
+        alert('User is logged in!');
     var titles = document.querySelectorAll('.header .title.hidden');    
     titles.forEach(function (title) {
        if (titlesVisible) {
@@ -16,7 +16,6 @@ function checkbutton() {
     }
 }
 
-document.getElementById('userCircle').addEventListener('click', toggleTitles);
 
 
 

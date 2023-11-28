@@ -1,55 +1,54 @@
+function checkbutton() {
+    // Retrieve the 'loggedIn' value from localStorage
+    const loggedIn = localStorage.getItem('loggedIn');
 
-        function checkbutton() {
-            // Retrieve the 'loggedIn' value from localStorage
-            const loggedIn = localStorage.getItem('loggedIn');
+    // Get the user button and hidden titles
+    const userButton = document.getElementById('userButton');
+    const titleHidden1 = document.querySelector('.title-hidden:nth-child(1)');
+    const titleHidden2 = document.querySelector('.title-hidden:nth-child(2)');
 
-            // Get the user button, and options
-            const userButton = document.getElementById('userButton');
-            const option1 = document.querySelector('.option1');
-            const option2 = document.querySelector('.option2');
+    // Function to show titles
+    function showTitles() {
+        titleHidden1.style.display = 'block';
+        titleHidden2.style.display = 'block';
+    }
 
-            // Function to show options
-            function showOptions() {
-                option1.style.display = 'block';
-                option2.style.display = 'block';
-            }
+    // Function to hide titles
+    function hideTitles() {
+        titleHidden1.style.display = 'none';
+        titleHidden2.style.display = 'none';
+    }
 
-            // Function to hide options
-            function hideOptions() {
-                option1.style.display = 'none';
-                option2.style.display = 'none';
-            }
+    // Check if the user is logged in
+    if (loggedIn === 'true') {
+        // If logged in, show additional titles
+        showTitles();
 
-            // Check if the user is logged in
-            if (loggedIn === 'true') {
-                // If logged in, show additional options
-                showOptions();
-
-                // Add a click event listener to the user button
-                userButton.addEventListener('click', function (event) {
-                    // Toggle options visibility when the user button is clicked
-                    if (option1.style.display === 'none' && option2.style.display === 'none') {
-                        showOptions();
-                    } else {
-                        hideOptions();
-                    }
-
-                    // Prevent the click event from propagating to the document
-                    event.stopPropagation();
-                });
-
-                // Add a click event listener to the document body
-                document.body.addEventListener('click', function hideOptionsOutside() {
-                    // Hide the options when the user clicks anywhere else on the page
-                    hideOptions();
-                });
+        // Add a click event listener to the user button
+        userButton.addEventListener('click', function (event) {
+            // Toggle titles visibility when the user button is clicked
+            if (titleHidden1.style.display === 'none' && titleHidden2.style.display === 'none') {
+                showTitles();
             } else {
-                // If not logged in, redirect to the login page when the user button is clicked
-                userButton.addEventListener('click', function redirectToLogin() {
-                    window.location.href = 'login.html';
-                });
+                hideTitles();
             }
-        }
 
-        // Call the function when the page loads
-        checkbutton();
+            // Prevent the click event from propagating to the document
+            event.stopPropagation();
+        });
+
+        // Add a click event listener to the document body
+        document.body.addEventListener('click', function hideTitlesOutside() {
+            // Hide the titles when the user clicks anywhere else on the page
+            hideTitles();
+        });
+    } else {
+        // If not logged in, redirect to the login page when the user button is clicked
+        userButton.addEventListener('click', function redirectToLogin() {
+            window.location.href = 'login.html';
+        });
+    }
+}
+
+// Call the function when the page loads
+checkbutton();

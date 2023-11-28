@@ -22,7 +22,7 @@
     <div class="form-container">
     <form id = "myForm">
 	<div class = "profileImage" style = "margin-left: calc(768px*var(--scaling-factor));">
-	<img src="C:\Users\Valiant\OneDrive\Documents\SACState\FALL2023\CSC131\Project\Images\EditedProfile.png">
+	<img src="images\EditedProfile.png">
 	</div>
       
 	<div class = "name">
@@ -53,7 +53,7 @@
       <input type = "date" class = "bdayO" name = "birthday" id = "bday" placeholder = "Birthday" style = "margin-left: calc(1124px*var(--scaling-factor)); width: calc(524px*var(--scaling-factor));" required>
 	</div>
       <div class = "button">
-      <input type = "image" src = "C:\Users\Valiant\OneDrive\Documents\SACState\FALL2023\CSC131\Project\Images\EditedSubmitButton.png" border-style="none" class = "buttonO" id = "submit" alt = "submit" style = "margin-left: calc(752px*var(--scaling-factor));">
+      <input type = "image" src = "images/EditedSubmitButton.png" border-style="none" class = "buttonO" id = "submit" alt = "submit" style = "margin-left: calc(752px*var(--scaling-factor));">
 	</div>
     </form>
 
@@ -64,7 +64,13 @@
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
-                
+                phone: document.getElementById('phone').value,
+		address: document.getElementById('address').value,
+		city: document.getElementById('city').value,
+		zipcode: document.getElementById('zipcode').value,
+		ename: document.getElementById('ename').value,
+		enumber: document.getElementById('enumber').value,
+		bday: document.getElementById('bday').value
             };
 
             fetch('/submit', {

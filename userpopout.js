@@ -1,23 +1,13 @@
-var titlesVisible = false;
+function checkLogin() {
+    const loggedIn = localStorage.getItem('loggedIn');
 
-function checkLogin(){
-    var titles = document.querySelectorAll('.header .title.hidden');
-
-    if(loggedin){
-    titles.forEach(function (title) {
-        if (titlesVisible) {
-            title.style.display = 'none';
-        } else {
-            title.style.display = 'block';
-        }
-    });
+    if (loggedIn === 'true') {
+        alert('User is logged in!');
+    } else {
+        alert('User is not logged in.');
     }
-    titlesVisible = !titlesVisible;
-} else {
-    window.location.href = 'login.html';
 }
-handleLoginState();
-}
-
-document.getElementById('userCircle').addEventListener('click', toggleTitles);
 document.addEventListener('DOMContentLoaded', function() {
+    // Call the function to handle login state when the page loads
+    handleLoginState();
+});

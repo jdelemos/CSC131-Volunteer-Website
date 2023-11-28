@@ -204,30 +204,4 @@ body.dark-mode{
     }
 }
 
-.apply {
-    color: #c4B581;
-    font-size: 22px;
-    margin-left: 40px; /* Added margin */
-    cursor: pointer;
-    text-decoration: none;
-    transition: text-decoration 0.3s;
-}
-
-.contact-us {
-    color: #c4B581;
-    font-size: 22px;
-    margin-left: 40px; /* Adjusted margin to move it to the right */
-    cursor: pointer;
-    text-decoration: none;
-    transition: text-decoration 0.3s;
-}
-
-.contact-us:hover{
-    color: #776A3F;
-}
-
-.apply:hover,
-.contact-us:hover {
-    color: #776A3F;
-}
 

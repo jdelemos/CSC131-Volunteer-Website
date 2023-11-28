@@ -29,7 +29,7 @@ function signIn(){
 function handleLoginState() {
     const urlParams = new URLSearchParams(window.location.hash.substring(1));
     const accessToken = urlParams.get('access_token');
-
+    console.log(urlParams)
     if (accessToken) {
         // User is logged in
         localStorage.setItem('loggedIn', 'true');

@@ -15,11 +15,5 @@ function checkbutton() {
     }
 }
 
-document.getElementById('userCircle').addEventListener('click', toggleTitles);
-// Ensure that handleLoginState is called after the document has fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Call the function to handle login state when the page loads
-    handleLoginState();
-});
 
 

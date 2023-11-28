@@ -48,6 +48,10 @@ body.dark-mode{
     transition: text-decoration 0.3s;
 }
 
+.header .title-hidden:hover{
+    color: #776A3F;
+}
+
 .header .title:hover{
     color: #776A3F;
 }

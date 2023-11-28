@@ -1,5 +1,5 @@
 
-@media (min-aspect-ratio: 10/9) {
+
 :root {
     --base-resolution-width: 1920;
     --scaling-factor: 1; /* Default scaling factor */
@@ -151,9 +151,9 @@ body {
         transform: translateX(100%); /* Slide up by 100% of its own height */
     }
 }
-}
 
-@media (max-aspect-ratio: 10/9) {
+
+
     :root {
         --base-resolution-width: 1920;
         --scaling-factor: 1; /* Default scaling factor */
@@ -307,4 +307,3 @@ body {
             transform: translateX(100%); /* Slide up by 100% of its own height */
         }
     }
-}

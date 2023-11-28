@@ -4,8 +4,8 @@ function checkbutton() {
 
     // Get the user button and hidden titles
     const userButton = document.getElementById('userButton');
-    const titleHidden1 = document.querySelector('.title-hidden:nth-child(1)');
-    const titleHidden2 = document.querySelector('.title-hidden:nth-child(2)');
+    const titleHidden1 = document.getElementById('update');
+    const titleHidden2 = document.getElementById('signout');
 
     console.log('userButton:', userButton);
     console.log('titleHidden1:', titleHidden1);

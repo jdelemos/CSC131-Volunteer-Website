@@ -1,3 +1,7 @@
+:root {
+    --base-resolution-width: 1920;
+    --scaling-factor: 1; /* Default scaling factor */
+}
 body {
     margin: 0;
     padding: 0;
@@ -62,20 +66,20 @@ body {
 }
 
 .text-box {
-    margin-left: 85px;
-    margin-top: 200px;
+    margin-left: calc(78px * var(--scaling-factor));
+    margin-top: calc(200px * var(--scaling-factor));
 }
 
 .main-text {
     color: white;
-    font-size: 96px;
+    font-size: calc(96px * var(--scaling-factor));
     font-weight: bold;
-    margin-top: 25px;
+    margin-top: calc(10px * var(--scaling-factor));
 }
 
 .animation-box {
-    margin-left: 210px;
-    margin-top: -110px;
+    margin-left: calc(179px * var(--scaling-factor));
+    margin-top: calc(-110px * var(--scaling-factor));
     overflow: hidden;
 }
 
@@ -83,7 +87,7 @@ body {
     background: linear-gradient(45deg, #093813 0%, #C4B581 25%, #C4B581 100%);
     color: transparent;
     -webkit-background-clip: text;
-    font-size: 96px;
+    font-size: calc(96px * var(--scaling-factor));
     font-weight: bold;
     margin-top: 0px;
     animation: slideUp 3s infinite;
@@ -105,15 +109,19 @@ body {
 }
 
 .slide {
-    margin-top: -450px;
-    margin-left: 880px;
-    margin-right: 200px;
+    border: #093813 solid 10px;
+    margin-top: calc(-450px * var(--scaling-factor));
+    margin-left: calc(780px * var(--scaling-factor));
     overflow: hidden;
+    width: calc(837px * var(--scaling-factor));
+    height: calc(585px * var(--scaling-factor));
+    position: relative;
 }
 
-.images {
-    max-width: 100%;
-    max-height: 100%;
+.slide .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     animation: slideLeft 3s infinite;
 }
 

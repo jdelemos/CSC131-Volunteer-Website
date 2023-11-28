@@ -7,7 +7,7 @@ function signIn(){
 
     let params = {
         "client_id": "725527432824-s08ru0mm5mfaf0omp6i56n3d8k6j32u7.apps.googleusercontent.com",
-        "redirect_uri":"https://jdelemos.github.io/VW/index.html",
+        "redirect_uri":"https://jdelemos.github.io/VW/test.html",
         "response_type":"token",
         "scope": "https://www.googleapis.com/auth/userinfo.profile ",
         "include_granted_scopes":true,

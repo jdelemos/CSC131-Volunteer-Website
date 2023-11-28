@@ -37,7 +37,7 @@ body.dark-mode{
     transition: text-decoration 0.3s;
 }
 
-.header .title.hidden {
+.header .title .hidden {
     display: none;
 }
 

@@ -1,17 +1,7 @@
 function checkbutton() {
-    // Retrieve the 'loggedIn' value from localStorage
-    const loggedIn = localStorage.getItem('loggedIn');
-
-    // Get the user button and hidden titles
-    const userButton = document.getElementById('userButton');
     const titleHidden1 = document.getElementById('update');
     const titleHidden2 = document.getElementById('signout');
 
-    console.log('userButton:', userButton);
-    console.log('titleHidden1:', titleHidden1);
-    console.log('titleHidden2:', titleHidden2);
-
-    // Function to show titles
     function showTitles() {
         if (titleHidden1 && titleHidden2) {
             titleHidden1.style.display = 'block';
@@ -21,7 +11,6 @@ function checkbutton() {
         }
     }
 
-    // Function to hide titles
     function hideTitles() {
         if (titleHidden1 && titleHidden2) {
             titleHidden1.style.display = 'none';
@@ -32,45 +21,41 @@ function checkbutton() {
     }
 
     // Check if the user is logged in
+    const loggedIn = localStorage.getItem('loggedIn');
+
     if (loggedIn === 'true') {
-        // If logged in, show additional titles
-        showTitles();
-
-        // Add a click event listener to the user button
-        if (userButton) {
-            userButton.addEventListener('click', function (event) {
-                // Toggle titles visibility when the user button is clicked
-                if (titleHidden1.style.display === 'none' && titleHidden2.style.display === 'none') {
-                    showTitles();
-                } else {
-                    hideTitles();
-                }
-
-                // Prevent the click event from propagating to the document
-                event.stopPropagation();
-            });
+        // If logged in, toggle titles visibility
+        if (titleHidden1.style.display === 'none' && titleHidden2.style.display === 'none') {
+            showTitles();
         } else {
-            console.error('userButton not found.');
-        }
-
-        // Add a click event listener to the document body
-        document.body.addEventListener('click', function hideTitlesOutside() {
-            // Hide the titles when the user clicks anywhere else on the page
             hideTitles();
-        });
-    } else {
-        // If not logged in, redirect to the login page when the user button is clicked
-        if (userButton) {
-            userButton.addEventListener('click', function redirectToLogin() {
-                window.location.href = 'login.html';
-            });
-        } else {
-            console.error('userButton not found.');
         }
+    } else {
+        // If not logged in, redirect to the login page
+        window.location.href = 'login.html';
     }
 }
 
-// Call the function when the DOM is fully loaded
+// Function to handle the login state
+function handleLoginState() {
+    const loggedIn = localStorage.getItem('loggedIn');
+    const userButton = document.getElementById('userButton');
+
+    if (loggedIn === 'true') {
+        // User is logged in, handle the state accordingly
+        userButton.addEventListener('click', function (event) {
+            checkbutton();
+            event.stopPropagation();
+        });
+    } else {
+        // User is not logged in, handle the state accordingly
+        userButton.addEventListener('click', function () {
+            window.location.href = 'login.html';
+        });
+    }
+}
+
+// Call the handleLoginState function when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    checkbutton();
+    handleLoginState();
 });

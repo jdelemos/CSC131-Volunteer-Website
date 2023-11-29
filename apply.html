@@ -207,9 +207,24 @@
                     // Create a div to hold the buttons and set its style
                     var buttonsContainer = document.createElement("div");
                     buttonsContainer.classList.add('buttons-container');
+
+                    //function to approve or deny folks on the admin side 
+                    button.onclick = function() {
+                    console.log('Clicked on button for item._id:', item._id);
+                    addElement(item._id, 'Approved');
+                     };
+
+                     button1.onclick = function () {
+                     console.log('Clicked on Deny button for item._id:', item._id);
+                    addElement(item._id, 'Denied');
+                    };
+
+
+
                     // Append buttons to the buttons container
                     buttonsContainer.appendChild(button);
                     buttonsContainer.appendChild(button1);
+                    
                    
                     // Append the data and buttons containers to the list item
                     li.appendChild(buttonsContainer);

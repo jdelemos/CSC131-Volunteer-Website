@@ -1,15 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel = "stylesheet" href = "styles.css">
+    <link rel = "stylesheet" href = "apply-style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="userpopout.js" defer></script>
-    <script src="login.js" defer></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        handleLoginState();
-    });
-    </script>
 </head>
 <title>Admin</title>
 <style>
@@ -92,21 +86,19 @@
 </style>
 <body>
     <header class="header">
-
-        <div class="logo"><a href="index.html"><img src="images/image3.png" alt=""></a></div>
-        <a href="apply"><h1 class="title">Apply</h1> </a>
-        <a href="contact"><h1 class="title">Contact Us</h1></a>
-        <h1 class="title hidden" id="update" display="none">Update Information</h1>
-        <h1 class="title hidden" id="signout"display="none" onclick="signOut()">Sign Out</h1>
-
-        <div class="circle" id="userButton" onclick="checkbutton()">
+        <div class="logo"><img src="images/image_3.png" alt="cattime"> </div>
+        <h1 class="title">Apply</h1>
+        <h1 class="title">Contact Us</h1>
+        <div class ="circle">
             <div class="login-icon">
                 <img src="images/user.png" alt="Login">
             </div>
         </div>
     </header>
     <h1><br><br></h1>
-    <div id="data-container">
+        <div id="output-container">
+            <!-- Content will be printed here -->
+        </div>
     <script>
         var screenWidth = window.screen.width;
             var baseResolutionWidth = 1920;
@@ -115,137 +107,56 @@
     </script>
     <script>
             window.onload=fetchData(); 
-                async function fetchData() {
-            try {
-                const response = await fetch('http://localhost:4000/data');
-                const data = await response.json();
-                displayData(data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
+            async function fetchData() {
+  try {
+    const response = await fetch('/data');
+    
+    // Check if the response is not successful (status code in the range 200-299)
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status} - ${response.statusText}`);
+    }
 
-
-             function addElement() {
-            // Assuming you have an API endpoint for adding elements on the server side.
-                fetch('/add-element', {
-                 method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                // You can pass any data you want to add to MongoDB here.
-                name: 'Approved',
-                }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                console.log('Element added:', data);
-                // You can update the UI or perform any other actions based on the response.
-                })
-    .catch(error => {
-        console.error('Error adding element:', error);
-                    });
-                }
+    const contentType = response.headers.get('content-type');
+    
+    // Check if the response is JSON
+    if (contentType && contentType.includes('application/json')) {
+      const data = await response.json();
+      displayData(data);
+    } else {
+      throw new Error('Unexpected response format: Not JSON');
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
 
 
 
+
+            
         function displayData(data) {
             const dataContainer = document.getElementById('data-container');
 
             if (data.length === 0) {
                 dataContainer.innerHTML += '<p>No data available.</p>';
+                console.log("hi")
             } else {
-                const ul = document.createElement('ul');
-                ul.classList.add('data-grid');
-                /*
-                <span style="font-size:calc(30px*var(--scaling-factor));">Name: ${item.name} </span> 
-                <span style="font-size:calc(30px*var(--scaling-factor)); margin-right: calc(150px*var(--scaling-factor)); margin-left:calc(50px*var(--scaling-factor))"> Email: ${item.email}
-                <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor)); margin-right: calc(150px*var(--scaling-factor));"> Phone: ${item.phone}  <br><br>  
-                <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(0px*var(--scaling-factor));"> Address: ${item.address} 
-                <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor));"> City: ${item.city} </span>
-                <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor));"> Zipcode: ${item.zipcode} </span>
-                */
-            function sendMail() {
-                 var link = "mailto: @example.com"
-             + "?cc=myCCaddress@example.com"
-             + "&subject=" + encodeURIComponent("This is my subject")
-             + "&body=" + encodeURIComponent(document.getElementById('myText').value)
-                ;
-             window.location.href = link;
-            }
-            function addElement() {
-            // Assuming you have an API endpoint for adding elements on the server side.
-                fetch('/add-element', {
-                 method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                // You can pass any data you want to add to MongoDB here.
-                name: 'Approved',
-                }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                console.log('Element added:', data);
-                // You can update the UI or perform any other actions based on the response.
-                })
-    .catch(error => {
-        console.error('Error adding element:', error);
-    });
-}
+                var htmlContent =''
                 data.forEach(item => {
-                  const li = document.createElement('li');
-                  li.classList.add('list-item');
-                    li.innerHTML = `
-                                    <span class="circle1"> <img src="images/user.png" alt="Login"> </span>
-                                    <span style="font-size:calc(30px*var(--scaling-factor));">Name: ${item.name} </span> 
-                                    <span style="font-size:calc(30px*var(--scaling-factor)); margin-right: calc(150px*var(--scaling-factor)); margin-left:calc(50px*var(--scaling-factor))"> Email: ${item.email}
-                                    <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor)); margin-right: calc(150px*var(--scaling-factor));"> Phone: ${item.phone}  <br><br>  
-                                    <span style="font-size:calc(30px*var(--scaling-factor));"> Address: ${item.address} </span>
-                                    <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(70px*var(--scaling-factor));"> City: ${item.city} </span>
-                                    <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor)); margin-right: calc(120px*var(--scaling-factor));"> Zipcode: ${item.zipcode} </span>`;
-                    // Create buttons
-                    var button = document.createElement("button");
-                    var button1 = document.createElement("button");
-                    button.innerHTML = 'Approve ' ;
-                    button1.textContent = 'Deny';
-                    button.onclick=addElement(); 
-                    // Add classes to the buttons
-                    button.classList.add('approval-button');
-                    button1.classList.add('approval-button');
-                    // Create a div to hold the buttons and set its style
-                    var buttonsContainer = document.createElement("div");
-                    buttonsContainer.classList.add('buttons-container');
+                    htmlContent = 
+                    `<div class="event-rectangle">\n
+                        <p class="event-name"> <b> Event:<b> `+item.eventName+`</p>\n
+                    </div>\n`
+                    +htmlContent;
 
-                    //function to approve or deny folks on the admin side 
-                    button.onclick = function() {
-                    console.log('Clicked on button for item._id:', item._id);
-                    addElement(item._id, 'Approved');
-                     };
+        })
+        // Get the container element
+        const outputContainer = document.getElementById('output-container');
 
-                     button1.onclick = function () {
-                     console.log('Clicked on Deny button for item._id:', item._id);
-                    addElement(item._id, 'Denied');
-                    };
-
-
-
-                    // Append buttons to the buttons container
-                    buttonsContainer.appendChild(button);
-                    buttonsContainer.appendChild(button1);
-                    
-                   
-                    // Append the data and buttons containers to the list item
-                    li.appendChild(buttonsContainer);
-                    // Append the list item to the unordered list
-                    ul.appendChild(li);
-                });
-                // Append the unordered list to the data container
-                dataContainer.appendChild(ul);
-            }
-        }
+// Set the HTML content of the container
+        outputContainer.innerHTML = htmlContent;
+    }
+}
         
     </script> 
     </div>
@@ -260,7 +171,7 @@
             localStorage.setItem('authInfo', JSON.stringify(params))
         }
         // hide the access token
-        window.history.pushState({},document.title,"/"+"VW"+"/"+"apply")
+        window.history.pushState({},document.title,"/"+"apply")
     </script>
     <script src="scalingfactor.js"></script>
 </html>

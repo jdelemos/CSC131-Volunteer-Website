@@ -40,29 +40,37 @@ app.get('/', (req, res) => {
 });
 
 
-app.post('/add-element', (req, res) => {
-  // Connect to MongoDB
-  MongoClient.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true }, (err, client) => {
-      if (err) {
-          return res.status(500).json({ error: 'Error connecting to MongoDB' });
-      }
+app.post('/add-element', async (req, res) => {
+  try {
+      const client = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+      await client.connect();
 
       const db = client.db(dbName);
-      const collection = db.collection('FormDatabase');
+      const collection = db.collection(collectionName);
 
-      // Insert the new element into the collection
-      collection.insertOne(req.body, (insertErr, result) => {
-          if (insertErr) {
-              return res.status(500).json({ error: 'Error adding element to MongoDB' });
-          }
+      const { _id, approvalValue } = req.body;
 
-          // Close the MongoDB connection
-          client.close();
+      // Update the document based on the approvalValue
+      const updateField = approvalValue === 'Approved' ? 'approval' : 'denial';
 
-          // Send a response indicating success
-          res.json({ success: true, result });
-      });
-  });
+      // Check if the document with the given _id exists
+      const existingDoc = await collection.findOne({ _id: new ObjectId(_id) });
+
+      // Determine the field to update based on the approvalValue
+      const updateData = { $set: { [updateField]: approvalValue } };
+
+      // Update the document based on whether the field exists
+      const result = existingDoc
+          ? await collection.findOneAndUpdate({ _id: new ObjectId(_id) }, updateData, { returnDocument: 'after' })
+          : await collection.insertOne({ _id: new ObjectId(_id), ...updateData });
+
+      client.close();
+
+      res.json({ success: true, result });
+  } catch (error) {
+      console.error('Error updating/inserting element in MongoDB:', error);
+      res.status(500).json({ error: 'Error updating/inserting element in MongoDB' });
+  }
 });
 
 

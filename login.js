@@ -26,6 +26,14 @@ function signIn(){
 
     form.submit()
 }
+function signOut() {
+    // Remove the user's session data from localStorage
+    localStorage.removeItem('loggedIn');
+    localStorage.removeItem('accessToken');
+
+    // Redirect to the home page or a specific page after logging out
+    window.location.href = 'https://jdelemos.github.io/VW/index.html';
+}
 function handleLoginState() {
     // Get the fragment part of the URL
     const fragment = window.location.hash.substring(1);

@@ -250,7 +250,7 @@ body.dark-mode{
 
 .apply-page .event-rectangle {
     margin: 0 auto;
-    margin-bottom: calc(132px*var(--scaling-factor));
+    margin-bottom: calc(132px *var(--scaling-factor));
     aspect-ratio: 1694/311;
     width: calc(1694px*var(--scaling-factor));
     background: #121212;

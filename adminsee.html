@@ -1,27 +1,11 @@
-<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <link rel = "stylesheet" href = "styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="userpopout.js" defer></script>
-    <script src="login.js" defer></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        handleLoginState();
-    });
-    </script>
-
 </head>
 <title>Admin</title>
-
-
-    <style>
-
-
-
-
+<style>
     .circle1 {
         width: calc(64px*var(--scaling-factor));
         height: calc(64px*var(--scaling-factor));
@@ -69,8 +53,8 @@
                 text-align: center;
             }
     
-
-        ul {
+          
+            ul {
             list-style-position: inside;
             flex-wrap: wrap;
             position: center;
@@ -84,7 +68,7 @@
         
             }
     
-        li {
+            li {
                 
                 flex: 0 0 calc(92% - calc(20px*var(--scaling-factor)));  
                 display: inline;
@@ -98,89 +82,61 @@
             
                
             }
-
-
-        
-    </style>
-
-
-
+</style>
 <body>
     <header class="header">
-        <div class="logo"><img src="images/image3.png" alt=""></div>
-        <a href="apply"><h1 class="title">Apply</h1> </a>
-        <a href="contact"><h1 class="title">Contact Us</h1></a>
-        <h1 class="title hidden" id="update" display="none">Update Information</h1>
-        <h1 class="title hidden" id="signout"display="none">Sign Out</h1>
-
-        <div class="circle" id="userButton" onclick="checkbutton()">
+        <div class="logo"><img src="images/image_3.png" alt="cattime"> </div>
+        <h1 class="title">Apply</h1>
+        <h1 class="title">Contact Us</h1>
+        <div class ="circle">
             <div class="login-icon">
                 <img src="images/user.png" alt="Login">
             </div>
         </div>
     </header>
-
-
-    <h1>MongoDB Data Viewer</h1>
-
-
+    <h1><br><br></h1>
     <div id="data-container">
-
-
     <script>
         var screenWidth = window.screen.width;
             var baseResolutionWidth = 1920;
             var scalingFactor = screenWidth / baseResolutionWidth;
             document.documentElement.style.setProperty('--scaling-factor', scalingFactor);
     </script>
-
     <script>
-
-     
-
-
-
-
-        window.onload=fetchData();
-        var itemId;
-        function addElement(itemId, approvalValue) {
-
-
-            console.log('Received _id:', itemId);
-            console.log('Received approvalValue:', approvalValue);
-
-    fetch('http://localhost:4000/add-element', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            _id: itemId,
-            approvalValue: approvalValue, // Pass the correct approvalValue
-        }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Element added:', data);
-   
-    })
-    .catch(error => {
-        console.error('Error adding element:', error);
-    });
-}
-
-
-
+            window.onload=fetchData(); 
                 async function fetchData() {
             try {
                 const response = await fetch('http://localhost:4000/data');
                 const data = await response.json();
-
                 displayData(data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         }
+
+
+             function addElement() {
+            // Assuming you have an API endpoint for adding elements on the server side.
+                fetch('/add-element', {
+                 method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                // You can pass any data you want to add to MongoDB here.
+                name: 'Approved',
+                }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                console.log('Element added:', data);
+                // You can update the UI or perform any other actions based on the response.
+                })
+    .catch(error => {
+        console.error('Error adding element:', error);
+                    });
+                }
+
 
 
         function displayData(data) {
@@ -191,70 +147,83 @@
             } else {
                 const ul = document.createElement('ul');
                 ul.classList.add('data-grid');
-
-
-                data.forEach(item => {
-                  const li = document.createElement('li');
-
-                  li.classList.add('list-item');
-                    li.innerHTML = `
-                <span class="circle1"> <img src="images/user.png" alt="Login"> </span>
+                /*
                 <span style="font-size:calc(30px*var(--scaling-factor));">Name: ${item.name} </span> 
                 <span style="font-size:calc(30px*var(--scaling-factor)); margin-right: calc(150px*var(--scaling-factor)); margin-left:calc(50px*var(--scaling-factor))"> Email: ${item.email}
                 <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor)); margin-right: calc(150px*var(--scaling-factor));"> Phone: ${item.phone}  <br><br>  
                 <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(0px*var(--scaling-factor));"> Address: ${item.address} 
                 <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor));"> City: ${item.city} </span>
-                <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor));"> Zipcode: ${item.zipcode} </span> `;
-
+                <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor));"> Zipcode: ${item.zipcode} </span>
+                */
+            function sendMail() {
+                 var link = "mailto: @example.com"
+             + "?cc=myCCaddress@example.com"
+             + "&subject=" + encodeURIComponent("This is my subject")
+             + "&body=" + encodeURIComponent(document.getElementById('myText').value)
+                ;
+             window.location.href = link;
+            }
+            function addElement() {
+            // Assuming you have an API endpoint for adding elements on the server side.
+                fetch('/add-element', {
+                 method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                // You can pass any data you want to add to MongoDB here.
+                name: 'Approved',
+                }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                console.log('Element added:', data);
+                // You can update the UI or perform any other actions based on the response.
+                })
+    .catch(error => {
+        console.error('Error adding element:', error);
+    });
+}
+                data.forEach(item => {
+                  const li = document.createElement('li');
+                  li.classList.add('list-item');
+                    li.innerHTML = `
+                                    <span class="circle1"> <img src="images/user.png" alt="Login"> </span>
+                                    <span style="font-size:calc(30px*var(--scaling-factor));">Name: ${item.name} </span> 
+                                    <span style="font-size:calc(30px*var(--scaling-factor)); margin-right: calc(150px*var(--scaling-factor)); margin-left:calc(50px*var(--scaling-factor))"> Email: ${item.email}
+                                    <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor)); margin-right: calc(150px*var(--scaling-factor));"> Phone: ${item.phone}  <br><br>  
+                                    <span style="font-size:calc(30px*var(--scaling-factor));"> Address: ${item.address} </span>
+                                    <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(70px*var(--scaling-factor));"> City: ${item.city} </span>
+                                    <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor)); margin-right: calc(120px*var(--scaling-factor));"> Zipcode: ${item.zipcode} </span>`;
                     // Create buttons
-                    var button100 = document.createElement("button");
+                    var button = document.createElement("button");
                     var button1 = document.createElement("button");
-                    button100.innerHTML = 'Approve' ;
+                    button.innerHTML = 'Approve ' ;
                     button1.textContent = 'Deny';
-
-                    button100.onclick = function() {
-                    console.log('Clicked on button for item._id:', item._id);
-                    addElement(item._id, 'Approved');
-                     };
-
-                     button1.onclick = function () {
-                     console.log('Clicked on Deny button for item._id:', item._id);
-    addElement(item._id, 'Denied');
-};
-
-
-
+                    button.onclick=addElement(); 
                     // Add classes to the buttons
-                    button100.classList.add('approval-button');
+                    button.classList.add('approval-button');
                     button1.classList.add('approval-button');
-
                     // Create a div to hold the buttons and set its style
                     var buttonsContainer = document.createElement("div");
                     buttonsContainer.classList.add('buttons-container');
-
                     // Append buttons to the buttons container
-                    buttonsContainer.appendChild(button100);
+                    buttonsContainer.appendChild(button);
                     buttonsContainer.appendChild(button1);
-
                    
-
                     // Append the data and buttons containers to the list item
                     li.appendChild(buttonsContainer);
-
                     // Append the list item to the unordered list
                     ul.appendChild(li);
                 });
-
                 // Append the unordered list to the data container
                 dataContainer.appendChild(ul);
             }
         }
         
-
-
     </script> 
     </div>
 </body>
-
 </html>
+
 

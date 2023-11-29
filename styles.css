@@ -156,7 +156,7 @@ body.dark-mode{
     }
     100% {
         transform: translateX(100%);
-         /* Slide up by 100% of its own height */    :;
+         /* Slide up by 100% of its own height */    
         -webkit-transform: translateX(100%);
         -moz-transform: translateX(100%);
         -ms-transform: translateX(100%);

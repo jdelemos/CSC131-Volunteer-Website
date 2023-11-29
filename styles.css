@@ -247,24 +247,33 @@ body.dark-mode{
     background-color: #0f531e;
 }
 
-.event-rectangle .event-name{
 
+.apply-page .event-rectangle {
+    margin: 0 auto;
+    margin-bottom: calc(132px*var(--scaling-factor));
+    aspect-ratio: 1694/311;
+    width: calc(1694px*var(--scaling-factor));
+    background: #121212;
+    border: calc(4.45217px *var(--scaling-factor))solid #C4B581;
+    
+}
 
+.apply-page .event-rectangle .event-name{
 margin-left:calc(33px*var(--scaling-factor)) ;
 font-family: 'Inter';
-font-style: 'bold';
+font-style: 'regular';
 font-weight: 700;
 font-size: calc(28px*var(--scaling-factor));
 text-align: left;
 
-color: #FFFFFF;
+color: white;
 }
 
 
 
 
 
-.output-container h1 {
+.apply-page .output-container h1 {
     color: antiquewhite;
     align-items: center;
     align-content: center;

@@ -84,12 +84,7 @@
         outputContainer.innerHTML = htmlContent;
     }
 }
-        
-    </script> 
-
-</body>
-    <script>
-        let params = {}
+    let params = {}
         let regex = /([^&=]+)=([^&]*)/g, m
         while(m = regex.exec(location.href)){
             params[decodeURIComponent(m[1])]=decodeURIComponent(m[2])
@@ -101,5 +96,8 @@
         window.history.pushState({},document.title,"/"+"apply")
     </script>
     <script src="scalingfactor.js"></script>
+        
+
 </div>
+</body>
 </html>

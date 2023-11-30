@@ -6,8 +6,8 @@ function checkLoginAndRedirect() {
     if (isLoggedIn !== 'true') {
         const restrictedUrls = [
             '/VW/apply',
-            '/VW/apply.html'
-            // ... other restricted URLs
+            '/VW/apply.html',
+            '/VW/userinfo.html'
         ];
         const currentPage = window.location.pathname;
         if (restrictedUrls.includes(currentPage)) {

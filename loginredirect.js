@@ -1,21 +1,16 @@
 function checkLoginAndRedirect() {
-    const isLoggedIn = localStorage.getItem('loggedIn');
-
-    // Assuming 'false' or a null value indicates the user is not logged in
+    // Retrieve the isLoggedIn value or default to 'false' if the key is missing
+    const isLoggedIn = localStorage.getItem('isLoggedIn') || 'false';
+    
+    // Redirect to the login page if isLoggedIn is not 'true'
     if (isLoggedIn !== 'true') {
-        // Define a list of restricted URLs
         const restrictedUrls = [
-            '/apply.html',
-            '/apply',
-            '/account.htmls',
-            '/events.html',
-            // Add other restricted URLs here
+            '/restricted-page1.html',
+            '/restricted-page2.html',
+            '/restricted-page3.html',
+            // ... other restricted URLs
         ];
-
-        // Get the current page URL
         const currentPage = window.location.pathname;
-
-        // Check if the current page is in the list of restricted URLs
         if (restrictedUrls.includes(currentPage)) {
             alert('You must be logged in to view this page.');
             window.location.href = '/login.html'; // Redirect to the login page
@@ -23,5 +18,4 @@ function checkLoginAndRedirect() {
     }
 }
 
-// Run the function on every page load
 document.addEventListener('DOMContentLoaded', checkLoginAndRedirect);

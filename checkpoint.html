@@ -20,6 +20,9 @@
                 localStorage.setItem('loggedIn', 'true');
                 const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?googleId=${googleId}`);
                 const data = await response.json();
+                setTimeout(function() {
+                    console.log(data)
+                }, data)
 
                 if (data.Admin === 1) {
                     window.location.href = '/VW/event'; // Redirect to apply page for non-admins

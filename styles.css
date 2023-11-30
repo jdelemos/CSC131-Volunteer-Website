@@ -260,6 +260,10 @@ text-align: left;
 color: white;
 }
 
+.text-wrap{
+    width: calc(900px*var(--scaling-factor));
+
+}
 
 
 

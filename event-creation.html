@@ -14,10 +14,13 @@
     </script>
     </head>
     <body>
+
+        
+        
         <header class="header">
-        <a href = "./landingpage.html"><div class="logo"><img src="images/image3.png" alt=""></div></a>
-        <a href="./apply.html"><h1 class="title">Apply</h1> </a>
-        <a href="./contact.html"><h1 class="title">Contact Us</h1></a>
+        <a href = "landingpage.html"><div class="logo"><img src="images/image3.png" alt=""></div></a>
+        <a href="apply.html"><h1 class="title">Apply</h1> </a>
+        <a href="contact.html"><h1 class="title">Contact Us</h1></a>
         <h1 class="title hidden" id="update" display="none">Update Information</h1>
         <h1 class="title hidden" id="signout"display="none">Sign Out</h1>
 
@@ -44,10 +47,10 @@
                 class = "startDateO"
                 placeholder = "Start Date"
                 onfocus = "(this.type='date')"
-                onblur = "(this.type='text')"
+                onblur = "changeMinDate()"
                 name = "startDate"
                 id = "startDate"
-                min = "new.Date().toISOString().Split('T')[0]"
+                min = ""
                 style = "margin-left: calc(716px*var(--scaling-factor)); width: calc(247px*var(--scaling-factor));"
                 required>
             </div>
@@ -56,7 +59,9 @@
                 class = "endDateO"
                 placeholder = "End Date"
                 onfocus = "(this.type='date')"
-                onblur = "(this.type='text')"
+                onblur = "setMaxDate()"
+                min = ""
+                max = ""
                 name = "endDate"
                 id = "endDate"
                 style = "margin-left: calc(1018px*var(--scaling-factor)); width: calc(272px*var(--scaling-factor));"
@@ -91,6 +96,7 @@
                 maxlength="1000"
                 placeholder="Capacity"
                 min = "1"
+                max = "1000"
                 style = "margin-left: calc(1291px*var(--scaling-factor)); width: calc(202px*var(--scaling-factor));"
                 required>
             </div>
@@ -107,41 +113,7 @@
                 <input type = "image" src = "images/EditedSubmitButton.png" border-style="none" class = "buttonO" id = "submit" alt = "submit" style = "margin-left: calc(752px*var(--scaling-factor));">
             </div>
         </form>
-        <script>
-            document.getElementById('myForm').addEventListener('submit', function(event){
-                event.preventDefault();
-
-                const formData = {
-                    eventName: document.getElementById('eventName').value,
-                    startDate: document.getElementById('startDate').value,
-                    endDate: document.getElementById('endDate').value,
-                    time: document.getElementById('time').value,
-                    location: document.getElementById('location').value,
-                    capcity: document.getElementById('capacity').value,
-                    description: document.getElementById('description').value
-                };
-                fetch('/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            })
-            .then(response => response.text())
-            .then(data => {
-                console.log('Success:', data);
-                alert('Data submitted successfully!');
-                document.location.href = "./apply.html";
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert('Error submitting data');
-            });
-        });
-            var screenWidth = window.screen.width;
-            var baseResolutionWidth = 1920;
-            var scalingFactor = screenWidth / baseResolutionWidth;
-            document.documentElement.style.setProperty('--scaling-factor', scalingFactor);
-        </script>
+        <script src="eventPage.js"></script>
+        <script src="scalingfactor.js"></script>
     </body>
 </html>

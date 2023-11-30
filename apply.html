@@ -17,7 +17,7 @@
     <header class="header">
 
         <div class="logo"><img src="images/image3.png" alt=""></div>   
-        <a href="apply"><h1 class="title">Apply</h1> </a>
+        <a href="apply"><h1 class="title">Appley</h1> </a>
         <a href="contact"><h1 class="title">Contact Us</h1></a>
         <a href="event"><h1 class="title">events</h1></a>
          <a href="adminsee.html"><h1 class="title">Admin</h1></a>
@@ -88,26 +88,52 @@ function displayData(data) {
 }
 
                 async function checkUserApplications() {
+    console.log('Checking user applications...'); // Log when the function starts
     const userId = localStorage.getItem('googleId'); // Retrieve the user ID from localStorage
-    const eventElements = document.querySelectorAll('.apply-box');
+    console.log('User ID:', userId); // Log the user ID
 
-    eventElements.forEach(async (element) => {
-        const eventId = element.getAttribute('data-event-id');
-        try {
-            const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/apply-data?userId=${userId}&eventId=${eventId}`);
-            const data = await response.json();
+    if (!userId) {
+        console.log('No user ID found in localStorage.');
+        return;
+    }
 
-            if (data.length > 0) {
+    try {
+        // Call the backend with the user's Google ID
+        const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/apply-data?userId=${userId}`);
+        
+        // Check if the response is not successful (status code in the range 200-299)
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+
+        const userApplications = await response.json(); // Parse the response into JSON
+        console.log('Applications found:', userApplications);
+
+        // Log all the event IDs for which the user has applied
+        userApplications.forEach(application => {
+            console.log(`User has applied for event with ID: ${application.EventId}`);
+        });
+        
+        // Now update the Apply buttons accordingly
+        const eventElements = document.querySelectorAll('.apply-box');
+        eventElements.forEach(element => {
+            const eventId = element.getAttribute('data-event-id');
+            if (userApplications.some(application => application.EventId === eventId)) {
                 // User has already applied to this event
                 element.innerHTML = 'Applied';
                 element.classList.add('applied');
                 element.style.pointerEvents = 'none';
             }
-        } catch (error) {
-            console.error('Error checking user applications:', error);
-        }
-    });
+        });
+
+    } catch (error) {
+        console.error('Error checking user applications:', error);
+    }
 }
+
+// Call this function when the page loads or when the events are rendered
+checkUserApplications();
+
 
 // Set the HTML content of the container
         outputContainer.innerHTML = htmlContent;

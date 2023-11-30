@@ -1,11 +1,12 @@
 function checkLoginAndRedirect() {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    const isLoggedIn = localStorage.getItem('loggedIn');
 
     // Assuming 'false' or a null value indicates the user is not logged in
-    if (loggedIn !== 'true') {
+    if (isLoggedIn !== 'true') {
         // Define a list of restricted URLs
         const restrictedUrls = [
             '/apply.html',
+            '/apply',
             '/account.htmls',
             '/events.html',
             // Add other restricted URLs here

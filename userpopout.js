@@ -70,34 +70,9 @@ function checkbutton() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    handleApplyLink();
     checkbutton();
 });
 
-function handleApplyLink() {
-    const applyLink = document.getElementById('applyLink');
-
-    if (applyLink) {
-        applyLink.addEventListener('click', function(event) {
-            // Prevent the default link behavior
-            event.preventDefault();
-
-            // Check if the user is logged in
-            const loggedIn = localStorage.getItem('loggedIn');
-
-            // Redirect based on the login state
-            if (loggedIn === 'true') {
-                // User is logged in, redirect to apply.html
-                window.location.href = 'apply.html';
-            } else {
-                // User is not logged in, redirect to login.html
-                window.location.href = 'login.html';
-            }
-        });
-    } else {
-        console.error('Apply link not found.');
-    }
-}
 
 // Call the function when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {

@@ -191,6 +191,7 @@ function setMaxDate(){
               event.preventDefault();
               var inputs = this.querySelectorAll('input');
               for(var i = 0; i < inputs.length; i++){
+		      console.log(inputs[i]);
                 if(window.getComputedStyle(inputs[i]).getPropertyValue('border-bottom-color') === 'red' || window.getComputedStyle(inputs[i]).getPropertyValue('border-bottom-color') === 'rgb(255, 0, 0)'){
                   event.preventDefault();
                   alert("Please make changes to red fields.");

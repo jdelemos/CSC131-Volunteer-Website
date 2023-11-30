@@ -89,16 +89,15 @@ function checkAdminStatus(googleId) {
     })
     .then(response => response.json())
     .then(userData => {
-        if (userData.Admin = 1 ) {
-            window.location.href = '/events';
+        if (userData.Admin === 1) { // Use === for comparison
+            window.location.href = '/events'; // Redirect to events page for admins
         } else {
-            window.location.href = '/apply';
+            window.location.href = '/apply'; // Redirect to apply page for non-admins
         }
     })
     .catch(error => {
         console.error('Error checking admin status:', error);
     });
 }
-
 // Call the function to handle login state when the page loads
 handleLoginState();

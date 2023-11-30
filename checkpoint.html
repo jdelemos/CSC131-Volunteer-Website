@@ -28,7 +28,7 @@
                 const data = await response.json();
                 setTimeout(function() {
                     console.log(data)
-                }, data)
+                }, 10000)
 
                 if (data.admin === 1) {
                     window.location.href = '/VW/event'; // Redirect to apply page for non-admins

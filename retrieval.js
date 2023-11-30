@@ -13,8 +13,6 @@ const collectionName = 'Users';
 app.use(cors());
 app.use(bodyParser.json());
 
-// Serve static files from the 'test' directory
-app.use('/test', express.static(path.join(__dirname, 'test'), { extensions: ['html', 'css', 'png'] }));
 
 app.get('/data', async (req, res) => {
   try {

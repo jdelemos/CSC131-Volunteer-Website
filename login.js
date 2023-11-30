@@ -35,79 +35,41 @@ function signOut() {
     window.location.href = 'https://jdelemos.github.io/VW/index.html';
 }
 function handleLoginState() {
-    const accessToken = localStorage.getItem('accessToken');
+    // Get the fragment part of the URL
+    const fragment = window.location.hash.substring(1);
 
-    if (accessToken) {
-        // User is logged in, fetch user info and check admin status
-        fetchUserProfileAndCheckAdmin(accessToken);
-    } else {
-        // Handle the URL fragment if the user is not logged in
-        const fragment = window.location.hash.substring(1);
-        const params = parseFragment(fragment);
-
-        if (params['access_token']) {
-            // Set the access token in local storage and handle user info
-            localStorage.setItem('loggedIn', 'true');
-            localStorage.setItem('accessToken', params['access_token']);
-            fetchUserProfileAndCheckAdmin(params['access_token']);
-        }
-    }
-}
-
-function parseFragment(fragment) {
-    return fragment.split('&').reduce((acc, param) => {
+    // Parse the fragment string
+    const params = fragment.split('&').reduce((acc, param) => {
         const [key, value] = param.split('=');
         acc[key] = value;
         return acc;
     }, {});
+
+    const accessToken = params['access_token'];
+
+    if (accessToken) {
+        // User is logged in
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('accessToken', accessToken);
+
+        // Fetches user profile information to get their googleID
+        fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // contains user information, including Google ID
+            localStorage.setItem('googleId', data.id); // Storing the Google ID
+        })
+        .catch(error => {
+            console.error('Error fetching user info:', error);
+        });
+    }
 }
 
-function fetchUserProfileAndCheckAdmin(token) {
-    fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        localStorage.setItem('googleId', data.id);
-        checkAdminStatus(data.id);
-    })
-    .catch(error => {
-        console.error('Error fetching user info:', error);
-    });
-}
-
-function checkAdminStatus(googleId) {
-    fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ googleId: googleId })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(userData => {
-        if (userData.Admin === 1) {
-            window.location.href = '/events';
-        } else {
-            window.location.href = '/apply';
-        }
-    })
-    .catch(error => {
-        console.error('Error checking admin status:', error);
-    });
-}
 
 // Call the function to handle login state when the page loads
 handleLoginState();
+//hi

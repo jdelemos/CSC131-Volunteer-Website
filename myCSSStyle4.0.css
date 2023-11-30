@@ -1,6 +1,8 @@
 body{
 	background-color: #000000;
 	color : #FFFFFF;
+	margin: 0;
+	padding: 0;
 }
 input[type="email"]{
 	background-color: #323232; color: #686868;
@@ -176,9 +178,6 @@ form{
 	margin-top: calc(37px*var(--scaling-factor));
 	font-size: calc(24px*var(--scaling-factor));
 }
-a {
-    text-decoration: none;
-}
 .header {
     background-color: #093813; /* Header background color */
     display: flex;
@@ -239,3 +238,8 @@ a {
     max-height: 100%;
     height: auto;
 }
+a{
+	text-decoration: none;
+}
+
+

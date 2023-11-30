@@ -1,0 +1,171 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+}
+
+body.dark-mode{
+    background-color: #ffffff;
+}
+
+.header {
+    background-color: #093813; /* Header background color */
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    width: 100%; 
+    top: 0; 
+     
+}
+
+a {
+    text-decoration: none;
+}
+
+.apply {
+    color: #c4B581;
+    font-size: 22px;
+    margin-left: 40px; /* Added margin */
+    cursor: pointer;
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+}
+
+.contact-us {
+    color: #c4B581;
+    font-size: 22px;
+    margin-left: 40px; /* Adjusted margin to move it to the right */
+    cursor: pointer;
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+}
+
+.contact-us:hover{
+    color: #776A3F;
+}
+
+.apply:hover,
+.contact-us:hover {
+    color: #776A3F;
+}
+
+.circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #c4B581;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 30px;
+    margin-left: auto;
+    transition: background-color 0.3s;
+}
+
+.circle:hover{
+    background-color: #776A3F;
+}
+
+.logo {
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.icon img,
+.logo img {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 24px;
+    color: #686868;
+    background-color: #323232;
+    border-bottom: 10px solid lightgray;
+}
+
+
+.list-item {
+    position: relative;
+    box-sizing: border-box;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    background-color: rgba(46, 40, 40, 0.7);
+}
+
+.buttons-container {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px;
+}
+
+
+
+        /* Add styles for the button */
+        #mybutton {
+            margin-top: 100px;
+            margin-left:48%;  
+            text-align: center;
+        }
+
+      
+        ul {
+        list-style-position: inside;
+        flex-wrap: wrap;
+        position: center;
+        display: flex;
+        margin-left: 10px;
+        margin-right: 10px;
+        }
+
+        li {
+            flex: 0 0 calc(92% - 20px); /* Adjust the width and margin as needed */
+            padding: 15px;
+            display: inline;
+            border-radius: 15px; /* Optional: Add rounded corners to the items */
+            margin-bottom: 15px;
+            margin-left: 15px; 
+            margin-right: 15px;/* Adjust the margin-bottom value to add space between entries */
+            background-color: rgba(46, 40, 40, 0.7);
+            color: white; 
+        }
+
+        .approval-button {
+
+
+
+        }

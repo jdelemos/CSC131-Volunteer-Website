@@ -85,7 +85,7 @@
         };
 
         function fetchUserData(googleId) {
-            fetch(`'https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?id=${googleId}`)
+            fetch(`'https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${googleId}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data); // Process your user data
@@ -100,7 +100,7 @@
             <!-- Content inside the rectangle -->
             <img class="logo" src="images/logo.png" alt="My Image">
             <img class="login-button" src="images/loginbutton.png" onclick="signIn()">
-            <a href="index.html"><p cursor: pointer;>Return to Homee</p></a>
+            <a href="index.html"><p cursor: pointer;>Return to Home</p></a>
         </div>
     </div>
 </body>

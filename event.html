@@ -98,6 +98,7 @@
                     event.preventDefault();
     
                     const formData = {
+                        eventId: Math.random().toString(16).slice(2),
                         eventName: document.getElementById('eventName').value,
                         startDate: document.getElementById('startDate').value,
                         endDate: document.getElementById('endDate').value,

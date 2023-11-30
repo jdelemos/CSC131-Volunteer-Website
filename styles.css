@@ -31,8 +31,8 @@ body {
 
 .header .title {
     color: #c4B581;
-    font-size: 22px;
-    margin-right: 20px; /* Adjust the space between the menu items if necessary */
+    font-size: calc(22px * var(--scaling-factor));
+    margin-right: calc(26px * var(--scaling-factor)); /* Adjust the space between the menu items if necessary */
     cursor: pointer;
     text-decoration: none;
     transition: text-decoration 0.3s;
@@ -67,7 +67,7 @@ body {
 
 .header .logo {
     margin-left: 30px;
-    margin-left: 50px;
+    margin-left: calc(70px * var(--scaling-factor));
     cursor: pointer;
 }
 
@@ -281,7 +281,6 @@ color: white;
     align-items: center;
     align-content: center;
 }
-
 
 
 

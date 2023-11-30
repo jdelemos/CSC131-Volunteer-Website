@@ -245,7 +245,7 @@ body {
 
 .apply-page .event-rectangle {
     margin: 0 auto;
-    margin-bottom: calc(132px *var(--scaling-factor));
+    margin-bottom: calc(132px*var(--scaling-factor));
     aspect-ratio: 1694/311;
     width: calc(1694px*var(--scaling-factor));
     background: #121212;
@@ -253,16 +253,18 @@ body {
     
 }
 
-.apply-page .event-rectangle .event-name{
-margin-left:calc(33px *var(--scaling-factor)) ;
-font-family: 'Inter';
-font-weight: 700;
-font-size: calc(28px *var(--scaling-factor));
+.apply-page .event-rectangle .text{
+margin-left:calc(33px*var(--scaling-factor)) ;
+font-size: calc(28px*var(--scaling-factor));
 text-align: left;
-
 color: white;
 }
-.apply-page .output-container h1 {
+
+
+
+
+
+.apply-page .output-container h1 { 
     color: antiquewhite;
     align-items: center;
     align-content: center;

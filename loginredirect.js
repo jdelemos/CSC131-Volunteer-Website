@@ -5,9 +5,7 @@ function checkLoginAndRedirect() {
     // Redirect to the login page if isLoggedIn is not 'true'
     if (isLoggedIn !== 'true') {
         const restrictedUrls = [
-            '/restricted-page1.html',
-            '/restricted-page2.html',
-            '/restricted-page3.html',
+            '/apply.html'
             // ... other restricted URLs
         ];
         const currentPage = window.location.pathname;

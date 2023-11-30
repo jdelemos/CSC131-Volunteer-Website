@@ -19,22 +19,6 @@ const client = new MongoClient(uri, {
   },
 });
 
-// Function that uses word wrap for the description on events after a certain amount of characters
-function wrapText(text, maxLineLength) {
-    let wrappedText = '';
-    let lineLength = 0;
-
-    text.split(' ').forEach(word => {
-        if (lineLength + word.length > maxLineLength) {
-            wrappedText += '\n';
-            lineLength = 0;
-        }
-        wrappedText += word + ' ';
-        lineLength += word.length + 1;
-    });
-
-    return wrappedText;
-}
 
 document.getElementById('description').textContent = wrapText(item.description, 84);
 

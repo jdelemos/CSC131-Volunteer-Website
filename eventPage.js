@@ -216,7 +216,7 @@ window.onload = setMinDate();
             .then(data => {
                 console.log('Success:', data);
                 alert('Data submitted successfully!');
-                document.location.href = "./apply.html";
+                document.location.href = "./admin/manage-events.html";
             })
             .catch((error) => {
                 console.error('Error:', error);

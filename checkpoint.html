@@ -11,7 +11,7 @@
     });
     </script>
     <script>
-        async function checkAdminStatus() {
+      async function checkAdminStatus() {
     const googleId = localStorage.getItem('googleId'); // Retrieve the user ID from localStorage
 
     if (!googleId) {
@@ -19,37 +19,37 @@
 
         // Parse the fragment string
         const params = fragment.split('&').reduce((acc, param) => {
-        const [key, value] = param.split('=');
-        acc[key] = value;
-        return acc;
+            const [key, value] = param.split('=');
+            acc[key] = value;
+            return acc;
         }, {});
 
         const accessToken = params['access_token'];
          
         if (accessToken) {
-        // User is logged in
-        localStorage.setItem('loggedIn', 'true');
-        localStorage.setItem('accessToken', accessToken);
+            // User is logged in
+            localStorage.setItem('loggedIn', 'true');
+            localStorage.setItem('accessToken', accessToken);
 
-
-        // Fetches user profile information to get their googleID
-        fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
-            headers: {
-                Authorization: `Bearer ${accessToken}`
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data); // contains user information, including Google ID
-            localStorage.setItem('googleId', data.id); // Storing the Google ID
-        })
-        .catch(error => {
-            console.error('Error fetching user info:', error);
-        });
-        
-        console.log('No Google ID found in localStorage.');
-        window.location.href = '/VW/apply'; // Redirect to login page or a page to handle this case
-        return;
+            // Fetches user profile information to get their googleID
+            fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // contains user information, including Google ID
+                localStorage.setItem('googleId', data.id); // Storing the Google ID
+            })
+            .catch(error => {
+                console.error('Error fetching user info:', error);
+            });
+            
+            console.log('No Google ID found in localStorage.');
+            window.location.href = '/VW/apply'; // Redirect to login page or a page to handle this case
+            return;
+        }
     }
 
     try {
@@ -75,8 +75,8 @@
         // Handle the error by redirecting to a generic error page or showing an error message
     }
 }
-        }
-        window.onload = checkAdminStatus;
+
+window.onload = checkAdminStatus;
     </script>
 </head>
 <body>

@@ -189,9 +189,9 @@ function setMaxDate(){
             
           document.getElementById('myForm').addEventListener('submit', function (event) {
               event.preventDefault();
-              var inputs = document.getElementById('myForm').querySelectorAll('input');
+              var inputs = this.querySelectorAll('input');
               for(var i = 0; i < inputs.length; i++){
-                if(window.getComputedStyle(inputs[i]).getPropertyValue('border-bottom-color') === 'red'){
+                if(window.getComputedStyle(inputs[i]).getPropertyValue('border-bottom-color') === 'red' || window.getComputedStyle(inputs[i]).getPropertyValue('border-bottom-color') === 'rgb(255, 0, 0)'){
                   event.preventDefault();
                   alert("Please make changes to red fields.");
                   return;

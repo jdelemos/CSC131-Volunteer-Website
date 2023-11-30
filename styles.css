@@ -342,7 +342,7 @@ color: white;
 	text-align: center;
 	align-items: center;
 	height: calc(540px*var(--scaling-factor));
-	transform: translate(0, calc(270px*var(--scaling-factor)));
+	transform: translate(0, calc(200px*var(--scaling-factor)));
 
 }
 

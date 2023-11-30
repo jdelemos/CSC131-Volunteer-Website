@@ -104,30 +104,42 @@
         window.history.pushState({},document.title,"/VW/"+"apply")
 
         function apply(event) {
-            event.preventDefault();
+  try {
+    event.preventDefault();
 
-            const formData = {
-                userId: localStorage.getItem('googleId'),
-                EventId: eventId 
-            };
+    // Retrieve the data-event-id attribute from the clicked element
+    const eventId = event.target.getAttribute('data-event-id');
 
-            fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/apply', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            })
-            .then(response => response.text())
-            .then(data => {
-                console.log('Success:', data);
-                alert('Data submitted successfully!');
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert('Error submitting data');
-            });
-        }
+    if (!eventId) {
+      throw new Error('Data-event-id attribute is undefined or null.');
+    }
+
+    const formData = {
+      userId: localStorage.getItem('googleId'),
+      EventId: eventId,
+    };
+
+    fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/apply', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(response => response.text())
+      .then(data => {
+        console.log('Success:', data);
+        alert('Data submitted successfully!');
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error.message);
+        alert('Error submitting data');
+      });
+  } catch (error) {
+    console.error('Error in applyHandler:', error.message);
+  }
+}
+
 
     </script>        
 </div>

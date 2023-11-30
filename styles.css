@@ -228,7 +228,7 @@ body {
     width: calc(275px*var(--scaling-factor)); 
     height: calc(80px*var(--scaling-factor)); 
     background-color: #093813;
-    top: 10%;
+    margin-top: calc(50px*var(--scaling-factor))
     margin-left: calc(1330px*var(--scaling-factor));
     text-align: center;
     line-height: calc(80px*var(--scaling-factor));

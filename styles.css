@@ -17,11 +17,16 @@ body {
 .header {
     background-color: #093813; /* Header background color */
     display: flex;
-    justify-content: flex-start; /* Start from the left side */
-    align-items: center; /* Align items vertically in the center */
+    justify-content: flex-start; /* Aligns items to the start */
+    align-items: center;
     padding: 20px;
-    top: 0;
     overflow: auto;
+}
+
+
+.right-items {
+    margin-left: auto; /* This will push the .right-items container to the right */
+    display: flex; /* If you want to keep the hidden items in a row */
 }
 
 .header .title {
@@ -31,14 +36,16 @@ body {
     cursor: pointer;
     text-decoration: none;
     transition: text-decoration 0.3s;
-    /* margin-left: auto; */ /* Uncomment this line and add it to the first element that you want to align to the right */
 }
 
 .header .title.hidden {
-    display:hidden;
-    color:aqua;
-    align-items: end;
-    
+    display: none; /* Use none instead of hidden to hide elements */
+    color: aqua;
+    /* When you want to show them, you can change this property to display: block; or display: inline; depending on your needs */
+}
+
+.circle {
+    /* Styles for user button */
 }
 
 .header .title:hover{

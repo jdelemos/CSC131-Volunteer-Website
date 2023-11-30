@@ -62,7 +62,7 @@
   }
 }
     
-      function displayData(data) {
+function displayData(data) {
     const outputContainer = document.getElementById('output-container');
     if (data.length === 0) {
         outputContainer.innerHTML = '<p>No data available.</p>';
@@ -111,8 +111,7 @@
 
 // Set the HTML content of the container
         outputContainer.innerHTML = htmlContent;
-    }
-}
+    
     let params = {}
         let regex = /([^&=]+)=([^&]*)/g, m
         while(m = regex.exec(location.href)){

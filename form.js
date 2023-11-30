@@ -221,7 +221,7 @@ function setMaxDate(){
               .then(data => {
                   console.log('Success:', data);
                   alert('Data submitted successfully!');
-		  window.location.href = "apply.html";
+		  window.location.href = "./apply.html";
               })
               .catch((error) => {
                   console.error('Error:', error);

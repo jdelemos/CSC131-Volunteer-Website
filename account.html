@@ -131,7 +131,7 @@ document.addEventListener('input', checkValid);
                 bday: document.getElementById('bday').value,
             };
 
-            fetch('/user-submit', {
+            fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

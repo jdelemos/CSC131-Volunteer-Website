@@ -15,6 +15,22 @@
     const googleId = localStorage.getItem('googleId'); // Retrieve the user ID from localStorage
 
     if (!googleId) {
+        const fragment = window.location.hash.substring(1);
+
+        // Parse the fragment string
+        const params = fragment.split('&').reduce((acc, param) => {
+        const [key, value] = param.split('=');
+        acc[key] = value;
+        return acc;
+        }, {});
+
+        const accessToken = params['access_token'];
+         
+        if (accessToken) {
+        // User is logged in
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('accessToken', accessToken);
+
 
         // Fetches user profile information to get their googleID
         fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {

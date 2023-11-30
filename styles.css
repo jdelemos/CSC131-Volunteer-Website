@@ -261,7 +261,7 @@ color: white;
 }
 
 .text-wrap{
-    width: calc(900px*var(--scaling-factor));
+    width: calc(1000px*var(--scaling-factor));
 
 }
 

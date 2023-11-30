@@ -41,7 +41,7 @@
             window.onload=fetchData(); 
             async function fetchData() {
   try {
-    const response = await fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/events-data');
+    const response = await fetch('/events-data');
     
     // Check if the response is not successful (status code in the range 200-299)
     if (!response.ok) {
@@ -80,7 +80,7 @@
                             <p class="text"> <strong>Time: </strong>`+item.time+`</p>\n
                             <p class="text"> <strong>Location: </strong>`+item.location+`</p>\n
                         </div>\n  
-                        <div class="apply-box">Apply</div>\n
+                        <div class="apply-box" data-event-id="${item.eventId}" id="apply" alt="apply" onclick="applyHandler(event)">Apply</div>\n
                     </div>\n`
                     +htmlContent;
 
@@ -102,6 +102,33 @@
         }
         // hide the access token
         window.history.pushState({},document.title,"/VW/"+"apply")
+
+        function apply(event) {
+            event.preventDefault();
+
+            const formData = {
+                userId: localStorage.getItem('googleId'),
+                EventId: eventId 
+            };
+
+            fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/apply', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Data submitted successfully!');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('Error submitting data');
+            });
+        }
+
     </script>        
 </div>
 <script src="scalingfactor.js"></script>

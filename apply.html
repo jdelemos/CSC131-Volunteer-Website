@@ -64,7 +64,7 @@
     
         function displayData(data) {
             const dataContainer = document.getElementById('data-container');
-
+            const eventId = event.currentTarget.getAttribute('data-event-id');
             if (data.length === 0) {
                 dataContainer.innerHTML += '<p>No data available.</p>';
                 console.log("hi")

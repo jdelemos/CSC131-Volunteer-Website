@@ -3,7 +3,7 @@
   <head>
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel = "stylesheet" href = "myCSSStyle4.0.css">
+  <link rel = "stylesheet" href = "styles.css">
     <title>Sample Form</title>
   </head>
   <body>
@@ -19,6 +19,7 @@
           </div>
       </div>
   </header>
+<div class="forms">
     <div class="form-container">
     <form id = "myForm">
 	<div class = "profileImage" style = "margin-left: calc(768px*var(--scaling-factor));">
@@ -154,6 +155,7 @@ document.addEventListener('input', checkValid);
         var scalingFactor = screenWidth / baseResolutionWidth;
         document.documentElement.style.setProperty('--scaling-factor', scalingFactor);
     </script>
+ </div>
   </body>
 </html> 
 

@@ -210,7 +210,7 @@ function setMaxDate(){
 		              bday: document.getElementById('bday').value
               };
   
-              fetch('/submit', {
+              fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-submit', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',

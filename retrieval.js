@@ -9,7 +9,7 @@ const app = express();
 
 const mongoURI = 'mongodb+srv://jonmichaeldelemos:go22HHane5J8xFWE@cluster0.stcij7x.mongodb.net/SSVOL1';
 const dbName = 'SSVOLV1';
-const collectionName = 'FormDatabase';
+const collectionName = 'Users';
 
 app.use(cors());
 app.use(bodyParser.json());

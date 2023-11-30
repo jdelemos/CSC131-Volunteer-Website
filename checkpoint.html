@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkpoint</title>
+    <script>
+        async function checkAdminStatus() {
+            const googleId = localStorage.getItem('googleId'); // Retrieve the user ID from localStorage
+
+            if (!googleId) {
+                console.log('No Google ID found in localStorage.');
+                // Redirect to login page or handle the error appropriately
+                return;
+            }
+
+            try {
+                // Call your backend with the user's Google ID
+                const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?googleId=${googleId}`);
+                const data = await response.json();
+
+                if (data.Admin === 0) {
+                    window.location.href = '/apply'; // Redirect to apply page for non-admins
+                } else {
+                    window.location.href = '/events'; // Redirect to events page for admins
+                }
+            } catch (error) {
+                console.error('Error checking admin status:', error);
+                // Handle error (e.g., show message or redirect to error page)
+            }
+        }
+
+        window.onload = checkAdminStatus;
+    </script>
+</head>
+<body>
+    <h1>Checking your access...</h1>
+    <!-- You can add additional HTML content here -->
+</body>
+</html>

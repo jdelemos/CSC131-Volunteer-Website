@@ -17,26 +17,28 @@ body {
 .header {
     background-color: #093813; /* Header background color */
     display: flex;
-    align-items: center;
+    justify-content: flex-start; /* Start from the left side */
+    align-items: center; /* Align items vertically in the center */
     padding: 20px;
-    justify-content: flex-start; /* Align items to the start of the container */
     top: 0;
+    overflow: auto;
 }
 
-.header .title{
-    color:#c4B581;
+.header .title {
+    color: #c4B581;
     font-size: 22px;
-    margin-left: 50px;
-    margin-right: 0px;
+    margin-right: 20px; /* Adjust the space between the menu items if necessary */
     cursor: pointer;
     text-decoration: none;
     transition: text-decoration 0.3s;
-    display: inline-block; /* Change to inline-block or block */
+    /* margin-left: auto; */ /* Uncomment this line and add it to the first element that you want to align to the right */
 }
 
 .header .title.hidden {
-    display: inline-block; /* Change to make it visible */
-    display:hidden 
+    display:hidden;
+    color:aqua;
+    align-items: end;
+    
 }
 
 .header .title:hover{

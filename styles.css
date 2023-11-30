@@ -274,7 +274,7 @@ color: white;
 }
 
 .login-page body {
-    background-image: url('https://media.discordapp.net/attachments/1146309293717585986/1149910831878901820/R.png?ex=655830ea&is=6545bbea&hm=cba88a7ea20126e180aedbaaf021725501e16dbfa7c39b080e65c29d25613ab1&=&width=2058&height=1372');
+    background-image: url('images/loginbackground.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

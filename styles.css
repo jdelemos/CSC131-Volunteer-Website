@@ -19,6 +19,7 @@ body {
     display: flex;
     align-items: center;
     padding: 20px;
+    justify-content: flex-start; /* Align items to the start of the container */
     top: 0;
 }
 
@@ -30,10 +31,12 @@ body {
     cursor: pointer;
     text-decoration: none;
     transition: text-decoration 0.3s;
+    display: inline-block; /* Change to inline-block or block */
 }
 
 .header .title.hidden {
-    display: none;
+    display: inline-block; /* Change to make it visible */
+    display:hidden 
 }
 
 .header .title:hover{

@@ -1,6 +1,7 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const bodyParser = require('body-parser');
+const { ObjectId } = require('mongodb');
 const path = require('path');
 const cors = require('cors');
 
@@ -8,35 +9,10 @@ const app = express();
 
 const mongoURI = 'mongodb+srv://jonmichaeldelemos:go22HHane5J8xFWE@cluster0.stcij7x.mongodb.net/SSVOL1';
 const dbName = 'SSVOLV1';
-const collectionName = 'Users';
+const collectionName = 'FormDatabase';
 
 app.use(cors());
 app.use(bodyParser.json());
-
-
-app.get('/data', async (req, res) => {
-  try {
-    const client = new MongoClient(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
-    await client.connect();
-
-    const db = client.db(dbName);
-    const collection = db.collection(collectionName);
-
-    const data = await collection.find().toArray();
-
-    res.json(data);
-
-    client.close();
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
-  }
-});
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'adminsee.html'));
-});
-
 
 app.post('/add-element', async (req, res) => {
   try {
@@ -70,6 +46,36 @@ app.post('/add-element', async (req, res) => {
       res.status(500).json({ error: 'Error updating/inserting element in MongoDB' });
   }
 });
+
+
+// Serve static files from the 'test' directory
+app.use('/admin', express.static(path.join(__dirname, 'admin'), { extensions: ['html', 'css', 'png'] }));
+
+app.get('/data', async (req, res) => {
+  try {
+    const client = new MongoClient(mongoURI, { useNewUrlParser: true });
+    await client.connect();
+
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+
+    const data = await collection.find().toArray();
+
+    res.json(data);
+
+    client.close();
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'adminsee.html'));
+});
+
+
+
 
 
 

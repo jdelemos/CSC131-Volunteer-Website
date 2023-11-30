@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="UTF-8">
-        <script src="loginredirect.js" defer></script>
-        <link rel = "stylesheet" href = "adminstyles.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href = "styles.css">
+        <title>Sample Event Creation</title>
         <script src="/VW/userpopout.js" defer></script>
         <script src="/VW/login.js" defer></script>
-        
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            handleLoginState();
-        });
-        </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        handleLoginState();
+    });
+    </script>
     </head>
-<title>Admin</title>
 <body>
    <header class="header">
 
@@ -23,6 +21,7 @@
         <a href="create-event"><h1 class="title">Create Event</h1></a>
 
          <div class="right-items"> 
+             <a href="userinfo.html" class="title hidden" id="update"><h1 class="title"></h1></a>
             <h1 class="title hidden" id="signout" onclick="signOut()">Sign Out</h1>
         </div>
 

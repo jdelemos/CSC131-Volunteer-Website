@@ -51,11 +51,11 @@
             return;
         }
     }
-
+*/
     try {
         // Call your backend with the user's Google ID
         const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?googleId=${googleId}`);
-*/
+
         if (!response.ok && response.status === 404) {
             // If user is not found in the database, redirect to the apply page
             window.location.href = '/VW/apply';

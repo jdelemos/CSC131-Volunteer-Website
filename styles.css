@@ -274,12 +274,184 @@ color: white;
 
 }
 
-
-
-
 .apply-page .output-container h1 { 
     color: antiquewhite;
     align-items: center;
     align-content: center;
+}
+
+.forms input[type="email"]{
+	background-color: #323232; color: #686868;
+	box-sizing: border-box;
+	border-bottom: calc(5px*var(--scaling-factor)) solid white;
+	height: calc(66px*var(--scaling-factor));
+	margin-top: calc(37px*var(--scaling-factor));
+	font-size: calc(24px*var(--scaling-factor));
+	z-index: 10000;
+}
+.forms input[type="text"]{
+	background-color: #323232; color: #686868;
+	box-sizing: border-box;
+	border-bottom: calc(5px*var(--scaling-factor)) solid white;
+	height: calc(66px*var(--scaling-factor));
+	margin-top: calc(37px*var(--scaling-factor));
+	font-size: calc(24px*var(--scaling-factor));
+	z-index: 10000;
+}
+.forms input[type="date"]{
+	background-color: #323232; color: #686868;
+	box-sizing: border-box;
+	border-bottom: calc(5px*var(--scaling-factor)) solid white;
+	height: calc(66px*var(--scaling-factor));
+	margin-top: calc(37px*var(--scaling-factor));
+	font-size: calc(24px*var(--scaling-factor));
+	z-index: 10000;
+}
+.forms input[type="number"]{
+	background-color: #323232; color: #686868;
+	box-sizing: border-box;
+	border-bottom: calc(5px*var(--scaling-factor)) solid white;
+	height: calc(66px*var(--scaling-factor));
+	margin-top: calc(37px*var(--scaling-factor));
+	font-size: calc(24px*var(--scaling-factor));
+	z-index: 10000;
+}
+.forms input[type="time"]{
+	background-color: #323232; color: #686868;
+	box-sizing: border-box;
+	border-bottom: calc(5px*var(--scaling-factor)) solid white;
+	height: calc(66px*var(--scaling-factor));
+	margin-top: calc(37px*var(--scaling-factor));
+	font-size: calc(24px*var(--scaling-factor));
+	z-index: 10000;
+}
+
+.forms form{
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);	
+	text-align: center;
+	height: calc(540px*var(--scaling-factor));
+	transform: translate(0, 270px);
+
+}
+
+.forms .form-container{
+	box-sizing: border-box;
+	align-items: center;
+	height: 100vh;
+	z-index: 0;
+}
+.forms .profileImage{
+	display: flex;
+	grid-row-start: 1;
+	grid-column-start: 1;
+}
+.forms .name{
+	display: flex;
+  	align-items: center;
+	grid-row-start: 2;
+	grid-column-start: 1;
+
+}
+.forms .email{
+	display: flex;
+  	align-items: center;
+	grid-row-start: 2;
+	grid-column-start: 1;
+}
+.forms .phone{
+	display: flex;
+  	align-items: center;
+	grid-row-start: 2;
+	grid-column-start: 1;
+}
+.forms .address{
+	display: flex;
+  	align-items: center;
+	grid-row-start: 3;
+	grid-column-start: 1;
+}	
+.forms .city{
+	display: flex;
+  	align-items: center;
+	grid-row-start: 3;
+	grid-column-start: 1;
+}
+.forms .zipcode{
+	display: flex;
+  	align-items: center;
+	grid-column-start: 1;
+	grid-row-start: 3;
+}
+.forms .ename{
+	display: flex;
+  	align-items: center;
+	grid-column-start: 1;
+	grid-row-start: 4;
+}
+.forms .enumber{
+	display: flex;
+  	align-items: center;
+	grid-column-start: 1;
+	grid-row-start: 4;
+}
+.forms .bday{
+	display: flex;
+  	align-items: center;
+	grid-column-start: 1;
+	grid-row-start: 4;
+}
+.forms .button{
+	display: flex;
+	grid-column-start: 1;
+  	align-items: center;
+	grid-row-start: 5;
+	margin-top: calc(73px*var(--scaling-factor));
+}
+.forms .eventName{
+	display: flex;
+	grid-column-start: 1;
+	align-items: center;
+	grid-row-start: 1;
+}
+.forms .startDate{
+	display: flex;
+	grid-column-start: 1;
+	align-items: center;
+	grid-row-start: 1;
+}
+.forms .endDate{
+	display: flex;
+	grid-column-start: 1;
+	align-items: center;
+	grid-row-start: 1;
+}
+.forms .time{
+	display: flex;
+	grid-column-start: 1;
+	align-items: center;
+	grid-row-start: 1;
+}
+.forms .location{
+	display: flex;
+	grid-column-start: 1;
+	align-items: center;
+	grid-row-start: 2;
+}
+.forms .capacity{
+	display: flex;
+	grid-column-start: 1;
+	align-items: center;
+	grid-row-start: 2;
+}
+.forms .descriptionO{
+	display: flex;
+	grid-column-start: 1;
+	align-items: center;
+	grid-row-start: 4;
+	background-color: #323232; color: #686868;
+	border-bottom: calc(5px*var(--scaling-factor)) solid white;
+	margin-top: calc(37px*var(--scaling-factor));
+	font-size: calc(24px*var(--scaling-factor));
 }
 

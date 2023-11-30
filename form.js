@@ -190,6 +190,7 @@ function setMaxDate(){
           document.getElementById('myForm').addEventListener('submit', function (event) {
               event.preventDefault();
               var inputs = this.querySelectorAll('input');
+		  console.log(inputs);
               for(var i = 0; i < inputs.length; i++){
 		      console.log(inputs[i]);
                 if(window.getComputedStyle(inputs[i]).getPropertyValue('border-bottom-color') === 'red' || window.getComputedStyle(inputs[i]).getPropertyValue('border-bottom-color') === 'rgb(255, 0, 0)'){

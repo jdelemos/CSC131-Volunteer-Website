@@ -51,6 +51,21 @@ function handleLoginState() {
         // User is logged in
         localStorage.setItem('loggedIn', 'true');
         localStorage.setItem('accessToken', accessToken);
+
+        // Fetches user profile information to get their googleID
+        fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // contains user information, including Google ID
+            localStorage.setItem('googleId', data.id); // Storing the Google ID
+        })
+        .catch(error => {
+            console.error('Error fetching user info:', error);
+        });
     }
 }
 

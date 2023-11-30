@@ -341,7 +341,7 @@ color: white;
 	grid-template-columns: repeat(1, 1fr);	
 	text-align: center;
 	height: calc(540px*var(--scaling-factor));
-	transform: translate(0, 270px);
+	transform: translate(0, calc(270px*var(--scaling-factor)));
 
 }
 

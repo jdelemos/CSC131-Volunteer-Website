@@ -68,10 +68,15 @@ function fetchUserProfileAndCheckAdmin(token) {
             Authorization: `Bearer ${token}`
         }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
     .then(data => {
-        localStorage.setItem('googleId', data.id); // Storing the Google ID
-        checkAdminStatus(data.id); // Check admin status
+        localStorage.setItem('googleId', data.id);
+        checkAdminStatus(data.id);
     })
     .catch(error => {
         console.error('Error fetching user info:', error);
@@ -79,7 +84,6 @@ function fetchUserProfileAndCheckAdmin(token) {
 }
 
 function checkAdminStatus(googleId) {
-    // Make a request to your backend to check admin status
     fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data', {
         method: 'POST',
         headers: {
@@ -87,17 +91,23 @@ function checkAdminStatus(googleId) {
         },
         body: JSON.stringify({ googleId: googleId })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
     .then(userData => {
-        if (userData.Admin === 1) { // Use === for comparison
-            window.location.href = '/events'; // Redirect to events page for admins
+        if (userData.Admin === 1) {
+            window.location.href = '/events';
         } else {
-            window.location.href = '/apply'; // Redirect to apply page for non-admins
+            window.location.href = '/apply';
         }
     })
     .catch(error => {
         console.error('Error checking admin status:', error);
     });
 }
+
 // Call the function to handle login state when the page loads
 handleLoginState();

@@ -1,6 +1,6 @@
 function checkLoginAndRedirect() {
     // Retrieve the isLoggedIn value or default to 'false' if the key is missing
-    const isLoggedIn = localStorage.getItem('isLoggedIn') || 'false';
+    const isLoggedIn = localStorage.getItem('loggedIn') || 'false';
     console.log(isLoggedIn);
     // Redirect to the login page if isLoggedIn is not 'true'
     if (isLoggedIn !== 'true') {

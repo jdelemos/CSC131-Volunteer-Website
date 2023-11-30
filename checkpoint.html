@@ -19,7 +19,7 @@
             window.location.href = '/VW/apply'; // Redirect to login page or a page to handle this case
             return;
     }
-*/
+
     try {
         // Call your backend with the user's Google ID
         const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?googleId=${googleId}`);

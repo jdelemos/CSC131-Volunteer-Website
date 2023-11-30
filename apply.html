@@ -87,7 +87,7 @@ function displayData(data) {
     }
 }
 
-                async function checkUserApplications() {
+async function checkUserApplications() {
     console.log('Checking user applications...'); // Log when the function starts
     const userId = localStorage.getItem('googleId'); // Retrieve the user ID from localStorage
     console.log('User ID:', userId); // Log the user ID
@@ -109,20 +109,22 @@ function displayData(data) {
         const userApplications = await response.json(); // Parse the response into JSON
         console.log('Applications found:', userApplications);
 
-        // Log all the event IDs for which the user has applied
-        userApplications.forEach(application => {
-            console.log(`User has applied for event with ID: ${application.EventId}`);
-        });
-        
         // Now update the Apply buttons accordingly
         const eventElements = document.querySelectorAll('.apply-box');
         eventElements.forEach(element => {
             const eventId = element.getAttribute('data-event-id');
+            
+            // Check if the user has applied for this specific event
             if (userApplications.some(application => application.EventId === eventId)) {
                 // User has already applied to this event
                 element.innerHTML = 'Applied';
                 element.classList.add('applied');
                 element.style.pointerEvents = 'none';
+            } else {
+                // If the user hasn't applied for this event, ensure it's in the default state
+                element.innerHTML = 'Apply';
+                element.classList.remove('applied');
+                element.style.pointerEvents = 'auto';
             }
         });
 

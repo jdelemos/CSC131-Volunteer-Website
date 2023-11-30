@@ -189,7 +189,7 @@ function setMaxDate(){
             
           document.getElementById('myForm').addEventListener('submit', function (event) {
               event.preventDefault();
-              var inputs = this.querySelectorAll('input');
+              var inputs = document.getElementById('myForm').querySelectorAll('input');
 		  console.log(inputs);
               for(var i = 0; i < inputs.length; i++){
 		      console.log(inputs[i]);

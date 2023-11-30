@@ -30,6 +30,7 @@ function signOut() {
     // Remove the user's session data from localStorage
     localStorage.removeItem('loggedIn');
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('googleId');
 
     // Redirect to the home page or a specific page after logging out
     window.location.href = 'https://jdelemos.github.io/VW/index.html';

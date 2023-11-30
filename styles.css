@@ -350,7 +350,7 @@ color: white;
 	align-items: center;
 	height: 100vh;
 	z-index: 0;
-	transform: translate(0, 270px);
+	transform: translate(0, calc(270px*var(--scaling-factor)));
 }
 .forms .profileImage{
 	display: flex;

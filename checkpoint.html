@@ -20,9 +20,9 @@
                 const data = await response.json();
 
                 if (data.Admin === 0) {
-                    window.location.href = '/apply'; // Redirect to apply page for non-admins
+                    window.location.href = '/VW/apply'; // Redirect to apply page for non-admins
                 } else {
-                    window.location.href = '/events'; // Redirect to events page for admins
+                    window.location.href = '/VW/events'; // Redirect to events page for admins
                 }
             } catch (error) {
                 console.error('Error checking admin status:', error);

@@ -40,7 +40,6 @@ body {
 
 .header .title.hidden {
     display: none; /* Use none instead of hidden to hide elements */
-    /* When you want to show them, you can change this property to display: block; or display: inline; depending on your needs */
 }
 
 

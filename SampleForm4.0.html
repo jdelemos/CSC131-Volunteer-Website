@@ -27,15 +27,15 @@
             </div>
         </div>
     </header>
-    <div class="form-container">
+   <div class="form-container">
     <form id = "myForm">
 	<div class = "profileImage" style = "margin-left: calc(768px*var(--scaling-factor));">
-	<img src="images\EditedProfile.png">
+	<img src="C:\Users\Valiant\OneDrive\Documents\SACState\FALL2023\CSC131\Project\Images\EditedProfile.png">
 	</div>
-      
+    
 	<div class = "name">
-      <input type = "text" class ="nameO" name = "firstName" id = "name" maxlength = "30" placeholder = "First and Last Name" style = "margin-left: calc(221px*var(--scaling-factor)); width: calc(418px*var(--scaling-factor));"required>
-      	</div>
+      <input type = "text" class="nameO" name = "firstName" id = "name" maxlength = "30" placeholder = "First and Last Name" style = "margin-left: calc(221px*var(--scaling-factor)); width: calc(418px*var(--scaling-factor));"required>
+  </div>
 	<div class = "email">
       <input type = "email" class ="emailO" name = "email" id = "email" pattern = ".+@gmail\.com" maxlength = "100" placeholder = "Email" style = "margin-left: calc(698px*var(--scaling-factor)); width: calc(524px*var(--scaling-factor));" required> 
       </div>
@@ -61,25 +61,67 @@
       <input type = "date" class = "bdayO" name = "birthday" id = "bday" placeholder = "Birthday" style = "margin-left: calc(1124px*var(--scaling-factor)); width: calc(524px*var(--scaling-factor));" required>
 	</div>
       <div class = "button">
-      <input type = "image" src = "images/EditedSubmitButton.png" border-style="none" class = "buttonO" id = "submit" alt = "submit" style = "margin-left: calc(752px*var(--scaling-factor));">
+      <input type = "image" src = "C:\Users\Valiant\OneDrive\Documents\SACState\FALL2023\CSC131\Project\Images\EditedSubmitButton.png" border-style="none" class = "buttonO" id = "submit" alt = "submit" style = "margin-left: calc(752px*var(--scaling-factor));">
 	</div>
     </form>
 
-	
 	<script>
+
+function checkValid(event) {
+  var inputElement = event.target;
+
+  if (inputElement.tagName === 'INPUT' && inputElement.form) {
+    if (inputElement.id === 'name') {
+      var inputValue = inputElement.value.trim();
+
+      if (inputValue === '') {
+        // Blank input: set border color to white
+        inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+      } else {
+        var isValid = /^[A-Za-z]+$/.test(inputValue);
+
+        if (!isValid) {
+          // Invalid input: set border color to red
+          inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+        } else {
+          // Valid input: set border color to green
+          inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+        }
+      }
+    }
+    if (inputElement.id === 'email') {
+      var inputValue = inputElement.value.trim();
+
+      if (inputValue === '') {
+        // Blank input: set border color to white
+        inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+      } else {
+        var isValid = /^[A-Za-z]+$/.test(inputValue);
+
+        if (!isValid) {
+          // Invalid input: set border color to red
+          inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+        } else {
+          // Valid input: set border color to green
+          inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+        }
+      }
+    }
+  }
+ 
+  }
+
+
+document.addEventListener('input', checkValid);
+
+          
         document.getElementById('myForm').addEventListener('submit', function (event) {
             event.preventDefault();
 
             const formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-		address: document.getElementById('address').value,
-		city: document.getElementById('city').value,
-		zipcode: document.getElementById('zipcode').value,
-		ename: document.getElementById('ename').value,
-		enumber: document.getElementById('enumber').value,
-		bday: document.getElementById('bday').value
+                
             };
 
             fetch('/submit', {
@@ -103,7 +145,7 @@
         var baseResolutionWidth = 1920;
         var scalingFactor = screenWidth / baseResolutionWidth;
         document.documentElement.style.setProperty('--scaling-factor', scalingFactor);
+
     </script>
   </body>
 </html> 
-

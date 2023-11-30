@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkpoint</title>
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        handleLoginState();
+    });
+    </script>
+    <script>
         async function checkAdminStatus() {
             const googleId = localStorage.getItem('googleId'); // Retrieve the user ID from localStorage
 

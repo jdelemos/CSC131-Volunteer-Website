@@ -108,15 +108,21 @@
 
     // Retrieve the data-event-id attribute from the clicked element
     const eventId = event.target.getAttribute('data-event-id');
-    console.log(eventId)
+
     if (!eventId) {
       throw new Error('Data-event-id attribute is undefined or null.');
+    }
+
+    // Check if the image is already applied
+    const applyBox = event.target;
+    if (applyBox.classList.contains('applied')) {
+      // If already applied, do nothing
+      return;
     }
 
     const formData = {
       userId: localStorage.getItem('googleId'),
       EventId: eventId,
-      status: null,
     };
 
     fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/apply', {
@@ -129,6 +135,12 @@
       .then(response => response.text())
       .then(data => {
         console.log('Success:', data);
+
+        // Change the image source to the "applied" image
+        applyBox.innerHTML = 'Applied';  // Assuming you have an image text or an applied message
+        applyBox.classList.add('applied');  // Add a class to mark it as applied
+        applyBox.style.pointerEvents = 'none';  // Disable click events
+
         alert('Data submitted successfully!');
       })
       .catch((error) => {
@@ -139,7 +151,6 @@
     console.error('Error in applyHandler:', error.message);
   }
 }
-
 
     </script>        
 </div>

@@ -11,8 +11,7 @@ function checkLoginAndRedirect() {
         ];
         const currentPage = window.location.pathname;
         if (restrictedUrls.includes(currentPage)) {
-            alert('You must be logged in to view this page.');
-            window.location.href = '/login.html'; // Redirect to the login page
+            window.location.href = '/VW/login.html'; // Redirect to the login page
         }
     }
 }

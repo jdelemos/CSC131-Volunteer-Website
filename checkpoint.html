@@ -16,7 +16,7 @@
 
     if (!googleId) {
         console.log('No Google ID found in localStorage.');
-        window.location.href = '/VW/login'; // Redirect to login page or a page to handle this case
+        window.location.href = '/VW/apply'; // Redirect to login page or a page to handle this case
         return;
     }
 
@@ -33,7 +33,7 @@
         const data = await response.json();
         
         // Assuming 'admin' is a boolean field returned from your server
-        if (data.admin) {
+        if (data.admin === 1) {
             window.location.href = '/VW/admin'; // Redirect to events page for admins
         } else {
             window.location.href = '/VW/apply'; // Redirect to apply page for non-admins

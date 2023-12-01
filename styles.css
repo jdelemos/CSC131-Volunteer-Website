@@ -495,6 +495,6 @@ margin-left:calc(33px*var(--scaling-factor)) ;
 font-size: calc(28px*var(--scaling-factor));
 text-align: left;
 color: white;
-
+line-height: calc(28px*var(--scaling-factor))
 
 }

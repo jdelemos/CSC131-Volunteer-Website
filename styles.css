@@ -504,5 +504,5 @@ text-align: left;
 color: white;
 line-height: calc(40px*var(--scaling-factor));
 text-wrap: wrap;
-margin-right: calc(100px*var(--scaling-factor));
+margin-right: calc(140px*var(--scaling-factor));
 }

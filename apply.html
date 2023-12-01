@@ -111,7 +111,7 @@ async function checkUserApplications() {
         const userApplications = await response.json(); // Parse the response into JSON
         console.log('Applications found:', userApplications);
 
-        // Now update the Apply buttons accordingly
+        // update the Apply buttons accordingly
         const eventElements = document.querySelectorAll('.apply-box');
         eventElements.forEach(element => {
             const eventId = element.getAttribute('data-event-id');
@@ -135,7 +135,7 @@ async function checkUserApplications() {
     }
 }
 
-// Call this function when the page loads or when the events are rendered
+// Calls this function when the page loads or when the events are rendered
 checkUserApplications();
 
 

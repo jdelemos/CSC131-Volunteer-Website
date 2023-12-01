@@ -69,17 +69,21 @@ function displayData(data) {
     } else {
         let htmlContent = '';
         data.forEach(item => {
-            htmlContent += `
-                <div class="event-rectangle">
-                    <div class="text-wrap">
-                        <p class="text"> <b> Event: </b>${item.eventName}</p>
-                        <p class="text"> <strong>Description: </strong>${item.description}</p>
-                        <p class="text"> <strong>Dates: </strong>${item.startDate} - ${item.endDate}</p>
-                        <p class="text"> <strong>Time: </strong>${item.time}</p>
-                        <p class="text"> <strong>Location: </strong>${item.location}</p>
-                    </div>  
-                </div>`;
-        });
+                // Wrap each event rectangle in an anchor tag with the appropriate href
+                htmlContent += `
+                    <a href="manage-events?eventid=${item.eventid}" class="event-link">
+                        <div class="event-rectangle">
+                            <div class="text-wrap">
+                                <p class="text"> <b> Event: </b>${item.eventName}</p>
+                                <p class="text"> <strong>Description: </strong>${item.description}</p>
+                                <p class="text"> <strong>Dates: </strong>${item.startDate} - ${item.endDate}</p>
+                                <p class="text"> <strong>Time: </strong>${item.time}</p>
+                                <p class="text"> <strong>Location: </strong>${item.location}</p>
+                            </div>  
+                        </div>
+                    </a>`;
+            });
+
 
         outputContainer.innerHTML = htmlContent;
         checkUserApplications(); // Call after events are loaded

@@ -1,3 +1,4 @@
+
 :root {
     --base-resolution-width: 1920;
     --scaling-factor: 1; /* Default scaling factor */
@@ -466,3 +467,14 @@ color: white;
 	font-size: calc(24px*var(--scaling-factor));
 }
 
+.manage-page {
+	/* Rectangle 26 */
+
+position: absolute;
+width: calc(1576px*var(--scaling-factor));
+height: calc(229px*var(--scaling-factor));
+margin-bottom: calc(20px*var(--scaling-factor))
+
+background: #121212;
+
+}

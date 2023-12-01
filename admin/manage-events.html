@@ -120,7 +120,6 @@ async function displayApplicants(applications) {
                     const userinfo = await response.json();
                     console.log('userinfo found:', userinfo);
 
-                    // Move the htmlContent building inside the try block
                     htmlContent +=
                         `<div class="user-rectangle">
                             <img src="/VW/images/usericon.png" alt="" class="usericon">\n

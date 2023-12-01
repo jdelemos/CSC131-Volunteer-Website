@@ -493,11 +493,7 @@ display: flex;
 /* Name: Paul Burger Phone: 1234567890 Email: PaulB@gmail.com DOB: 10/02/2002 */
 
 position: absolute;
-width: 270px;
-height: 168px;
-left: 396px;
-top: 784px;
-
+margin-left:calc(32px*var(--scaling-factor));
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 500;

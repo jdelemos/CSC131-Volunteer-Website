@@ -63,6 +63,7 @@ function handleLoginState() {
         .then(data => {
             console.log(data); // contains user information, including Google ID
             localStorage.setItem('googleId', data.id); // Storing the Google ID
+            console.log('Google ID stored:', localStorage.getItem('googleId'));
              setTimeout(() => {
                 window.location.href = 'https://jdelemos.github.io/VW/checkpoint.html';
             }, 1000);

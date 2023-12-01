@@ -490,21 +490,15 @@ display: flex;
 }
 
 .user-rectangle .text{
-
-position: absolute;
-width: 351px;
-height: 168px;
-left: 396px;
-top: 274px;
-
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: 24px;
-line-height: 100%;
-/* or 24px */
-
-color: #FFFFFF;
-
+margin: 0 auto;
+    margin-bottom: calc(26px*var(--scaling-factor));
+    height: calc(229px*var(--scaling-factor));
+    width: calc(1694px*var(--scaling-factor));
+    background: #121212;
+    border: calc(4.45217px *var(--scaling-factor))solid #C4B581;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
 
 }

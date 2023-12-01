@@ -70,8 +70,8 @@ function displayData(data) {
             let htmlContent = '';
             data.forEach(item => {
                 // Wrap each event rectangle in an anchor tag with the appropriate href
-                htmlContent += `
-                    <a href="javascript:void(0);" class="event-link" onclick="showEventDetails(${item.eventId})">
+                htmlContent += 
+                    `<a href="javascript:void(0);" class="event-link" onclick="showEventDetails('${item.eventId}')">
                         <div class="event-rectangle">
                             <div class="text-wrap">
                                 <p class="text"> <b> Event: </b>${item.eventName}</p>

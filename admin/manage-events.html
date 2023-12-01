@@ -112,11 +112,7 @@ async function displayApplicants(applications) {
             if (app.userId) {
                 console.log('UserId:', app.userId);
                 try {
-                  const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${app.userId}`, {
-    headers: {
-        'Cache-Control': 'no-cache'
-    }
-});
+                    const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${app.userId}`);
                     if (!response.ok) {
                         throw new Error(`Error: ${response.status} - ${response.statusText}`);
                     }
@@ -127,7 +123,7 @@ async function displayApplicants(applications) {
                     htmlContent +=
                         `<div class="user-rectangle">
                             <img src="/VW/images/usericon.png" alt="" class="usericon">
-                            <p class="text"> <b> name: </b>${userinfo.name}</p>
+                            <p class="text"> <b> name: </b>${user.name}</p>
                         </div>`;
                 } catch (error) {
                     console.error('Error fetching user data:', error);

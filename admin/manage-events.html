@@ -105,6 +105,7 @@ function displayData(data) {
 }
 
 async function displayapplicants(applications) {
+    const outputContainer = document.getElementById('output-container');
     if (Array.isArray(applications)) {
         let htmlContent = '';
         for (const app of applications) {

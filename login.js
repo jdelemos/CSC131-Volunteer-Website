@@ -56,7 +56,6 @@ function handleLoginState() {
             localStorage.setItem('googleId', data.id); // Storing the Google ID
             //localStorage.setItem('picture', data.picture); // Storing the Google ID
             profileimg = data.picture;
-            document.getElementById('userButton).style.backgroundImage(profileimg);
             console.log('Google ID stored:', localStorage.getItem('googleId'));
              setTimeout(() => {
                 window.location.href = 'https://jdelemos.github.io/VW/checkpoint.html';
@@ -66,6 +65,7 @@ function handleLoginState() {
             console.error('Error fetching user info:', error);
         });
     }
+    document.getElementById('userButton).style.backgroundImage(profileimg);
 }
 // Call the function to handle login state when the page loads
 handleLoginState();

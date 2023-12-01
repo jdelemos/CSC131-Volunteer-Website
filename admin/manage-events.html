@@ -63,15 +63,15 @@
 }
     
 function displayData(data) {
-    const outputContainer = document.getElementById('output-container');
-    if (data.length === 0) {
-        outputContainer.innerHTML = '<p>No data available.</p>';
-    } else {
-        let htmlContent = '';
-        data.forEach(item => {
+        const outputContainer = document.getElementById('output-container');
+        if (data.length === 0) {
+            outputContainer.innerHTML = '<p>No data available.</p>';
+        } else {
+            let htmlContent = '';
+            data.forEach(item => {
                 // Wrap each event rectangle in an anchor tag with the appropriate href
                 htmlContent += `
-                    <a href="manage-events?eventid=${item.eventId}" class="event-link">
+                    <a href="javascript:void(0);" class="event-link" onclick="showEventDetails(${item.eventid})">
                         <div class="event-rectangle">
                             <div class="text-wrap">
                                 <p class="text"> <b> Event: </b>${item.eventName}</p>
@@ -84,17 +84,16 @@ function displayData(data) {
                     </a>`;
             });
 
-
-        outputContainer.innerHTML = htmlContent;
-        checkUserApplications(); // Call after events are loaded
+            outputContainer.innerHTML = htmlContent;
+            checkUserApplications(); // Call after events are loaded
+        }
     }
-}
-         function showEventDetails(eventId) {
+
+    function showEventDetails(eventId) {
         // Change the page content to display the event ID
         const outputContainer = document.getElementById('output-container');
         outputContainer.innerHTML = `<p>Event ID: ${eventId}</p>`;
     }
-
     </script>        
 </div>
 <script src="/VW/scalingfactor.js"></script>

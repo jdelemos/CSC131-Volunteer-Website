@@ -497,7 +497,7 @@ display: flex;
 .user-rectangle .text{
 /* Name: Paul Burger Phone: 1234567890 Email: PaulB@gmail.com DOB: 10/02/2002 */
 width: calc(300px*var(--scaling-factor));
-word-break: break-all;
+word-break: unset;
 margin-left:calc(33px*var(--scaling-factor)) ;
 font-size: calc(22px*var(--scaling-factor));
 text-align: left;

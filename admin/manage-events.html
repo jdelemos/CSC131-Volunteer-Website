@@ -140,7 +140,8 @@ async function displayApplicants(applications) {
                 htmlContent +=
                     `<div class="user-rectangle">
                         <img src="/VW/images/usericon.png" alt="" class="usericon">
-                        <p class="text"><b> name: </b>${userinfo.name}<br><b> phone: </b>${userinfo.phone}<br><b> email: </b>${userinfo.email}<br><b> DOB: </b>${userinfo.bday}</p>
+                        <p class="text"><b> Name: </b>${userinfo.name}<br><b> Phone: </b>${userinfo.phone}<br><b> Email: </b>${userinfo.email}<br><b> DOB: </b>${userinfo.bday}</p>
+                        <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
                     </div>`;
             }
         });

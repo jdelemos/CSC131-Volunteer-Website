@@ -112,7 +112,10 @@ async function displayApplicants(applications) {
             if (app.userId) {
                 console.log('UserId:', app.userId);
                 try {
-                    const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${app.userId}`);
+                    const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${app.userId}`, {
+                        headers: {
+                            'Cache-Control': 'no-cache'
+                        }
                     if (!response.ok) {
                         throw new Error(`Error: ${response.status} - ${response.statusText}`);
                     }

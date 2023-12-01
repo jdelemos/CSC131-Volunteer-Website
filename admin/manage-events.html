@@ -69,18 +69,19 @@ function displayData(data) {
     } else {
         let htmlContent = '';
         data.forEach(item => {
-            htmlContent += `
-                <div class="event-rectangle">
-                    <div class="text-wrap">
-                        <p class="text"> <b> Event: </b>${item.eventName}</p>
-                        <p class="text"> <strong>Description: </strong>${item.description}</p>
-                        <p class="text"> <strong>Dates: </strong>${item.startDate} - ${item.endDate}</p>
-                        <p class="text"> <strong>Time: </strong>${item.time}</p>
-                        <p class="text"> <strong>Location: </strong>${item.location}</p>
-                    </div>  
-                </div>`;
-        });
-
+    const eventUrl = `eventPage.html?eventId=${item.eventId}`;
+    htmlContent += `
+        <a href="${eventUrl}">
+            <div class="event-rectangle">
+                <div class="text-wrap">
+                    <p class="text"><b> Event: </b>${item.eventName}</p>
+                    <p class="text"><strong>Description: </strong>${item.description}</p>
+                    <p class="text"><strong>Dates: </strong>${item.startDate} - ${item.endDate}</p>
+                    <p class="text"><strong>Time: </strong>${item.time}</p>
+                    <p class="text"><strong>Location: </strong>${item.location}</p>
+                </div>
+            </div>
+        </a>`;
         outputContainer.innerHTML = htmlContent;
         checkUserApplications(); // Call after events are loaded
     }

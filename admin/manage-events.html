@@ -91,7 +91,7 @@ function displayData(data) {
 
 function showEventDetails(eventId) {
         // Fetch application data based on the event ID
-        fetch(`/application-data?eventId=${eventId}`)
+        fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/application-data?eventId=${eventId}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);

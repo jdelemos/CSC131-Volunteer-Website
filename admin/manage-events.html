@@ -89,38 +89,10 @@ function displayData(data) {
         }
     }
 
-function showEventDetails(eventId) {
-        // Fetch application data based on the event ID
-        fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/application-data?eventId=${eventId}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Display the retrieved application data in the output container
-                const outputContainer = document.getElementById('output-container');
-                const applicationData = document.createElement('div');
-                applicationData.className = 'application-data';
-
-                // Iterate over the properties of the JSON response and create paragraphs
-                for (const [key, value] of Object.entries(data)) {
-                    const paragraph = document.createElement('p');
-                    paragraph.textContent = `${key}: ${value}`;
-                    applicationData.appendChild(paragraph);
-                }
-
-                // Clear existing content and append the new element
-                outputContainer.innerHTML = '';
-                outputContainer.appendChild(applicationData);
-            })
-            .catch(error => {
-                console.error('Fetch error:', error);
-                // Handle the error or display a message in the output container
-                const outputContainer = document.getElementById('output-container');
-                outputContainer.innerHTML = `<p class="error-message">Error fetching application data</p>`;
-            });
+    function showEventDetails(eventId) {
+        // Change the page content to display the event ID
+        const outputContainer = document.getElementById('output-container');
+        outputContainer.innerHTML = `<p class = "event-text">Event ID: ${eventId}</p>`;
     }
     </script>        
 </div>

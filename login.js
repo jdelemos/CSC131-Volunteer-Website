@@ -3,6 +3,7 @@ function signIn(){
 
     // Redirect the user to your server's authentication endpoint
     window.location.href = serverAuthEndpoint;
+}
 function signOut() {
     // Remove the user's session data from localStorage
     localStorage.removeItem('loggedIn');

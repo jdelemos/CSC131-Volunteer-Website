@@ -89,12 +89,16 @@ function displayData(data) {
         }
     }
 
-    function showEventDetails(eventId) {
+    function showEventDetails() {
+        // Parse the URL and extract the event ID
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventId = urlParams.get('eventid');
+
         // Display the event ID in the output container
         const outputContainer = document.getElementById('output-container');
         const eventTitle = document.createElement('p');
         eventTitle.className = 'event-title';
-        eventTitle.textContent = `Event ID: ${eventId}`;
+        eventTitle.textContent = `Event ID: ${eventId || 'Not specified'}`;
         
         // Clear existing content and append the new element
         outputContainer.innerHTML = '';

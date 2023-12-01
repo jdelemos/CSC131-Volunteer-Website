@@ -160,13 +160,14 @@ async function displayApplicants(applications, eventId) {
             if (userinfo) {
                 htmlContent +=
                     `<div class="user-rectangle">
+                        <div class="accept-box" data-event-id='' id="accept" alt="accept" onclick="accept(event)">Accept</div>
+                        <div class="deny-box" data-event-id='' id="deny" alt="deny" onclick="deny(event)">Deny</div>
                         <img src="/VW/images/usericon.png" alt="" class="usericon">
                         <p class="text"><b> Name: </b>${userinfo.name}<br><b> Phone: </b>${userinfo.phone}<br><b> Email: </b>${userinfo.email}<br><b> DOB: </b>${userinfo.bday}</p>
                         <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
                         <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}
                         </div>
-                        <div class="accept-box" data-event-id='' id="accept" alt="accept" onclick="accept(event)">Accept</div>
-                        <div class="deny-box" data-event-id='' id="deny" alt="deny" onclick="deny(event)">Deny</div>
+                        
                     </div>`;
             }
         });

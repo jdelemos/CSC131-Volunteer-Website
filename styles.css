@@ -487,6 +487,7 @@ display: flex;
 	width:calc(145px*var(--scaling-factor));
 	margin-left: calc(27px*var(--scaling-factor));
 	height:calc(145px*var(--scaling-factor));
+	align-self: center
 }
 
 .user-rectangle .text{

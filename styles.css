@@ -491,16 +491,10 @@ display: flex;
 
 .user-rectangle .text{
 /* Name: Paul Burger Phone: 1234567890 Email: PaulB@gmail.com DOB: 10/02/2002 */
+margin-left:calc(33px*var(--scaling-factor)) ;
+font-size: calc(28px*var(--scaling-factor));
+text-align: left;
+color: white;
 
-position: absolute;
-margin-left:calc(32px*var(--scaling-factor));
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 500;
-font-size: calc(24px*var(--scaling-factor));
-line-height: 100%;
-/* or 24px */
-
-color: #FFFFFF;
 
 }

@@ -30,6 +30,7 @@ function signOut() {
     window.location.href = 'https://jdelemos.github.io/VW/index.html';
 }
 function handleLoginState() {
+    let profileimg ="";
     // Get the fragment part of the URL
     const fragment = window.location.hash.substring(1);
     // Parse the fragment string
@@ -54,6 +55,8 @@ function handleLoginState() {
             console.log(data); // contains user information, including Google ID
             localStorage.setItem('googleId', data.id); // Storing the Google ID
             //localStorage.setItem('picture', data.picture); // Storing the Google ID
+            profileimg = data.picture;
+            document.getElementById('userButton).style.backgroundImage(profileimg);
             console.log('Google ID stored:', localStorage.getItem('googleId'));
              setTimeout(() => {
                 window.location.href = 'https://jdelemos.github.io/VW/checkpoint.html';

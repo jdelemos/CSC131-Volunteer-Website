@@ -106,7 +106,7 @@
             window.onload=fetchData(); 
                 async function fetchData() {
             try {
-                const response = await fetch('/data');
+                const response = await fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data');
                 const data = await response.json();
                 displayData(data);
             } catch (error) {

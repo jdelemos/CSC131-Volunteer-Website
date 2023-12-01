@@ -123,9 +123,9 @@ async function displayApplicants(applications) {
                     // Move the htmlContent building inside the try block
                     htmlContent +=
                         `<div class="user-rectangle">
-                            <img src="/VW/images/usericon.png" alt="" class="usericon">
-                            <p class="text">Name: ${userinfo.name}<br>phone: ${userinfo.phone}</p>
-                        </div>`;
+                            <img src="/VW/images/usericon.png" alt="" class="usericon">\n
+                            <p class="text">Name: ${userinfo.name}<br>phone: ${userinfo.phone}</p>\n
+                        </div>\n`;
                 } catch (error) {
                     console.error('Error fetching user data:', error);
                 }

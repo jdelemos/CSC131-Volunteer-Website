@@ -500,6 +500,7 @@ margin-left:calc(33px*var(--scaling-factor)) ;
 font-size: calc(22px*var(--scaling-factor));
 text-align: left;
 color: white;
-line-height: calc(40px*var(--scaling-factor))
+line-height: calc(40px*var(--scaling-factor));
+text-wrap: wrap
 
 }

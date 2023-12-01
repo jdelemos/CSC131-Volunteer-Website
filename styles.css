@@ -480,13 +480,13 @@ color: white;
 display: flex;
   flex-direction: row;
   justify-content: left;
-  align-items: center;
 
 }
 
 .user-rectangle .usericon {
 	width:calc(145px*var(--scaling-factor));
 	margin-left: calc(27px*var(--scaling-factor));
+	height:calc(145px*var(--scaling-factor));
 }
 
 .user-rectangle .text{

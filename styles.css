@@ -497,7 +497,7 @@ margin-left:calc(32px*var(--scaling-factor));
 font-family: 'Roboto';
 font-style: normal;
 font-weight: 500;
-font-size: 24px;
+font-size: calc(24px*var(--scaling-factor));
 line-height: 100%;
 /* or 24px */
 

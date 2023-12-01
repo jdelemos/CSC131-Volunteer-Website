@@ -7,11 +7,13 @@
     <title>Checkpoint</title>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        handleLoginState();
         checkAdminStatus(); // Call the function to check the admin status
     });
     </script>
     <script>
     async function checkAdminStatus() {
+        console.log('Local Storage:', localStorage);
         const googleId = localStorage.getItem('googleId'); // Retrieve the user ID from localStorage
 
         if (!googleId) {

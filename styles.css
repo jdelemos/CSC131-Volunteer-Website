@@ -488,3 +488,23 @@ display: flex;
 	width:calc(145px*var(--scaling-factor));
 	margin-left: calc(27px*var(--scaling-factor));
 }
+
+.user-rectangle .text{
+
+position: absolute;
+width: 351px;
+height: 168px;
+left: 396px;
+top: 274px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 24px;
+line-height: 100%;
+/* or 24px */
+
+color: #FFFFFF;
+
+
+}

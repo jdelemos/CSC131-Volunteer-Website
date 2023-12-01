@@ -119,7 +119,6 @@
 
 
              function addElement() {
-            // Assuming you have an API endpoint for adding elements on the server side.
                 fetch('/add-element', {
                  method: 'POST',
                 headers: {
@@ -133,7 +132,6 @@
                 .then(response => response.json())
                 .then(data => {
                 console.log('Element added:', data);
-                // You can update the UI or perform any other actions based on the response.
                 })
     .catch(error => {
         console.error('Error adding element:', error);

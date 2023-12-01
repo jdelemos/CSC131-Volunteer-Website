@@ -470,6 +470,9 @@ color: white;
 .user-rectangle{
 	/* Rectangle 26 */
 
+.user-rectangle {
+	/* Rectangle 26 */
+
  margin: 0 auto;
     margin-bottom: calc(132px*var(--scaling-factor));
     height: calc(400px*var(--scaling-factor));

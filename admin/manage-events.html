@@ -113,11 +113,17 @@ async function displayapplicants(applications) {
                 // Here you can use `await` because we are inside an async function
                 try {
                     const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${app.userId}`);
+        
+                    if (!response.ok) {
+                        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+
+        const applications = await response.json(); 
+        console.log('Applications found:', applications);
                 } catch (error) {
                     console.error('Error fetching user data:', error);
                 }
-                const userData = await response.json();
-                console.log(userData)
+                
             }
         }
     }

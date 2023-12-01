@@ -515,4 +515,7 @@ color: white;
     height: 100%; /* Adjust the height as needed */
     cursor: pointer;
 }
+.event-text{
+color:#ffffff;
+}
 

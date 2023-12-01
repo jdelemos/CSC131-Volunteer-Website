@@ -477,5 +477,9 @@ color: white;
     width: calc(1694px*var(--scaling-factor));
     background: #121212;
     border: calc(4.45217px *var(--scaling-factor))solid #C4B581;
+display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
 }

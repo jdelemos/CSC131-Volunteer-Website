@@ -5,11 +5,26 @@
             <input type="button" id="auto" value="send" onclick="sendMail()">
         </form>
         <script>
-            function sendMail() {
+            
+            let gotemail = "";
+            window.onload=fetchData();
+                async function fetchData() {
+            try {
+                const response = await fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data');
+                const data = await response.json();
+                console.log(data); 
+                gotemail = data.email;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+        function sendMail() {
                 var subject = "UPDATE: Volunteer application";
                 var body = "UPDATE: Your volunteer application has been accepted!";
-                window.location = "mailto:axelkh2001@hotmail.com?subject=" + subject + "&body=" + body;
+                window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
             }
+        
+            
         </script>
     </body>
 </html>

@@ -71,7 +71,7 @@ function displayData(data) {
             data.forEach(item => {
                 // Wrap each event rectangle in an anchor tag with the appropriate href
                 htmlContent += `
-                    <a href="javascript:void(0);" class="event-link" onclick="showEventDetails(${item.eventid})">
+                    <a href="javascript:void(0);" class="event-link" onclick="showEventDetails(${item.eventId})">
                         <div class="event-rectangle">
                             <div class="text-wrap">
                                 <p class="text"> <b> Event: </b>${item.eventName}</p>
@@ -92,8 +92,12 @@ function displayData(data) {
         // Change the page content to display the event ID
         const outputContainer = document.getElementById('output-container');
         const response = fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/application-data?eventId=${eventId}`);
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
         const Applications = response.json(); // Parse the response into JSON
         console.log('Applications found:', Applications);
+        
     }
     </script>        
 </div>

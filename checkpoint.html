@@ -12,39 +12,7 @@
     });
     </script>
     <script>
-    async function checkAdminStatus() {
-        console.log('Local Storage:', localStorage);
-        const googleId = localStorage.getItem('googleId'); // Retrieve the user ID from localStorage
 
-        if (!googleId) {
-            console.log('No Google ID found in localStorage.');
-            window.location.href = 'apply.html'; // Redirect to login page or a page to handle this case
-            return;
-        }
-
-        try {
-            // Call your backend with the user's Google ID
-            const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?googleId=${googleId}`);
-
-            if (!response.ok && response.status === 404) {
-                // If user is not found in the database, redirect to the apply page
-                window.location.href = '/VW/apply';
-                return;
-            }
-
-            const data = await response.json();
-            
-            // Assuming 'admin' is a boolean field returned from your server
-            if (data.admin === 1) {
-                window.location.href = '/VW/admin'; // Redirect to events page for admins
-            } else {
-                window.location.href = '/VW/apply'; // Redirect to apply page for non-admins
-            }
-        } catch (error) {
-            console.error('Error checking admin status:', error);
-            // Handle the error by redirecting to a generic error page or showing an error message
-        }
-    }
     </script>
 </head>
 <body>

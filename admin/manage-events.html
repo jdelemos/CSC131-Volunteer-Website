@@ -89,6 +89,11 @@ function displayData(data) {
         checkUserApplications(); // Call after events are loaded
     }
 }
+         function showEventDetails(eventId) {
+        // Change the page content to display the event ID
+        const outputContainer = document.getElementById('output-container');
+        outputContainer.innerHTML = `<p>Event ID: ${eventId}</p>`;
+    }
 
     </script>        
 </div>

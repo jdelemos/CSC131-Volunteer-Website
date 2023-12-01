@@ -71,7 +71,7 @@ function displayData(data) {
             data.forEach(item => {
                 // Wrap each event rectangle in an anchor tag with the appropriate href
                 htmlContent += `
-                    <a href="javascript:void(0);" class="event-link" onclick="showEventDetails(${item.eventId})">
+                    <a href="javascript:void(0);" class="event-link" onclick="showEventDetails(${item.eventid})">
                         <div class="event-rectangle">
                             <div class="text-wrap">
                                 <p class="text"> <b> Event: </b>${item.eventName}</p>
@@ -89,20 +89,10 @@ function displayData(data) {
         }
     }
 
-    function showEventDetails() {
-        // Parse the URL and extract the event ID
-        const urlParams = new URLSearchParams(window.location.search);
-        const eventId = urlParams.get('eventid');
-
-        // Display the event ID in the output container
+    function showEventDetails(eventId) {
+        // Change the page content to display the event ID
         const outputContainer = document.getElementById('output-container');
-        const eventTitle = document.createElement('p');
-        eventTitle.className = 'event-title';
-        eventTitle.textContent = `Event ID: ${eventId || 'Not specified'}`;
-        
-        // Clear existing content and append the new element
-        outputContainer.innerHTML = '';
-        outputContainer.appendChild(eventTitle);
+        outputContainer.innerHTML = `<p>Event ID: ${eventId}</p>`;
     }
     </script>        
 </div>

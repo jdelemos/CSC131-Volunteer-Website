@@ -485,5 +485,6 @@ display: flex;
 }
 
 .user-rectangle .usericon {
-	width:145;
+	width:calc(145px*var(--scaling-factor));
+	margin-lift: calc(27px*var(--scaling-factor)): 
 }

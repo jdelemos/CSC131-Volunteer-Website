@@ -15,7 +15,6 @@
         const googleId = localStorage.getItem('googleId'); // Retrieve the user ID from localStorage
 
         if (!googleId) {
-            handleLoginState();
             console.log('No Google ID found in localStorage.');
             window.location.href = 'apply.html'; // Redirect to login page or a page to handle this case
             return;

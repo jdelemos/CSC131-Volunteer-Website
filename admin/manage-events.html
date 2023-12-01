@@ -93,6 +93,8 @@ function displayData(data) {
         // Change the page content to display the event ID
         const outputContainer = document.getElementById('output-container');
         const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/application-data?eventId=${eventId}`);
+        const Applications = await response.json(); // Parse the response into JSON
+        console.log('Applications found:', Applications);
     }
     </script>        
 </div>

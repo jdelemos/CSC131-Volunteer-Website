@@ -44,44 +44,37 @@
         gap: calc(10px*var(--scaling-factor));
     }
     
-    
-    
-            /* Add styles for the button */
-            #mybutton {
-                margin-top: calc(100px*var(--scaling-factor));
-                margin-left:45%;  
-                text-align: center;
-            }
+    #mybutton {
+        margin-top: calc(100px*var(--scaling-factor));
+         margin-left:45%;  
+        text-align: center;
+    }
     
           
-            ul {
-            list-style-position: inside;
-            flex-wrap: wrap;
-            position: center;
-            display: flex;
-            margin-left: calc(10px*var(--scaling-factor));
-            margin-top: calc(15px*var(--scaling-factor));
-            margin-right: calc(10px*var(--scaling-factor));
-            margin: 0 auto; 
-            text-align: center;
-            columns:3;
-        
-            }
+    ul {
+        list-style-position: inside;
+        flex-wrap: wrap;
+        position: center;
+        display: flex;
+        margin-left: calc(10px*var(--scaling-factor));
+        margin-top: calc(15px*var(--scaling-factor));
+        margin-right: calc(10px*var(--scaling-factor));
+        margin: 0 auto; 
+        text-align: center;
+        columns:3;
+    }
     
-            li {
+    li {
                 
-                flex: 0 0 calc(92% - calc(20px*var(--scaling-factor)));  
-                display: inline;
-                border-radius: calc(15px*var(--scaling-factor)); 
-                margin-bottom: calc(15px*var(--scaling-factor));
-                margin-left: calc(10px*var(--scaling-factor)); 
-                margin-right: calc(15px*var(--scaling-factor)); 
-                background-color: rgba(46, 40, 40, 0.7);
-                color: white; 
-                
-            
-               
-            }
+        flex: 0 0 calc(92% - calc(20px*var(--scaling-factor)));  
+        display: inline;
+        border-radius: calc(15px*var(--scaling-factor)); 
+        margin-bottom: calc(15px*var(--scaling-factor));
+        margin-left: calc(10px*var(--scaling-factor)); 
+        margin-right: calc(15px*var(--scaling-factor)); 
+        background-color: rgba(46, 40, 40, 0.7);
+        color: white;             
+}
 </style>
 <body>
     <header class="header">
@@ -113,11 +106,7 @@
                 console.error('Error fetching data:', error);
             }
         }
-
         
-
-
-
              function addElement() {
                 fetch('/add-element', {
                  method: 'POST',
@@ -137,9 +126,7 @@
         console.error('Error adding element:', error);
                     });
                 }
-
-
-
+        
         function displayData(data) {
             const dataContainer = document.getElementById('data-container');
 

@@ -503,6 +503,6 @@ font-size: calc(22px*var(--scaling-factor));
 text-align: left;
 color: white;
 line-height: calc(40px*var(--scaling-factor));
-text-wrap: wrap
-
+text-wrap: wrap;
+margin-right: calc(100px*var(--scaling-factor));
 }

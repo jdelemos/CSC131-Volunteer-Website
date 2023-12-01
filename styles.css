@@ -518,4 +518,16 @@ color: white;
 .event-text{
 color:#ffffff;
 }
+.applicant-rectangle{
+/* Rectangle 26 */
+
+position: absolute;
+width: 1576px;
+height: 229px;
+left: 180px;
+top: 244px;
+
+background: #121212;
+
+}
 

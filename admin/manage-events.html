@@ -92,7 +92,7 @@ function displayData(data) {
     function showEventDetails(eventId) {
         // Change the page content to display the event ID
         const outputContainer = document.getElementById('output-container');
-        outputContainer.innerHTML = `<p class = "event-text">Event: ${eventName}</p>`;
+        const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/application-data?eventId=${eventId}`);
     }
     </script>        
 </div>

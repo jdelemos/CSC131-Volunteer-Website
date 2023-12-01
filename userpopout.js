@@ -35,6 +35,8 @@ function checkbutton() {
 
         // Check if the user is logged in
     if (loggedIn === 'true') {
+        var profileimg = googleUser.getBasicProfile().getImageUrl();
+        document.getElementById('userButton').style.backgroundImage('url(${profileimg})');
         // If logged in, add a click event listener to the user button
         if (userButton) {
             userButton.addEventListener('click', function (event) {

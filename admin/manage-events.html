@@ -117,7 +117,7 @@ async function displayApplicants(applications) {
                         throw new Error(`Error: ${response.status} - ${response.statusText}`);
                     }
 
-                    const userinfo = await response.json();
+                    var userinfo = await response.json();
                     console.log('userinfo found:', userinfo);
 
                     htmlContent +=

@@ -1,5 +1,5 @@
 function signIn(){
-        let serverAuthEndpoint = "https://vast-wave-12355-e83778ef23ea.herokuapp.comauth/google";
+        let serverAuthEndpoint = "https://vast-wave-12355-e83778ef23ea.herokuapp.com/auth/google";
 
     // Redirect the user to your server's authentication endpoint
     window.location.href = serverAuthEndpoint;

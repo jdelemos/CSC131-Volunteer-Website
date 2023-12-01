@@ -18,15 +18,18 @@ function setMaxDate(){
         if (inputValue === '') {
           // Blank input: set border color to white
           inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+          document.getElementById('nameLabel').style.display = 'none';
         } else {
           var isValid = /^[A-Z a-z]+$/.test(inputValue);
   
           if (!isValid) {
             // Invalid input: set border color to red
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+            document.getElementById('nameLabel').style.display = 'block';
           } else {
             // Valid input: set border color to green
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+            document.getElementById('nameLabel').style.display = 'none';
           }
         }
       }
@@ -36,15 +39,20 @@ function setMaxDate(){
         if (inputValue === '') {
           // Blank input: set border color to white
           inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+          document.getElementById('emailLabel').style.display = 'none';
         } else {
           var isValid = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(inputValue);
   
           if (!isValid) {
             // Invalid input: set border color to red
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+            document.getElementById('emailLabel').style.display = 'block';
+
           } else {
             // Valid input: set border color to green
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+            document.getElementById('emailLabel').style.display = 'none';
+
           }
         }
       }
@@ -54,15 +62,21 @@ function setMaxDate(){
         if (inputValue === '') {
           // Blank input: set border color to white
           inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+          document.getElementById('phoneLabel').style.display = 'none';
+
         } else {
           var isValid = /^[0-9]{10}$/.test(inputValue);
   
           if (!isValid) {
             // Invalid input: set border color to red
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+            document.getElementById('phoneLabel').style.display = 'block';
+
           } else {
             // Valid input: set border color to green
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+            document.getElementById('phoneLabel').style.display = 'none';
+
           }
         }
       }
@@ -72,15 +86,21 @@ function setMaxDate(){
         if (inputValue === '') {
           // Blank input: set border color to white
           inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+          document.getElementById('addressLabel').style.display = 'none';
+
         } else {
-          var isValid = /^[a-zA-Z0-9\s,'\-#]+$/.test(inputValue);
+          var isValid = /^[a-zA-Z0-9\s,'\-.#]+$/.test(inputValue);
   
           if (!isValid) {
             // Invalid input: set border color to red
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+            document.getElementById('addressLabel').style.display = 'block';
+
           } else {
             // Valid input: set border color to green
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+            document.getElementById('addressLabel').style.display = 'none';
+
           }
         }
       }
@@ -90,15 +110,21 @@ function setMaxDate(){
         if (inputValue === '') {
           // Blank input: set border color to white
           inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+          document.getElementById('cityLabel').style.display = 'none';
+
         } else {
           var isValid = /^[A-Za-z\s-]+$/.test(inputValue);
   
           if (!isValid) {
             // Invalid input: set border color to red
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+            document.getElementById('cityLabel').style.display = 'block';
+
           } else {
             // Valid input: set border color to green
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+            document.getElementById('cityLabel').style.display = 'none';
+
           }
         }
       }
@@ -108,15 +134,21 @@ function setMaxDate(){
         if (inputValue === '') {
           // Blank input: set border color to white
           inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+          document.getElementById('zipcodeLabel').style.display = 'none';
+
         } else {
           var isValid = /^[0-9]{5}$/.test(inputValue);
   
           if (!isValid) {
             // Invalid input: set border color to red
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+            document.getElementById('zipcodeLabel').style.display = 'block';
+
           } else {
             // Valid input: set border color to green
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+            document.getElementById('zipcodeLabel').style.display = 'none';
+
           }
         }
       }
@@ -126,15 +158,18 @@ function setMaxDate(){
         if (inputValue === '') {
           // Blank input: set border color to white
           inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+          document.getElementById('enameLabel').style.display = 'none';
         } else {
           var isValid = /^[A-Z a-z]+$/.test(inputValue);
   
           if (!isValid) {
             // Invalid input: set border color to red
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+            document.getElementById('zipcodeLabel').style.display = 'block';
           } else {
             // Valid input: set border color to green
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+            document.getElementById('zipcodeLabel').style.display = 'none';
           }
         }
       }
@@ -144,15 +179,21 @@ function setMaxDate(){
         if (inputValue === '') {
           // Blank input: set border color to white
           inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+          document.getElementById('ephoneLabel').style.display = 'none';
+
         } else {
           var isValid = /^[0-9]{10}$/.test(inputValue);
   
           if (!isValid) {
             // Invalid input: set border color to red
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+            document.getElementById('enameLabel').style.display = 'block';
+
           } else {
             // Valid input: set border color to green
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+            document.getElementById('ephoneLabel').style.display = 'none';
+
           }
         }
       }
@@ -160,14 +201,19 @@ function setMaxDate(){
         
         var maxDate = new Date(document.getElementById('bday').max);
         var inputValue = inputElement.value.trim();
+        document.getElementById('bdayLabel').style.display = 'none';
   
         if (inputValue === '') {
           // Blank input: set border color to white
           inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+          document.getElementById('bdayLabel').style.display = 'block';
+
         } else {
           var isValid = /^\d{4}-\d{2}-\d{2}$/.test(inputValue);
           if(new Date(document.getElementById('bday').value) > maxDate){
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+            document.getElementById('bdayLabel').style.display = 'none';
+
           }
   
           if (!isValid) {

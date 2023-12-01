@@ -12,7 +12,7 @@
     });
     </script>
     <script>
-        const googleId = localStorage.getItem(googleId);
+        const googleId = localStorage.getItem('googleId');
         async function checkUserStatus(){
           const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/admin-check?userId=${userId}`);
           if (!response.ok) {
@@ -21,8 +21,6 @@
           const admin = await response;
           if(admin = true){
             console.log('admin')
-            return window.href.location = 'jdelemos.github.io/VW/admin'
-            
           }else{
              response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-check?userId=${userId}`);
              if (!response.ok) {
@@ -31,10 +29,8 @@
           const existingUser = await response;
           if(existingUser = true){
             console.log('Existing User')
-            return window.href.location = 'jdelemos.github.io/VW/apply'
           }else{
              console.log('new User')
-            return window.href.location = 'jdelemos.github.io/VW/userinfo'
           }
           }
       }

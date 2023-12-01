@@ -165,6 +165,8 @@ async function displayApplicants(applications, eventId) {
                         <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
                         <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}
                         </div>
+                        <div class="accept-deny" data-event-id='' id="accept" alt="accept" onclick="accept(event)">Accept</div>
+                        <div class="accept-deny" data-event-id='' id="deny" alt="deny" onclick="deny(event)">Deny</div>
                     </div>`;
             }
         });

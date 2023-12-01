@@ -3,32 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="login.js" defer></script>
     <title>Checkpoint</title>
+    <script src="login.js" defer></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        handleLoginState();
-        checkAdminStatus(); // Call the function to check the admin status
-    });
-    </script>
-    <script>
-        const googleId = localStorage.getItem(googleId);
-        async function checkUserStatus(){
-          const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/admin-check?userId=${userId}`);
-          if (!response.ok) {
-              throw new Error(`Error: ${response.status} - ${response.statusText}`);
-          }
-          const admin = await response;
-          if(admin = true){
-            console.log('admin')
-          }else{
-            console.log('not admin')
-          }
-      }
+        document.addEventListener('DOMContentLoaded', function() {
+            handleLoginState();
+            checkUserStatus(); // Corrected the function name to checkUserStatus
+        });
+
+        async function checkUserStatus() {
+            const googleId = localStorage.getItem('googleId'); // Corrected the localStorage key to 'googleId'
+            const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/admin-check?userId=${googleId}`);
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} - ${response.statusText}`);
+            }
+            const adminStatus = await response.json(); // Parse the response to JSON
+            if (adminStatus === true) {
+                console.log('admin');
+            } else {
+                console.log('not admin');
+            }
+        }
     </script>
 </head>
 <body>
     <h1>Checking your access...</h1>
-    <!-- You can add additional HTML content here -->
 </body>
 </html>

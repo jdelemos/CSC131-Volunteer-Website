@@ -208,6 +208,7 @@ async function showEventDetails(eventId) {
                 const rectangle = document.querySelector(`.user-rectangle[data-rectangle-id="${rectangleId}"]`);
                 console.log(rectangle)
                 const eventId = event.target.getAttribute('data-event-id');
+                console.log(eventId)
                 const userId = event.target.getAttribute('data-user-id');
                 try {
         const response = await fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/deny', {

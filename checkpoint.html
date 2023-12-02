@@ -19,8 +19,8 @@
               throw new Error(`Error: ${response.status} - ${response.statusText}`);
           }
           var admin = await response;
+            console.log(admin)
           if(admin = true){
-            console.log('admin')
             return window.location.href = 'admin.html'
           }else{
              response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-check?userId=${userId}`);

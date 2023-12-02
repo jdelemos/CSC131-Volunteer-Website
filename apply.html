@@ -101,7 +101,7 @@ async function checkUserApplications() {
     try {
         // Call the backend with the user's Google ID
         const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-apply-data?userId=${userId}`);
-        
+
         // Check if the response is not successful (status code in the range 200-299)
         if (!response.ok) {
             throw new Error(`Error: ${response.status} - ${response.statusText}`);
@@ -110,21 +110,34 @@ async function checkUserApplications() {
         const userApplications = await response.json(); // Parse the response into JSON
         console.log('Applications found:', userApplications);
 
-        // update the Apply buttons accordingly
+        // Update the Apply buttons accordingly
         const eventElements = document.querySelectorAll('.apply-box');
         eventElements.forEach(element => {
             const eventId = element.getAttribute('data-event-id');
-            
+
             // Check if the user has applied for this specific event
-            if (userApplications.some(application => application.EventId === eventId)) {
-                // User has already applied to this event
-                element.innerHTML = 'Applied';
-                element.classList.add('applied');
-                element.style.pointerEvents = 'none';
+            const application = userApplications.find(app => app.EventId === eventId);
+
+            if (application) {
+                // User has applied to this event
+                if (application.Status === 'Accepted') {
+                    element.innerHTML = 'Accepted';
+                    element.classList.add('accepted');
+                    element.style.pointerEvents = 'none';
+                } else if (application.Status === 'Denied') {
+                    element.innerHTML = 'Denied';
+                    element.classList.add('denied');
+                    element.style.pointerEvents = 'none';
+                } else {
+                    // User has applied, but status is neither Accepted nor Denied
+                    element.innerHTML = 'Applied';
+                    element.classList.add('applied');
+                    element.style.pointerEvents = 'none';
+                }
             } else {
                 // If the user hasn't applied for this event, ensure it's in the default state
                 element.innerHTML = 'Apply';
-                element.classList.remove('applied');
+                element.classList.remove('applied', 'accepted', 'denied');
                 element.style.pointerEvents = 'auto';
             }
         });

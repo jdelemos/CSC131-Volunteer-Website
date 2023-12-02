@@ -550,3 +550,9 @@ margin-right: calc(140px*var(--scaling-factor));
     color: #c3b681;
     font-size: calc(96px*var(--scaling-factor));
 }
+.event-title-underline {
+    width: 95%; /* Spans nearly the width of the page */
+    height: 2px; /* Thin rectangle */
+    background-color: #c3b681; /* Color of the rectangle */
+    margin: auto; /* Centers the rectangle */
+}

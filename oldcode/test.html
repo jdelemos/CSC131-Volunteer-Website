@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+    <script src="login.js" defer></script>
+</head>
+<body>
+
+<button onclick="checkLogin()">Check Login Status</button>
+
+<script>
+function checkLogin() {
+    const loggedIn = localStorage.getItem('loggedIn');
+    
+    if (loggedIn === 'true') {
+        alert('User is logged in!');
+    } else {
+        alert('User is not logged in.');
+    }
+}
+
+// Ensure that handleLoginState is called after the document has fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Call the function to handle login state when the page loads
+    handleLoginState();
+});
+</script>
+
+</body>
+</html>
+

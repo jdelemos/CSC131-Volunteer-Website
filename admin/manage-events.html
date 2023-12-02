@@ -154,17 +154,7 @@ async function displayApplicants(applications, eventId) {
             .map(app => fetchUserData(app.userId));
 
         const userDataArray = await Promise.all(userPromises);
-            function approved() {
-            
-                var subject = "UPDATE: Volunteer application";
-                var body = 'UPDATE: Your volunteer application for ${ename} has been accepted!';
-                window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
-            }
-            function denied() {
-                var subject = "UPDATE: Volunteer application";
-                var body = 'UPDATE: Your volunteer application for ${ename} has been denied. Feel free to apply for future events.';
-                window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
-            }
+
         // Generate HTML content after all user data has been fetched
         userDataArray.forEach(userinfo => {
             if (userinfo) {
@@ -175,8 +165,8 @@ async function displayApplicants(applications, eventId) {
                         <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
                         <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}
                         </div>
-                        <div class="accept-box" data-event-id='' id="accept" alt="accept" onclick="approved()">Accept</div>
-                        <div class="deny-box" data-event-id='' id="deny" alt="deny" onclick='denied()'>Deny</div>
+                        <div class="accept-box"  id="accept" alt="accept" onclick="approved(${userinfo.email},${userinfo.userId},${eventinfo.eventId})">Accept</div>
+                        <div class="deny-box"  id="deny" alt="deny" onclick='denied()'>Deny</div>
                         
                     </div>`;
             }
@@ -185,6 +175,36 @@ async function displayApplicants(applications, eventId) {
         // Set the content of outputContainer
         outputContainer.innerHTML = htmlContent;
     }
+                function approved(email, userId, eventId) {
+                  try{
+                    const formData = {
+                      userId: userId,
+                      EventId: eventId
+                    }
+                    fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/accept', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                  })
+                    .then(response => response.text())
+                    .then(data => {
+                      console.log('Success:', data);
+                    })
+                    
+                  }catch (error){
+                    console.error('error in accept:', error.message)
+                  }
+                // var subject = "UPDATE: Volunteer application";
+                // var body = 'UPDATE: Your volunteer application for ${ename} has been accepted!';
+                // window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
+            }
+            function denied() {
+                // var subject = "UPDATE: Volunteer application";
+                // var body = 'UPDATE: Your volunteer application for ${ename} has been denied. Feel free to apply for future events.';
+                // window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
+            }
 }
         
     </script>        

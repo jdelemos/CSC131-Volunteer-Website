@@ -146,6 +146,7 @@ async function displayApplicants(eventDetails, applications) {
 
   userDataArray.forEach((userinfo, index) => {
     if (userinfo) {
+        console.log(userinfo)
       var uniqueId = Math.random().toString(16).slice(2);
 
       // Assuming that the applications array has a corresponding order with userDataArray

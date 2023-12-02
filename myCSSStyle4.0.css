@@ -220,7 +220,6 @@ form{
     align-items: center;
     cursor: pointer;
     margin-right: 30px;
-    margin-left: auto;
     transition: background-color 0.3s;
 }
 

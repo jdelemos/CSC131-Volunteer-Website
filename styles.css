@@ -376,7 +376,7 @@ color: white;
 	text-align: center;
 	align-items: center;
 	height: calc(540px*var(--scaling-factor));
-	transform: translate(0, calc(200px*var(--scaling-factor)));
+	transform: translate(0, calc(100px*var(--scaling-factor)));
 
 }
 

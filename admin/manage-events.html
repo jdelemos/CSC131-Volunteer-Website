@@ -160,7 +160,7 @@ async function displayApplicants(applications, eventId) {
         userDataArray.forEach(userinfo => {
             if (userinfo) {
                 htmlContent +=
-                    `<div class="user-rectangle">
+                    `<div class="user-rectangle" id="rectangle-border">
                         <img src="/VW/images/usericon.png" alt="" class="usericon">
                         <p class="text"><b> Name: </b>${userinfo.name}<br><b> Phone: </b>${userinfo.phone}<br><b> Email: </b>${userinfo.email}<br><b> DOB: </b>${userinfo.bday}</p>
                         <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
@@ -214,6 +214,7 @@ async function displayApplicants(applications, eventId) {
                 'Access-Control-Allow-Origin': 'https://jdelemos.github.io'
             },
             body: JSON.stringify({ userId: userId, eventId: eventId })
+            document.getElementById('rectangle-border').style.borderColor("#ffffff")
         });
 
         if (!response.ok) {

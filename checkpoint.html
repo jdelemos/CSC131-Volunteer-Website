@@ -13,30 +13,35 @@
     </script>
     <script>
         const userId = localStorage.getItem('googleId');
-        async function checkUserStatus(){
-          const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/admin-check?userId=${userId}`);
-          if (!response.ok) {
-              throw new Error(`Error: ${response.status} - ${response.statusText}`);
-          }
-          var admin = await response;
-            console.log(admin)
-          if(admin = true){
-            return window.location.href = 'admin.html'
-          }else{
-             response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-check?userId=${userId}`);
-             if (!response.ok) {
-              throw new Error(`Error: ${response.status} - ${response.statusText}`);
-          }
-          var existingUser = await response;
-          if(existingUser = true){
-            console.log('Existing User')
-            return window.location.href = 'apply.html'
-          }else{
-            console.log('new User')
-            return window.location.href = 'user-check'
-          }
-          }
-      }
+        const userId = localStorage.getItem('googleId');
+
+async function checkUserStatus() {
+    try {
+        let response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/admin-check?userId=${userId}`);
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+        let adminStatus = await response.json(); // Assuming JSON response
+        if (adminStatus === true) {
+            window.location.href = 'admin.html';
+        } else {
+            response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-check?userId=${userId}`);
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} - ${response.statusText}`);
+            }
+            let existingUserStatus = await response.json(); // Assuming JSON response
+            if (existingUserStatus === true) {
+                console.log('Existing User');
+                window.location.href = 'apply.html';
+            } else {
+                console.log('New User');
+                window.location.href = 'user-check.html'; // Make sure this is the correct URL
+            }
+        }
+    } catch (error) {
+        console.error('An error occurred:', error);
+    }
+}
     </script>
 </head>
 <body>

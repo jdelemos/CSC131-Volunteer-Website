@@ -107,26 +107,36 @@ async function checkUserApplications() {
             throw new Error(`Error: ${response.status} - ${response.statusText}`);
         }
 
-        const userApplications = await response.json(); // Parse the response into JSON
+               const userApplications = await response.json();
         console.log('Applications found:', userApplications);
 
-        // update the Apply buttons accordingly
+        // Update the Apply buttons based on application status
         const eventElements = document.querySelectorAll('.apply-box');
         eventElements.forEach(element => {
             const eventId = element.getAttribute('data-event-id');
             
-            // Check if the user has applied for this specific event
-            if (userApplications.some(application => application.EventId === eventId)) {
-                // User has already applied to this event
-                element.innerHTML = 'Applied';
-                element.classList.add('applied');
-                element.style.pointerEvents = 'none';
+            // Find the application for this specific event
+            const application = userApplications.find(app => app.EventId === eventId);
+
+            if (application) {
+                if (application.status === 'accepted') {
+                    // If the application is accepted
+                    element.innerHTML = 'Accepted';
+                    element.classList.add('accepted');
+                    element.style.pointerEvents = 'none';
+                } else {
+                    // If the application exists but is not accepted
+                    element.innerHTML = 'Applied';
+                    element.classList.add('applied');
+                    element.style.pointerEvents = 'none';
+                }
             } else {
-                // If the user hasn't applied for this event, ensure it's in the default state
+                // If the user hasn't applied for this event
                 element.innerHTML = 'Apply';
-                element.classList.remove('applied');
+                element.classList.remove('applied', 'accepted');
                 element.style.pointerEvents = 'auto';
             }
+
         });
 
     } catch (error) {

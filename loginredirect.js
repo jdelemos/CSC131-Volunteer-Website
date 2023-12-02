@@ -8,7 +8,7 @@ function checkLoginAndRedirect() {
             '/VW/apply',
             '/VW/apply.html',
             '/VW/userinfo.html',
-            '/VW/admin/create-event'
+            '/VW/userinfo',
         ];
         const currentPage = window.location.pathname;
         if (restrictedUrls.includes(currentPage)) {

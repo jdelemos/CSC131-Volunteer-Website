@@ -204,6 +204,10 @@ form{
 .header .title:hover{
     color: #776A3F;
 }
+.right-items {
+    margin-left: auto; /* This will push the .right-items container to the right */
+    display: flex; /* If you want to keep the hidden items in a row */
+}
 
 .header .circle {
     width: 64px;

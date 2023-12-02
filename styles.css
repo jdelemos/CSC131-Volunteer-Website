@@ -318,12 +318,13 @@ color: white;
     width: calc(1000px*var(--scaling-factor));
 
 }
-
+.apply-page .output-container{
+	margin-top: calc(150px*var(--scaling-factor));
+}
 .apply-page .output-container h1 { 
     color: antiquewhite;
     align-items: center;
     align-content: center;
-margin-top: calc(150px*var(--scaling-factor));
 }
 
 .forms input[type="email"]{

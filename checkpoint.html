@@ -6,8 +6,8 @@
     <script src="login.js" defer></script>
     <title>Checkpoint</title>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        defer handleLoginState();
+    document.addEventListener('DOMContentLoaded', async function() {
+        await handleLoginState();
         checkUserStatus(); // Call the function to check the admin status
     });
     </script>

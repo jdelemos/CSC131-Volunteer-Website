@@ -323,6 +323,7 @@ color: white;
     color: antiquewhite;
     align-items: center;
     align-content: center;
+margin-top: calc(150px*var(--scaling-factor));
 }
 
 .forms input[type="email"]{

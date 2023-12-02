@@ -14,11 +14,11 @@
     <script>
         const userId = localStorage.getItem('googleId');
         async function checkUserStatus(){
-          var response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/admin-check?userId=${userId}`);
+          const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/admin-check?userId=${userId}`);
           if (!response.ok) {
               throw new Error(`Error: ${response.status} - ${response.statusText}`);
           }
-          const admin = await response;
+          var admin = await response;
           if(admin = true){
             console.log('admin')
           }else{
@@ -26,7 +26,7 @@
              if (!response.ok) {
               throw new Error(`Error: ${response.status} - ${response.statusText}`);
           }
-          const existingUser = await response;
+          var existingUser = await response;
           if(existingUser = true){
             console.log('Existing User')
           }else{

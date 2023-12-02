@@ -39,15 +39,20 @@ window.onload = setMinDate();
                         if (inputValue === '') {
                             // Blank input: set border color to white
                             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+                                              document.getElementById('eventNameLabel').style.display = 'none';
                         } else {
                             var isValid = /^[0-9A-Za-z\s'!?,.]+$/.test(inputValue);
   
                             if (!isValid) {
                                 // Invalid input: set border color to red
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+                                                                                      document.getElementById('eventNameLabel').style.display = 'block';
+
                                 } else {
                                 // Valid input: set border color to green
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+                                                                                      document.getElementById('eventNameLabel').style.display = 'none';
+
                             }
                         }
                     }
@@ -61,21 +66,26 @@ window.onload = setMinDate();
                         if (inputValue === '') {
                             // Blank input: set border color to white
                             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+                                                                                  document.getElementById('startDateLabel').style.display = 'none';
                         } else {
                             var isValid = /^\d{4}-\d{2}-\d{2}$/.test(inputValue);
                             if(new Date(document.getElementById('startDate').value) < minDate){
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+                                        document.getElementById('startDateLabel').style.display = 'block';
                             }
                             if(new Date(document.getElementById('startDate').value) > maxDate){
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+                                        document.getElementById('startDateLabel').style.display = 'block';
                             }
   
                             if (!isValid) {
                                 // Invalid input: set border color to red
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+                                        document.getElementById('startDateLabel').style.display = 'block';
                                 } else {
                                 // Valid input: set border color to green
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+                                        document.getElementById('startDateLabel').style.display = 'none';
                             }
                         }
                     }
@@ -88,18 +98,22 @@ window.onload = setMinDate();
                         if (inputValue === '') {
                             // Blank input: set border color to white
                             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+                                                                                  document.getElementById('endDateLabel').style.display = 'none';
                         } else {
                             var isValid = /^\d{4}-\d{2}-\d{2}$/.test(inputValue);
                             if(new Date(document.getElementById('endDate').value) < minDate){
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+                                        document.getElementById('endDateLabel').style.display = 'block';
                             }
   
                             if (!isValid) {
                                 // Invalid input: set border color to red
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+                                        document.getElementById('endDateLabel').style.display = 'block';
                                 } else {
                                 // Valid input: set border color to green
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+                                        document.getElementById('endDateLabel').style.display = 'none';
                             }
                         }
                     }
@@ -112,15 +126,18 @@ window.onload = setMinDate();
                         if (inputValue === '') {
                             // Blank input: set border color to white
                             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+                                                                                  document.getElementById('timeLabel').style.display = 'none';
                         } else {
                             var isValid = /^[0-9]{2}:[0-9]{2}$/.test(inputValue);
   
                             if (!isValid) {
                                 // Invalid input: set border color to red
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+                                        document.getElementById('timeLabel').style.display = 'block';
                                 } else {
                                 // Valid input: set border color to green
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+                                        document.getElementById('timeLabel').style.display = 'none';
                             }
                         }
                     }
@@ -133,15 +150,18 @@ window.onload = setMinDate();
                         if (inputValue === '') {
                             // Blank input: set border color to white
                             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+                                                                                  document.getElementById('locationLabel').style.display = 'none';
                         } else {
                             var isValid = /^[0-9A-Za-z\s'!?,.]+$/.test(inputValue);
   
                             if (!isValid) {
                                 // Invalid input: set border color to red
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+                                        document.getElementById('locationLabel').style.display = 'block';
                                 } else {
                                 // Valid input: set border color to green
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+                                        document.getElementById('locationLabel').style.display = 'none';
                             }
                         }
                     }
@@ -154,15 +174,19 @@ window.onload = setMinDate();
                         if (inputValue === '') {
                             // Blank input: set border color to white
                             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
+                                                                                  document.getElementById('capacityLabel').style.display = 'none';
                         } else {
                             var isValid = /^\d{1,}$/.test(inputValue);
   
                             if (!isValid) {
                                 // Invalid input: set border color to red
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+                                        document.getElementById('capacityLabel').style.display = 'block';
+                                        
                                 } else {
                                 // Valid input: set border color to green
                                 inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+                                        document.getElementById('capacityLabel').style.display = 'none';
                             }
                         }
                     }
@@ -175,8 +199,10 @@ window.onload = setMinDate();
                         if (inputValue === '') {
                             // Blank input: set border color to white
                             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+                                                document.getElementById('descriptionLabel').style.display = 'block';
                         } else {
                             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+                                                                                  document.getElementById('descriptionLabel').style.display = 'none';
                         }
                     }
 

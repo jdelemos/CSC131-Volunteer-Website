@@ -544,3 +544,9 @@ line-height: calc(40px*var(--scaling-factor));
 text-wrap: wrap;
 margin-right: calc(140px*var(--scaling-factor));
 }
+
+.event-title {
+    text-align: center;
+    color: #c3b681;
+    font-size: 96px;
+}

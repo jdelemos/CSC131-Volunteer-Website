@@ -179,7 +179,27 @@ async function displayApplicants(applications, eventId) {
         function approved(event) {          
                 const eventId = event.target.getAttribute('data-event-id');
                 const userId = event.target.getAttribute('data-user-id');
-                console.log(eventId);
+                try {
+        const response = await fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/accept', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': 'https://jdelemos.github.io'
+            },
+            body: JSON.stringify({ userId: userId, eventId: eventId })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const result = await response.text();
+        console.log(result);
+        // Handle the response here (e.g., show a success message)
+    } catch (error) {
+        console.error('Error:', error);
+        // Handle the error here (e.g., show an error message)
+    }
             }
             function denied(event) {
                const eventId = event.target.getAttribute('data-event-id');

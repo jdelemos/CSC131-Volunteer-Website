@@ -259,11 +259,9 @@ body {
     font-size: calc(40px*var(--scaling-factor));
     font-weight: bold;
     cursor: pointer;
-	
+}
 .accept-box:hover{
     background-color: #041a09;
-}
-    
 }
 .deny-box{
     width: calc(200px*var(--scaling-factor)); 

@@ -200,6 +200,7 @@ form{
 
 .header .title.hidden {
     display: none;
+    margin-left: -60px;
 }
 
 .header .title:hover{

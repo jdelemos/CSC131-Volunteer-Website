@@ -154,17 +154,11 @@ async function displayApplicants(applications, eventId) {
 
         const userDataArray = await Promise.all(userPromises);
 
-    userDataArray.forEach((userinfo, index) => {
-        if (userinfo) {
-            var uniqueId = Math.random().toString(16).slice(2);
-            let borderColor = '#000000'; // Default color
-            if (applications[index].status === 'accepted') {
-                borderColor = '#093813'; // Green for accepted
-            } else if (applications[index].status === 'denied') {
-                borderColor = '#861414'; // Red for denied
-            }
-            
-            htmlContent +=
+        // Generate HTML content after all user data has been fetched
+        userDataArray.forEach(userinfo => {
+            if (userinfo) {
+                var uniqueId = Math.random().toString(16).slice(2)
+                htmlContent +=
                     `<div class="user-rectangle" id="rectangle-border" data-rectangle-id="${uniqueId}">
                         <img src="/VW/images/usericon.png" alt="" class="usericon">
                         <p class="text"><b> Name: </b>${userinfo.name}<br><b> Phone: </b>${userinfo.phone}<br><b> Email: </b>${userinfo.email}<br><b> DOB: </b>${userinfo.bday}</p>

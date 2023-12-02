@@ -15,7 +15,9 @@
         
 async function checkUserStatus() {
     const userId = localStorage.getItem('googleId');
-
+    if (userId = null){
+        location.reload()
+    }
     try {
         let response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/admin-check?userId=${userId}`);
         if (!response.ok) {

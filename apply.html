@@ -89,9 +89,9 @@ function displayData(data) {
 }
 
 async function checkUserApplications() {
-    console.log('Checking user applications...'); // Log when the function starts
-    const userId = localStorage.getItem('googleId'); // Retrieve the user ID from localStorage
-    console.log('User ID:', userId); // Log the user ID
+    console.log('Checking user applications...');
+    const userId = localStorage.getItem('googleId');
+    console.log('User ID:', userId);
 
     if (!userId) {
         console.log('No user ID found in localStorage.');
@@ -99,45 +99,40 @@ async function checkUserApplications() {
     }
 
     try {
-        // Call the backend with the user's Google ID
         const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-apply-data?userId=${userId}`);
-
-        // Check if the response is not successful (status code in the range 200-299)
+        
         if (!response.ok) {
             throw new Error(`Error: ${response.status} - ${response.statusText}`);
         }
 
-        const userApplications = await response.json(); // Parse the response into JSON
+        const userApplications = await response.json();
         console.log('Applications found:', userApplications);
 
-        // Update the Apply buttons accordingly
         const eventElements = document.querySelectorAll('.apply-box');
         eventElements.forEach(element => {
             const eventId = element.getAttribute('data-event-id');
-
-            // Check if the user has applied for this specific event
             const application = userApplications.find(app => app.EventId === eventId);
 
             if (application) {
-                // User has applied to this event
-                if (application.Status === 'Accepted') {
-                    element.innerHTML = 'Accepted';
-                    element.classList.add('accepted');
-                    element.style.pointerEvents = 'none';
-                } else if (application.Status === 'Denied') {
-                    element.innerHTML = 'Denied';
-                    element.classList.add('denied');
-                    element.style.pointerEvents = 'none';
-                } else {
-                    // User has applied, but status is neither Accepted nor Denied
-                    element.innerHTML = 'Applied';
-                    element.classList.add('applied');
-                    element.style.pointerEvents = 'none';
+                switch (application.Status) {
+                    case 'Accepted':
+                        element.innerHTML = 'Accepted';
+                        element.classList.add('accepted');
+                        break;
+                    case 'Denied':
+                        element.innerHTML = 'Denied';
+                        element.classList.add('denied');
+                        break;
+                    case 'Pending':
+                        element.innerHTML = 'Pending';
+                        element.classList.add('pending');
+                        break;
+                    // Other statuses can be handled here
                 }
+                element.style.pointerEvents = 'none';
             } else {
-                // If the user hasn't applied for this event, ensure it's in the default state
                 element.innerHTML = 'Apply';
-                element.classList.remove('applied', 'accepted', 'denied');
+                element.classList.remove('applied', 'accepted', 'denied', 'pending');
                 element.style.pointerEvents = 'auto';
             }
         });
@@ -146,9 +141,6 @@ async function checkUserApplications() {
         console.error('Error checking user applications:', error);
     }
 }
-
-// Calls this function when the page loads or when the events are rendered
-checkUserApplications();
 
 
 // Set the HTML content of the container

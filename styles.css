@@ -248,7 +248,7 @@ body {
     cursor: pointer;
     
 }
-.green-box{
+.accept-box{
     width: calc(200px*var(--scaling-factor)); 
     height: calc(80px*var(--scaling-factor)); 
     background-color: #093813;
@@ -260,7 +260,7 @@ body {
     font-weight: bold;
     cursor: pointer;
 	
-.green-box::hover{
+.accept-box:hover{
     background-color: #041a09;
 }
     
@@ -278,7 +278,7 @@ body {
     cursor: pointer;
     
 }
-.deny-box::hover{
+.deny-box:hover{
     background-color: #570a0b;
 }
 

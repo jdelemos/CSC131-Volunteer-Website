@@ -548,5 +548,5 @@ margin-right: calc(140px*var(--scaling-factor));
 .event-title {
     text-align: center;
     color: #c3b681;
-    font-size: 96px;
+    font-size: calc(96px*var(--scaling-factor));
 }

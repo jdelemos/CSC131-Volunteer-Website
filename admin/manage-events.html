@@ -111,7 +111,11 @@ async function showEventDetails(eventId) {
     async function displayApplicants(eventDetails, applications) {
         const outputContainer = document.getElementById('output-container');
         console.log(eventDetails);
-        let htmlContent = `<h2 class="event-title" >Event: ${eventDetails.eventName}</h2>`;
+        let htmlContent = `
+        <h2 class="event-title">
+            Event: ${eventDetails.eventName}
+        </h2>
+        <div class="event-title-underline"></div>`;
         // Define a separate async function for fetching user data
         const fetchUserData = async (userId) => {
             

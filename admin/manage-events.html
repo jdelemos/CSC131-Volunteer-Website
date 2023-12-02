@@ -154,13 +154,13 @@ async function displayApplicants(applications, eventId) {
             .map(app => fetchUserData(app.userId));
 
         const userDataArray = await Promise.all(userPromises);
-            function approved(gotemail) {
+            function approved() {
             
                 var subject = "UPDATE: Volunteer application";
                 var body = 'UPDATE: Your volunteer application for ${ename} has been accepted!';
                 window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
             }
-            function denied(email) {
+            function denied() {
                 var subject = "UPDATE: Volunteer application";
                 var body = 'UPDATE: Your volunteer application for ${ename} has been denied. Feel free to apply for future events.';
                 window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
@@ -175,8 +175,8 @@ async function displayApplicants(applications, eventId) {
                         <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
                         <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}
                         </div>
-                        <div class="accept-box" data-event-id='' id="accept" alt="accept" onclick="approved(${userinfo.email})">Accept</div>
-                        <div class="deny-box" data-event-id='' id="deny" alt="deny" onclick="denied('${userinfo.email}')">Deny</div>
+                        <div class="accept-box" data-event-id='' id="accept" alt="accept" onclick="approved()">Accept</div>
+                        <div class="deny-box" data-event-id='' id="deny" alt="deny" onclick='denied()'>Deny</div>
                         
                     </div>`;
             }

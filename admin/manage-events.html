@@ -116,7 +116,9 @@ async function showEventDetails(eventId) {
             Event: ${eventDetails.eventName}
         </h2>
         <div class="event-title-underline"></div>
-        <img class="return-arrow" onclick='fetchData()' src="/VW/images/return-arrow.png" alt="">`;
+        <div class="return-arrow-container">
+        <img class="return-arrow" onclick='fetchData()' src="/VW/images/return-arrow.png" alt="">
+        </div>`;
         
         // Define a separate async function for fetching user data
         const fetchUserData = async (userId) => {

@@ -1,0 +1,197 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" href = "styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<title>Admin</title>
+<style>
+    .circle1 {
+        width: calc(64px*var(--scaling-factor));
+        height: calc(64px*var(--scaling-factor));
+        border-radius: 50%;
+        background-color: #c4B581;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform:translate(calc(30px*var(--scaling-factor)),calc(30px*var(--scaling-factor)));
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .circle1:hover{
+        background-color: #776A3F;
+    }
+    
+    
+    
+    .list-item {
+        position: relative;
+        box-sizing: border-box;
+        padding: calc(15px*var(--scaling-factor));
+        border-radius: calc(0*var(--scaling-factor));
+        margin-bottom: calc(15px*var(--scaling-factor));
+        margin-top: calc(15px*var(--scaling-factor));
+        background-color: rgba(46, 40, 40, 0.7);
+    }
+    
+    .buttons-container {
+        position: absolute;
+        top: 50%;
+        right: calc(15px*var(--scaling-factor));
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically */
+        gap: calc(10px*var(--scaling-factor));
+    }
+    
+    #mybutton {
+        margin-top: calc(100px*var(--scaling-factor));
+         margin-left:45%;  
+        text-align: center;
+    }
+    
+          
+    ul {
+        list-style-position: inside;
+        flex-wrap: wrap;
+        position: center;
+        display: flex;
+        margin-left: calc(10px*var(--scaling-factor));
+        margin-top: calc(15px*var(--scaling-factor));
+        margin-right: calc(10px*var(--scaling-factor));
+        margin: 0 auto; 
+        text-align: center;
+        columns:3;
+    }
+    
+    li {
+                
+        flex: 0 0 calc(92% - calc(20px*var(--scaling-factor)));  
+        display: inline;
+        border-radius: calc(15px*var(--scaling-factor)); 
+        margin-bottom: calc(15px*var(--scaling-factor));
+        margin-left: calc(10px*var(--scaling-factor)); 
+        margin-right: calc(15px*var(--scaling-factor)); 
+        background-color: rgba(46, 40, 40, 0.7);
+        color: white;             
+}
+</style>
+<body>
+    <header class="header">
+        <div class="logo"><img src="images/image_3.png" alt="cattime"> </div>
+        <h1 class="title">Apply</h1>
+        <h1 class="title">Contact Us</h1>
+        <div class ="circle">
+            <div class="login-icon">
+                <img src="images/user.png" alt="Login">
+            </div>
+        </div>
+    </header>
+    <h1><br><br></h1>
+    <div id="data-container">
+    <script>
+        var screenWidth = window.screen.width;
+            var baseResolutionWidth = 1920;
+            var scalingFactor = screenWidth / baseResolutionWidth;
+            document.documentElement.style.setProperty('--scaling-factor', scalingFactor);
+    </script>
+    <script>
+            window.onload=fetchData(); 
+                async function fetchData() {
+            try {
+                const response = await fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data');
+                const data = await response.json();
+                displayData(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+        
+             function addElement() {
+                fetch('/add-element', {
+                 method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                // You can pass any data you want to add to MongoDB here.
+                name: 'Approved',
+                }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                console.log('Element added:', data);
+                })
+    .catch(error => {
+        console.error('Error adding element:', error);
+                    });
+                }
+        
+        function displayData(data) {
+            const dataContainer = document.getElementById('data-container');
+
+            if (data.length === 0) {
+                dataContainer.innerHTML += '<p>No data available.</p>';
+            } else {
+                const ul = document.createElement('ul');
+                ul.classList.add('data-grid');
+                /*
+                <span style="font-size:calc(30px*var(--scaling-factor));">Name: ${item.name} </span> 
+                <span style="font-size:calc(30px*var(--scaling-factor)); margin-right: calc(150px*var(--scaling-factor)); margin-left:calc(50px*var(--scaling-factor))"> Email: ${item.email}
+                <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor)); margin-right: calc(150px*var(--scaling-factor));"> Phone: ${item.phone}  <br><br>  
+                <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(0px*var(--scaling-factor));"> Address: ${item.address} 
+                <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor));"> City: ${item.city} </span>
+                <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor));"> Zipcode: ${item.zipcode} </span>
+                */
+            function sendMail() {
+                 var link = "mailto: @example.com"
+             + "?cc=myCCaddress@example.com"
+             + "&subject=" + encodeURIComponent("This is my subject")
+             + "&body=" + encodeURIComponent(document.getElementById('myText').value)
+                ;
+             window.location.href = link;
+            }
+
+                data.forEach(item => {
+                  const li = document.createElement('li');
+                  li.classList.add('list-item');
+                    li.innerHTML = `
+                                    <span class="circle1"> <img src="images/user.png" alt="Login"> </span>
+                                    <span style="font-size:calc(30px*var(--scaling-factor));">Name: ${item.name} </span> 
+                                    <span style="font-size:calc(30px*var(--scaling-factor)); margin-right: calc(150px*var(--scaling-factor)); margin-left:calc(50px*var(--scaling-factor))"> Email: ${item.email}
+                                    <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor)); margin-right: calc(150px*var(--scaling-factor));"> Phone: ${item.phone}  <br><br>  
+                                    <span style="font-size:calc(30px*var(--scaling-factor));"> Address: ${item.address} </span>
+                                    <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(70px*var(--scaling-factor));"> City: ${item.city} </span>
+                                    <span style="font-size:calc(30px*var(--scaling-factor)); margin-left: calc(150px*var(--scaling-factor)); margin-right: calc(120px*var(--scaling-factor));"> Zipcode: ${item.zipcode} </span>`;
+                    // Create buttons
+                    var button = document.createElement("button");
+                    var button1 = document.createElement("button");
+                    button.innerHTML = 'Approve ' ;
+                    button1.textContent = 'Deny';
+                    button.onclick=addElement(); 
+                    // Add classes to the buttons
+                    button.classList.add('approval-button');
+                    button1.classList.add('approval-button');
+                    // Create a div to hold the buttons and set its style
+                    var buttonsContainer = document.createElement("div");
+                    buttonsContainer.classList.add('buttons-container');
+                    // Append buttons to the buttons container
+                    buttonsContainer.appendChild(button);
+                    buttonsContainer.appendChild(button1);
+                   
+                    // Append the data and buttons containers to the list item
+                    li.appendChild(buttonsContainer);
+                    // Append the list item to the unordered list
+                    ul.appendChild(li);
+                });
+                // Append the unordered list to the data container
+                dataContainer.appendChild(ul);
+            }
+        }
+        
+    </script> 
+    </div>
+</body>
+</html>
+
+

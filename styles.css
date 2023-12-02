@@ -20,7 +20,7 @@ body {
     display: flex;
     justify-content: flex-start; /* Aligns items to the start */
     align-items: center;
-    padding: 20px;
+    padding: 50px;
     overflow: auto;
 }
 

@@ -85,48 +85,33 @@ function displayData(data) {
         }
     }
 
-    async function showEventDetails(eventId) {
-    try {
-        const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/application-data?eventId=${eventId}`);
-        
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status} - ${response.statusText}`);
-        }
-
-        const applications = await response.json(); 
-        console.log('Applications found:', applications);
-        displayApplicants(applications, eventId);
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-
-async function displayApplicants(applications, eventId) {
-
-    
-    const outputContainer = document.getElementById('output-container');
-    const fetchEventData = async (eventId) => {
-            
-            
-            try {
-                const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/event-data?eventId=${eventId}`);
-                if (!response.ok) {
-                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
-                }
-
-                const eventinfo = await response.json();
-                console.log('eventinfo found:', eventinfo);
-                return eventinfo;
-                console.log(eventinfo);
-            } catch (error) {
-                console.error('Error fetching user data:', error);
-                return null; // Handle the error as needed
+async function showEventDetails(eventId) {
+        try {
+            // Fetch event details to get the event name
+            const eventResponse = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/event-data?eventId=${eventId}`);
+            if (!eventResponse.ok) {
+                throw new Error(`Error: ${eventResponse.status} - ${eventResponse.statusText}`);
             }
-        };
-    
-    if (Array.isArray(applications)) {
-        let htmlContent = '';
-            htmlContent = '<p>event: ${eventinfo.eventName}</p>'
+            const eventDetails = await eventResponse.json();
+
+            // Fetch applications
+            const appResponse = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/application-data?eventId=${eventId}`);
+            if (!appResponse.ok) {
+                throw new Error(`Error: ${appResponse.status} - ${appResponse.statusText}`);
+            }
+            const applications = await appResponse.json();
+            console.log('Applications found:', applications);
+
+            displayApplicants(eventDetails, applications);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    async function displayApplicants(eventDetails, applications) {
+        const outputContainer = document.getElementById('output-container');
+
+        let htmlContent = `<h2 style="color:white;">Event: ${eventDetails.eventName}</h2>`;
         // Define a separate async function for fetching user data
         const fetchUserData = async (userId) => {
             

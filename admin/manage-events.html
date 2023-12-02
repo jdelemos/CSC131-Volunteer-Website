@@ -118,8 +118,8 @@ async function displayApplicants(applications, eventId) {
                 }
 
                 const eventinfo = await response.json();
-                console.log('userinfo found:', userinfo);
-                return userinfo;
+                console.log('eventinfo found:', eventinfo);
+                return eventinfo;
             } catch (error) {
                 console.error('Error fetching user data:', error);
                 return null; // Handle the error as needed
@@ -128,7 +128,7 @@ async function displayApplicants(applications, eventId) {
     
     if (Array.isArray(applications)) {
         let htmlContent = '';
-
+            htmlContent = '<p>event: ${eventinfo.eventName}</p>'
         // Define a separate async function for fetching user data
         const fetchUserData = async (userId) => {
             

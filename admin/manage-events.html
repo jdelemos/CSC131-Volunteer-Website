@@ -105,8 +105,9 @@ function displayData(data) {
 }
 
 async function displayApplicants(applications, eventId) {
-     const outputContainer = document.getElementById('output-container');
-    let htmlContent = '';  
+
+    
+    const outputContainer = document.getElementById('output-container');
     const fetchEventData = async (eventId) => {
             
             
@@ -126,6 +127,8 @@ async function displayApplicants(applications, eventId) {
         };
     
     if (Array.isArray(applications)) {
+        let htmlContent = '';
+
         // Define a separate async function for fetching user data
         const fetchUserData = async (userId) => {
             
@@ -151,49 +154,39 @@ async function displayApplicants(applications, eventId) {
             .map(app => fetchUserData(app.userId));
 
         const userDataArray = await Promise.all(userPromises);
-        function approved(event) {
-    const userInfo = event.target.userInfo;
-    var subject = "UPDATE: Volunteer application";
-    var body = `UPDATE: Your volunteer application for ${userInfo.ename} has been accepted!`;
-    window.location = `mailto:${userInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
 
-function denied(event) {
-    const userInfo = event.target.userInfo;
-    var subject = "UPDATE: Volunteer application";
-    var body = `UPDATE: Your volunteer application for ${userInfo.ename} has been denied. Feel free to apply for future events.`;
-    window.location = `mailto:${userInfo.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
+        // Generate HTML content after all user data has been fetched
+        userDataArray.forEach(userinfo => {
+            if (userinfo) {
+                htmlContent +=
+                    `<div class="user-rectangle">
+                        <img src="/VW/images/usericon.png" alt="" class="usericon">
+                        <p class="text"><b> Name: </b>${userinfo.name}<br><b> Phone: </b>${userinfo.phone}<br><b> Email: </b>${userinfo.email}<br><b> DOB: </b>${userinfo.bday}</p>
+                        <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
+                        <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}
+                        </div>
+                        <div class="accept-box" data-event-id='' id="accept" alt="accept" onclick='approved(${userinfo.email})'>Accept</div>
+                        <div class="deny-box" data-event-id='' id="deny" alt="deny" onclick='denied(${userinfo.email})'>Deny</div>
+                        
+                    </div>`;
+            }
+        });
 
-// Inside displayApplicants
-userDataArray.forEach(userinfo => {
-    if (userinfo) {
-        htmlContent +=
-            `<div class="user-rectangle">
-                // ... other content ...
-            </div>`;
-        // Create buttons here and bind events programmatically
-        const acceptButton = document.createElement('div');
-        acceptButton.className = 'accept-box';
-        acceptButton.innerText = 'Accept';
-        acceptButton.userInfo = userinfo; // Store user info in button for easy access
-        acceptButton.addEventListener('click', approved);
-
-        const denyButton = document.createElement('div');
-        denyButton.className = 'deny-box';
-        denyButton.innerText = 'Deny';
-        denyButton.userInfo = userinfo; // Store user info in button for easy access
-        denyButton.addEventListener('click', denied);
-
-        // Append buttons to the HTML content or directly to the DOM as needed
+        // Set the content of outputContainer
+        outputContainer.innerHTML = htmlContent;
     }
-});
-            outputContainer.innerHTML = htmlContent;
-
-        };
-    }
-
-        
+}
+        function approved(gotemail) {
+            
+                var subject = "UPDATE: Volunteer application";
+                var body = 'UPDATE: Your volunteer application for ${ename} has been accepted!';
+                window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
+            }
+            function denied(email) {
+                var subject = "UPDATE: Volunteer application";
+                var body = 'UPDATE: Your volunteer application for ${ename} has been denied. Feel free to apply for future events.';
+                window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
+            }
     </script>        
 </div>
 <script src="/VW/scalingfactor.js"></script>

@@ -163,6 +163,24 @@ checkUserApplications();
         window.history.pushState({},document.title,"/VW/"+"apply")
 
         function apply(event) {
+        const userId = localStorage.getItem('userId');   
+        response = await fetch(https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-check?userId=${userId});
+        
+            if (!response.ok) {
+                throw new Error(Error: ${response.status} - ${response.statusText});
+            }
+            let existingUserStatus = await response.json();
+            if (existingUserStatus.isUser === true) {
+                console.log('Existing User');
+                //window.location.href = 'apply.html';
+            } else {
+                console.log('New User');
+               //window.location.href = 'userinfo.html';
+            }
+            return; 
+
+
+            
   try {
     event.preventDefault();
 

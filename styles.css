@@ -551,8 +551,10 @@ margin-right: calc(140px*var(--scaling-factor));
     font-size: calc(96px*var(--scaling-factor));
 }
 .event-title-underline {
-    width: 95%; /* Spans nearly the width of the page */
-    height: calc(10px*var(--scaling-factor)); /* Thin rectangle */
-    background-color: #c3b681; /* Color of the rectangle */
-    margin: auto; /* Centers the rectangle */
+    width: 95%;
+    height: calc(10px*var(--scaling-factor));
+    background-color: #c3b681;
+    margin: auto;
+    margin-top: calc(-40px*var(--scaling-factor));
+    margin-bottom: calc(20px*var(--scaling-factor));/
 }

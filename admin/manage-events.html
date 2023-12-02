@@ -160,14 +160,14 @@ async function displayApplicants(applications, eventId) {
             if (userinfo) {
                 var uniqueId = Math.random().toString(16).slice(2)
                 htmlContent +=
-                    `<div class="user-rectangle" id="rectangle-border">
+                    `<div class="user-rectangle" id="rectangle-border" data-rectangle-id="${uniqueId}">
                         <img src="/VW/images/usericon.png" alt="" class="usericon">
                         <p class="text"><b> Name: </b>${userinfo.name}<br><b> Phone: </b>${userinfo.phone}<br><b> Email: </b>${userinfo.email}<br><b> DOB: </b>${userinfo.bday}</p>
                         <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
                         <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}
                         </div>
-                        <div class="accept-box" data-event-id='${eventId}' data-user-id=${userinfo.userId} id="accept" alt="accept" onclick='approved(event)'>Accept</div>
-                        <div class="deny-box" data-event-id='${eventId}' data-rectangle-id=${uniqueId} data-user-id=${userinfo.userId} id="deny" alt="deny" onclick='denied(event)'>Deny</div>
+                        <div class="accept-box" data-event-id='${eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event)'>Accept</div>
+                        <div class="deny-box" data-event-id='${eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='denied(event)'>Deny</div>
                         
                     </div>`;
             }

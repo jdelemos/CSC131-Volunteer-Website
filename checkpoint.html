@@ -1,56 +1,50 @@
- event.preventDefault();
-
-    // Retrieve the data-event-id attribute from the clicked element
-    const eventId = event.target.getAttribute('data-event-id');
-
-    if (!eventId) {
-      throw new Error('Data-event-id attribute is undefined or null.');
-    }
-
-    // Check if the image is already applied
-    const applyBox = event.target;
-    if (applyBox.classList.contains('applied')) {
-      // If already applied, do nothing
-      return;
-    }
-
-    const formData = {
-      userId: localStorage.getItem('googleId'),
-      EventId: eventId,
-        status: null,
-    };
-       response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-check?userId=${userId}`);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="login.js" defer></script>
+    <title>Checkpoint</title>
+    <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        await handleLoginState();
+    });
+    </script>
+    <script>
+        
+async function checkUserStatus() {
+    const userId = localStorage.getItem('googleId');
+    try {
+        let response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/admin-check?userId=${userId}`);
+        if (!response.ok) {
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+        let adminStatus = await response.json(); // Parse JSON response
+        if (adminStatus.isAdmin === true) { // Check isAdmin property
+            window.location.href = 'admin.html';
+        } else {
+            response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-check?userId=${userId}`);
             if (!response.ok) {
                 throw new Error(`Error: ${response.status} - ${response.statusText}`);
             }
-            let existingUserStatus = await response.json();
+            let existingUserStatus = await response.json(); // Assuming JSON response
             if (existingUserStatus.isUser === true) {
                 console.log('Existing User');
-                //window.location.href = 'apply.html';
+                window.location.href = 'apply.html';
             } else {
                 console.log('New User');
-               //window.location.href = 'userinfo.html';
+               window.location.href = 'userinfo.html'; // Make sure this is the correct URL
             }
-
-    fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/apply', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-      .then(response => response.text())
-      .then(data => {
-        console.log('Success:', data);
-
-        // Change the image source to the "applied" image
-        applyBox.innerHTML = 'Applied';  // Assuming you have an image text or an applied message
-        applyBox.classList.add('applied');  // Add a class to mark it as applied
-        applyBox.style.pointerEvents = 'none';  // Disable click events
-
-        alert('Data submitted successfully!');
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error.message);
-        alert('Error submitting data');
-      });
+        }
+    } catch (error) {
+        console.error('An error occurred:', error);
+    }
+}
+        checkUserStatus();
+    </script>
+</head>
+<body>
+    <h1>Checking your access...</h1>
+    <!-- You can add additional HTML content here -->
+</body>
+</html>

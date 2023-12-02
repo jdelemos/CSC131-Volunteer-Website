@@ -178,7 +178,7 @@ async function checkUserApplications() {
     const formData = {
       userId: localStorage.getItem('googleId'),
       EventId: eventId,
-        status: null,
+        status: 'pending',
     };
 
     fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/apply', {

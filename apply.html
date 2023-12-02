@@ -100,7 +100,7 @@ async function checkUserApplications() {
 
     try {
         // Call the backend with the user's Google ID
-        const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/apply-data?userId=${userId}`);
+        const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-apply-data?userId=${userId}`);
         
         // Check if the response is not successful (status code in the range 200-299)
         if (!response.ok) {

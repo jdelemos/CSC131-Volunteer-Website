@@ -6,13 +6,7 @@
     <script src="login.js" defer></script>
     <title>Checkpoint</title>
     <script>
-    document.addEventListener('DOMContentLoaded', async function() {
-        await handleLoginState();
-        checkUserStatus(); // Call the function to check the admin status
-    });
-    </script>
-    <script>
-        
+        import { handleLoginState } from './login.js';
 async function checkUserStatus() {
     const userId = localStorage.getItem('googleId');
     if (userId === null){
@@ -43,6 +37,11 @@ async function checkUserStatus() {
     } catch (error) {
         console.error('An error occurred:', error);
     }
+
+    document.addEventListener('DOMContentLoaded', async function() {
+    await handleLoginState();
+    checkUserStatus(); // This will be called after handleLoginState completes
+});
 }
     </script>
 </head>

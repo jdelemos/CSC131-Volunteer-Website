@@ -390,6 +390,8 @@ color: white;
 	display: flex;
 	grid-row-start: 1;
 	grid-column-start: 1;
+	width: 150%;
+	height: 150%;
 }
 .forms .name{
 	display: flex;

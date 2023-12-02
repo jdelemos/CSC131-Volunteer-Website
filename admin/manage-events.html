@@ -176,7 +176,7 @@ async function displayApplicants(applications, eventId) {
         outputContainer.innerHTML = htmlContent;
     }
 }
-        function approved(event) {          
+        async function approved(event) {          
                 const eventId = event.target.getAttribute('data-event-id');
                 const userId = event.target.getAttribute('data-user-id');
                 try {

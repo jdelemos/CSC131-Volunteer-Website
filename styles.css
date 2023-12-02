@@ -20,7 +20,7 @@ body {
     display: flex;
     justify-content: flex-start; /* Aligns items to the start */
     align-items: center;
-    padding: 50px;
+    padding: 20px;
     overflow: auto;
 }
 
@@ -33,7 +33,7 @@ body {
 .header .title {
     color: #c4B581;
     font-size: 22px;
-    margin-right: 20px; /* Adjust the space between the menu items if necessary */
+    margin-right: 50px; /* Adjust the space between the menu items if necessary */
     cursor: pointer;
     text-decoration: none;
     transition: text-decoration 0.3s;

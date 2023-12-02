@@ -17,7 +17,7 @@ async function checkUserStatus() {
         if (!response.ok) {
             throw new Error(`Error: ${response.status} - ${response.statusText}`);
         }
-        let adminStatus = await response.json(); // Parse JSON response
+        let adminStatus = await response.json();
         if (adminStatus.isAdmin === true) { // Check isAdmin property
             //window.location.href = 'admin.html';
         } else {
@@ -25,13 +25,13 @@ async function checkUserStatus() {
             if (!response.ok) {
                 throw new Error(`Error: ${response.status} - ${response.statusText}`);
             }
-            let existingUserStatus = await response.json(); // Assuming JSON response
+            let existingUserStatus = await response.json();
             if (existingUserStatus.isUser === true) {
                 console.log('Existing User');
                 //window.location.href = 'apply.html';
             } else {
                 console.log('New User');
-               //window.location.href = 'userinfo.html'; // Make sure this is the correct URL
+               //window.location.href = 'userinfo.html';
             }
         }
     } catch (error) {
@@ -47,6 +47,5 @@ async function checkUserStatus() {
 </head>
 <body>
     <h1>Checking your access...</h1>
-    <!-- You can add additional HTML content here -->
 </body>
 </html>

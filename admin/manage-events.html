@@ -149,16 +149,26 @@ async function displayApplicants(applications, eventId) {
 
         // Use Promise.all to wait for all fetchUserData promises to resolve
         const userPromises = applications
-            .filter(app => app.userId)
-            .map(app => fetchUserData(app.userId));
+        .filter(app => app.userId)
+        .map(app => fetchUserData(app.userId));
 
-        const userDataArray = await Promise.all(userPromises);
+    const userDataArray = await Promise.all(userPromises);
 
-        // Generate HTML content after all user data has been fetched
-        userDataArray.forEach(userinfo => {
-            if (userinfo) {
-                var uniqueId = Math.random().toString(16).slice(2)
-                htmlContent +=
+    userDataArray.forEach((userinfo, index) => {
+        if (userinfo) {
+            var uniqueId = Math.random().toString(16).slice(2);
+
+            // Assuming that the applications array has a corresponding order with userDataArray
+            const applicationStatus = applications[index].status;
+            var borderColor = 'defaultBorderColor'; // Default color
+            if (applicationStatus === 'accepted') {
+                borderColor = '#093813'; // Green for accepted
+            } else if (applicationStatus === 'denied') {
+                borderColor = '#861414'; // Red for denied
+            }
+
+            htmlContent +=
+                `<div class="user-rectangle" id="rectangle-b
                     `<div class="user-rectangle" id="rectangle-border" data-rectangle-id="${uniqueId}">
                         <img src="/VW/images/usericon.png" alt="" class="usericon">
                         <p class="text"><b> Name: </b>${userinfo.name}<br><b> Phone: </b>${userinfo.phone}<br><b> Email: </b>${userinfo.email}<br><b> DOB: </b>${userinfo.bday}</p>

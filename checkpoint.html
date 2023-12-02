@@ -21,7 +21,7 @@
           var admin = await response;
           if(admin = true){
             console.log('admin')
-            return window.href.location = 'jdelemos.github.io/VW/admin'
+            return window.href.location = 'admin.html'
           }else{
              response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-check?userId=${userId}`);
              if (!response.ok) {
@@ -30,10 +30,10 @@
           var existingUser = await response;
           if(existingUser = true){
             console.log('Existing User')
-            return window.href.location = 'jdelemos.github.io/VW/apply'
+            return window.href.location = 'apply.html'
           }else{
              console.log('new User')
-             return window.href.location = 'jdelemos.github.io/VW/user-check'
+             return window.href.location = 'user-check'
           }
           }
       }

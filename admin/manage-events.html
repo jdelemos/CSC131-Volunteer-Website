@@ -154,7 +154,17 @@ async function displayApplicants(applications, eventId) {
             .map(app => fetchUserData(app.userId));
 
         const userDataArray = await Promise.all(userPromises);
-
+            function approved(gotemail) {
+            
+                var subject = "UPDATE: Volunteer application";
+                var body = 'UPDATE: Your volunteer application for ${ename} has been accepted!';
+                window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
+            }
+            function denied(email) {
+                var subject = "UPDATE: Volunteer application";
+                var body = 'UPDATE: Your volunteer application for ${ename} has been denied. Feel free to apply for future events.';
+                window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
+            }
         // Generate HTML content after all user data has been fetched
         userDataArray.forEach(userinfo => {
             if (userinfo) {
@@ -176,17 +186,7 @@ async function displayApplicants(applications, eventId) {
         outputContainer.innerHTML = htmlContent;
     }
 }
-        function approved(gotemail) {
-            
-                var subject = "UPDATE: Volunteer application";
-                var body = 'UPDATE: Your volunteer application for ${ename} has been accepted!';
-                window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
-            }
-            function denied(email) {
-                var subject = "UPDATE: Volunteer application";
-                var body = 'UPDATE: Your volunteer application for ${ename} has been denied. Feel free to apply for future events.';
-                window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
-            }
+        
     </script>        
 </div>
 <script src="/VW/scalingfactor.js"></script>

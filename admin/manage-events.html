@@ -105,8 +105,8 @@ function displayData(data) {
 }
 
 async function displayApplicants(applications, eventId) {
-
-    
+     const outputContainer = document.getElementById('output-container');
+    let htmlContent = '';  
     const outputContainer = document.getElementById('output-container');
     const fetchEventData = async (eventId) => {
             
@@ -127,8 +127,6 @@ async function displayApplicants(applications, eventId) {
         };
     
     if (Array.isArray(applications)) {
-        let htmlContent = '';
-
         // Define a separate async function for fetching user data
         const fetchUserData = async (userId) => {
             
@@ -191,10 +189,9 @@ userDataArray.forEach(userinfo => {
         // Append buttons to the HTML content or directly to the DOM as needed
     }
 });
-        };
+            outputContainer.innerHTML = htmlContent;
 
-        // Set the content of outputContainer
-        outputContainer.innerHTML = htmlContent;
+        };
     }
 
         

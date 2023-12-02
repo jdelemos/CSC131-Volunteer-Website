@@ -167,7 +167,6 @@ async function showEventDetails(eventId) {
         // Set the content of outputContainer
         outputContainer.innerHTML = htmlContent;
     }
-}
         async function approved(event) {          
                 const rectangleId = event.target.getAttribute('data-rectangle-id');
                 const rectangle = document.querySelector(`.user-rectangle[data-rectangle-id="${rectangleId}"]`);

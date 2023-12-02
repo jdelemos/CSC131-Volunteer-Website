@@ -21,7 +21,7 @@ async function checkUserStatus() {
         }
         let adminStatus = await response.json(); // Parse JSON response
         if (adminStatus.isAdmin === true) { // Check isAdmin property
-            //window.location.href = 'admin.html';
+            window.location.href = 'admin.html';
         } else {
             response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-check?userId=${userId}`);
             if (!response.ok) {
@@ -30,10 +30,10 @@ async function checkUserStatus() {
             let existingUserStatus = await response.json(); // Assuming JSON response
             if (existingUserStatus.isUser === true) {
                 console.log('Existing User');
-                //window.location.href = 'apply.html';
+                window.location.href = 'apply.html';
             } else {
                 console.log('New User');
-               //window.location.href = 'userinfo.html'; // Make sure this is the correct URL
+               window.location.href = 'userinfo.html'; // Make sure this is the correct URL
             }
         }
     } catch (error) {

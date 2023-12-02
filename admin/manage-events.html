@@ -153,7 +153,18 @@ async function displayApplicants(applications, eventId) {
             .filter(app => app.userId)
             .map(app => fetchUserData(app.userId));
 
-        
+        const userDataArray = await Promise.all(userPromises);
+            function approved() {
+            
+                var subject = "UPDATE: Volunteer application";
+                var body = 'UPDATE: Your volunteer application for ${ename} has been accepted!';
+                window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
+            }
+            function denied() {
+                var subject = "UPDATE: Volunteer application";
+                var body = 'UPDATE: Your volunteer application for ${ename} has been denied. Feel free to apply for future events.';
+                window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
+            }
         // Generate HTML content after all user data has been fetched
         userDataArray.forEach(userinfo => {
             if (userinfo) {
@@ -173,18 +184,6 @@ async function displayApplicants(applications, eventId) {
         // Set the content of outputContainer
         outputContainer.innerHTML = htmlContent;
     }
-    const userDataArray = await Promise.all(userPromises);
-            function approved(event) {
-                const userId = event.target.getAttribute('data-user-id');
-                var subject = "UPDATE: Volunteer application";
-                var body = 'UPDATE: Your volunteer application for ${ename} has been accepted!';
-                window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
-            }
-            function denied() {
-                var subject = "UPDATE: Volunteer application";
-                var body = 'UPDATE: Your volunteer application for ${ename} has been denied. Feel free to apply for future events.';
-                window.location = 'mailto:${gotemail}.com?subject=' + subject + "&body=" + body;
-            }
 }
         
     </script>        

@@ -260,7 +260,7 @@ body {
     font-weight: bold;
     cursor: pointer;
 	
-.green-box:hover{
+.green-box::hover{
     background-color: #041a09;
 }
     
@@ -278,7 +278,7 @@ body {
     cursor: pointer;
     
 }
-.deny-box:hover{
+.deny-box::hover{
     background-color: #570a0b;
 }
 

@@ -500,7 +500,7 @@ color: white;
  margin: 0 auto;
     margin-bottom: calc(26px*var(--scaling-factor));
     height: calc(229px*var(--scaling-factor));
-    width: calc(1694px*var(--scaling-factor));
+    width: calc(1764px*var(--scaling-factor));
     background: #121212;
     border: calc(4.45217px *var(--scaling-factor))solid #C4B581;
 display: flex;

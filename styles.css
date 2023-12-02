@@ -559,3 +559,8 @@ margin-right: calc(140px*var(--scaling-factor));
     margin-bottom: calc(20px*var(--scaling-factor));/
 	
 }
+
+.return-arrow{
+    height: calc(80px*var(--scaling-factor));
+    margin-left: 3%;
+}

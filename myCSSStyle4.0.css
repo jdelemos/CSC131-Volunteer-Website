@@ -182,9 +182,11 @@ form{
 .header {
     background-color: #093813; /* Header background color */
     display: flex;
+    justify-content: flex-start; /* Aligns items to the start */
     align-items: center;
     padding: 20px;
     top: 0;
+    overflow: auto;
 }
 
 .header .title{

@@ -107,36 +107,26 @@ async function checkUserApplications() {
             throw new Error(`Error: ${response.status} - ${response.statusText}`);
         }
 
-               const userApplications = await response.json();
+        const userApplications = await response.json(); // Parse the response into JSON
         console.log('Applications found:', userApplications);
 
-        // Update the Apply buttons based on application status
+        // update the Apply buttons accordingly
         const eventElements = document.querySelectorAll('.apply-box');
         eventElements.forEach(element => {
             const eventId = element.getAttribute('data-event-id');
             
-            // Find the application for this specific event
-            const application = userApplications.find(app => app.EventId === eventId);
-
-            if (application) {
-                if (application.status === 'accepted') {
-                    // If the application is accepted
-                    element.innerHTML = 'Accepted';
-                    element.classList.add('accepted');
-                    element.style.pointerEvents = 'none';
-                } else {
-                    // If the application exists but is not accepted
-                    element.innerHTML = 'Applied';
-                    element.classList.add('applied');
-                    element.style.pointerEvents = 'none';
-                }
+            // Check if the user has applied for this specific event
+            if (userApplications.some(application => application.EventId === eventId)) {
+                // User has already applied to this event
+                element.innerHTML = 'Applied';
+                element.classList.add('applied');
+                element.style.pointerEvents = 'none';
             } else {
-                // If the user hasn't applied for this event
+                // If the user hasn't applied for this event, ensure it's in the default state
                 element.innerHTML = 'Apply';
-                element.classList.remove('applied', 'accepted');
+                element.classList.remove('applied');
                 element.style.pointerEvents = 'auto';
             }
-
         });
 
     } catch (error) {
@@ -163,24 +153,6 @@ checkUserApplications();
         window.history.pushState({},document.title,"/VW/"+"apply")
 
         function apply(event) {
-        const userId = localStorage.getItem('userId');   
-        response = await fetch(https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-check?userId=${userId});
-        
-            if (!response.ok) {
-                throw new Error(Error: ${response.status} - ${response.statusText});
-            }
-            let existingUserStatus = await response.json();
-            if (existingUserStatus.isUser === true) {
-                console.log('Existing User');
-                //window.location.href = 'apply.html';
-            } else {
-                console.log('New User');
-               //window.location.href = 'userinfo.html';
-            }
-            return; 
-
-
-            
   try {
     event.preventDefault();
 

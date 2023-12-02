@@ -1,7 +1,7 @@
 async function checkAdminAndRedirect() {
   // Retrieve the isLoggedIn value or default to 'false' if the key is missing
   const isLoggedIn = localStorage.getItem('loggedIn') || 'false';
-  userId = localStorage.getItem('googleId')
+  const userId = localStorage.getItem('googleId')
   console.log(isLoggedIn);
   let response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/admin-check?userId=${userId}`);
         if (!response.ok) {

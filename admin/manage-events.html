@@ -175,9 +175,8 @@ async function displayApplicants(applications, eventId) {
                         <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
                         <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}
                         </div>
-                        <div class="accept-box" data-event-id='' id="accept" alt="accept" onclick="approved()">Accept</div>
-                        <div class="deny-box" data-event-id='' id="deny" alt="deny" onclick='denied()'>Deny</div>
-                        
+                        <div class="accept-box" data-user-id="${userinfo.userId}" data-event-id="${eventinfo.eventId}" onclick="handleDecision(event, true)">Accept</div>
+                        <div class="deny-box" data-user-id="${userinfo.userId}" data-event-id="${eventinfo.eventId}" onclick="handleDecision(event, false)">Deny</div>   
                     </div>`;
             }
         });

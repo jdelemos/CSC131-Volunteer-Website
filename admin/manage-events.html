@@ -180,7 +180,7 @@ async function showEventDetails(eventId) {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': 'https://jdelemos.github.io'
             },
-            body: JSON.stringify({ userId: userId, eventId: eventId })
+            body: JSON.stringify({ userId: userId, EventId: eventId })
         });
 
         if (!response.ok) {
@@ -216,7 +216,7 @@ async function showEventDetails(eventId) {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': 'https://jdelemos.github.io'
             },
-            body: JSON.stringify({ userId: userId, eventId: eventId })
+            body: JSON.stringify({ userId: userId, EventId: eventId })
         });
 
         if (!response.ok) {

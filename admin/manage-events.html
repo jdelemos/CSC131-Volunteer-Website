@@ -206,7 +206,7 @@ async function displayApplicants(applications, eventId) {
                 const eventId = event.target.getAttribute('data-event-id');
                 const userId = event.target.getAttribute('data-user-id');
                 try {
-        const response = await fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/deny, {
+        const response = await fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/deny', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

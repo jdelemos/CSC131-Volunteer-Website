@@ -111,29 +111,16 @@ async function checkUserApplications() {
         const eventElements = document.querySelectorAll('.apply-box');
         eventElements.forEach(element => {
             const eventId = element.getAttribute('data-event-id');
-            const application = userApplications.find(app => app.EventId === eventId);
+            const application = userApplications.find(app => app.eventId === eventId && app.userId === userId);
 
             if (application) {
-                switch (application.Status) {
-                    case 'Accepted':
-                        element.innerHTML = 'Accepted';
-                        element.classList.add('accepted');
-                        break;
-                    case 'Denied':
-                        element.innerHTML = 'Denied';
-                        element.classList.add('denied');
-                        break;
-                    case 'Pending':
-                        element.innerHTML = 'Pending';
-                        element.classList.add('pending');
-                        break;
-                    // Other statuses can be handled here
-                }
-                element.style.pointerEvents = 'none';
+                element.innerHTML = application.status; // Display the application status
+                element.classList.add(application.status.toLowerCase()); // Add a class for styling based on status
+                element.style.pointerEvents = 'none'; // Disable further clicks if application status exists
             } else {
-                element.innerHTML = 'Apply';
-                element.classList.remove('applied', 'accepted', 'denied', 'pending');
-                element.style.pointerEvents = 'auto';
+                element.innerHTML = 'Apply'; // Display 'Apply' if no application found
+                element.classList.remove('accepted', 'denied', 'pending'); // Remove any status classes
+                element.style.pointerEvents = 'auto'; // Enable clicks
             }
         });
 
@@ -141,8 +128,6 @@ async function checkUserApplications() {
         console.error('Error checking user applications:', error);
     }
 }
-
-
 // Set the HTML content of the container
         outputContainer.innerHTML = htmlContent;
     

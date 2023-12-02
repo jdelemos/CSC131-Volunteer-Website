@@ -108,7 +108,7 @@ async function showEventDetails(eventId) {
         }
     }
 
-async function displayApplicants(eventDetails, applications) {
+    async function displayApplicants(eventDetails, applications) {
   const outputContainer = document.getElementById('output-container');
   console.log(eventDetails);
   let htmlContent = `
@@ -120,30 +120,32 @@ async function displayApplicants(eventDetails, applications) {
       <img class="return-arrow" onclick='fetchData()' src="/VW/images/return-arrow.png" alt="">
     </div>`;
 
-  // Define a function to fetch user data for a single user
-  async function fetchUserData(userId) {
-    try {
-      const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${userId}`);
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} - ${response.statusText}`);
-      }
+  // Define a separate async function for fetching user data
+     const fetchUserData = async (userId) => {
+            
+            
+            try {
+                const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${userId}`);
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                }
 
-      const userinfo = await response.json();
-      console.log('userinfo found:', userinfo);
-      return userinfo;
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-      return null; // Handle the error as needed
-    }
-  }
+                const userinfo = await response.json();
+                console.log('userinfo found:', userinfo);
+                return userinfo;
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+                return null; // Handle the error as needed
+            }
+        };
 
-  // Use Promise.all to fetch user data for all applicants concurrently
-  const userPromises = applications
-    .filter(app => app.userId)
-    .map(app => fetchUserData(app.userId));
+        // Use Promise.all to wait for all fetchUserData promises to resolve
+        const userPromises = applications
+            .filter(app => app.userId)
+            .map(app => fetchUserData(app.userId));
 
-  const userDataArray = await Promise.all(userPromises);
-
+        const userDataArray = await Promise.all(userPromises);
+        
   userDataArray.forEach((userinfo, index) => {
     if (userinfo) {
       var uniqueId = Math.random().toString(16).slice(2);

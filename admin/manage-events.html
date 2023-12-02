@@ -120,6 +120,7 @@ async function displayApplicants(applications, eventId) {
                 const eventinfo = await response.json();
                 console.log('eventinfo found:', eventinfo);
                 return eventinfo;
+                console.log(eventinfo);
             } catch (error) {
                 console.error('Error fetching user data:', error);
                 return null; // Handle the error as needed

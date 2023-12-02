@@ -56,7 +56,7 @@ form{
 	grid-template-columns: repeat(1, 1fr);	
 	text-align: center;
 	height: calc(540px*var(--scaling-factor));
-	transform: translate(0, calc(200px*var(--scaling-factor)));
+	transform: translate(0, calc(100px*var(--scaling-factor)));
 
 }
 

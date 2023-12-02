@@ -231,7 +231,7 @@ window.onload = setMinDate();
                     capcity: document.getElementById('capacity').value,
                     description: document.getElementById('description').value
                 };
-                fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/submit', {
+                fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/event-submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

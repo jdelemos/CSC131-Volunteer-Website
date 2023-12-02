@@ -29,7 +29,7 @@ body {
     margin-left: auto; /* This will push the .right-items container to the right */
     display: flex; /* If you want to keep the hidden items in a row */
 }
-.title.hidden #update{
+a#update.title.hidden{
 	margin-left: 30px !important;
 }
 

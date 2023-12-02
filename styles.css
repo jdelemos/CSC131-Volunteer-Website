@@ -29,9 +29,6 @@ body {
     margin-left: auto; /* This will push the .right-items container to the right */
     display: flex; /* If you want to keep the hidden items in a row */
 }
-a#update.title.hidden{
-	margin-left: 30px !important;
-}
 
 .header .title {
     color: #c4B581;
@@ -44,6 +41,7 @@ a#update.title.hidden{
 
 .header .title.hidden {
     display: none; /* Use none instead of hidden to hide elements */
+    margin-left: -20px;
 }
 
 

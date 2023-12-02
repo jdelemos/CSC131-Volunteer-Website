@@ -252,7 +252,7 @@ body {
     width: calc(275px*var(--scaling-factor)); 
     height: calc(80px*var(--scaling-factor)); 
     background-color: #093813;
-    transform: translate(calc(1px*var(--scaling-factor)), calc(1px*var(--scaling-factor)));
+    transform: translate(calc(160px*var(--scaling-factor)), calc(18px*var(--scaling-factor)));
     text-align: center;
     line-height: calc(80px*var(--scaling-factor));
     color: white;
@@ -265,7 +265,7 @@ body {
     width: calc(275px*var(--scaling-factor)); 
     height: calc(80px*var(--scaling-factor)); 
     background-color: red;
-    transform: translate(calc(1px*var(--scaling-factor)), calc(1px*var(--scaling-factor)));
+    transform: translate(calc(-22px*var(--scaling-factor)), calc(129px*var(--scaling-factor)));
     text-align: center;
     line-height: calc(80px*var(--scaling-factor));
     color: white;

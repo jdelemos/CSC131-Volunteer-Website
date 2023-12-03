@@ -591,3 +591,9 @@ margin-right: calc(140px*var(--scaling-factor));
     height: calc(80px*var(--scaling-factor));
     margin-left: 3%;
 }
+
+.event-options{
+display: flex;
+  flex-direction: row;
+  justify-content: left;
+}

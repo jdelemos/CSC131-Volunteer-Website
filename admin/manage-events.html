@@ -125,11 +125,8 @@ async function displayApplicants(eventDetails, applications) {
       Event: ${eventDetails.eventName}
     </h2>
     <div class="event-title-underline"></div>
-    <div class="event-options">
     <div class="return-arrow-container">
       <img class="return-arrow" onclick='fetchData()' src="/VW/images/return-arrow.png" alt="">
-    </div>
-    <button class="delete-event-button" onclick="deleteEvent('${eventDetails.eventId}')">Delete Event</button;
     </div>`;
 
   async function fetchUserData(userId) {
@@ -266,31 +263,6 @@ async function displayApplicants(eventDetails, applications) {
     }
                 
             }
-
-        async function deleteEvent(eventId) {
-  try {
-    var response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/delete-event?eventId=${eventId}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://jdelemos.github.io'
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    var result = await response.text();
-    console.log(result);
-
-    // Call the displayData function to refresh the event list after successful deletion
-    fetchData();
-  } catch (error) {
-    console.error('Error:', error);
-    // Handle the error here (e.g., show an error message)
-  }
-}
             
     </script>        
 </div>

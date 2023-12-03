@@ -223,6 +223,7 @@ window.onload = setMinDate();
               }
 
                 const formData = {
+                        EventId: Math.random().toString(36).substring(2, length+2),
                     eventName: document.getElementById('eventName').value,
                     startDate: document.getElementById('startDate').value,
                     endDate: document.getElementById('endDate').value,

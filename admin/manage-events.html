@@ -72,7 +72,7 @@ function displayData(data) {
                 console.log(item)
                 // Wrap each event rectangle in an anchor tag with the appropriate href
                     htmlContent +=
-                      `<a href="javascript:void(0);" class="event-link"  onclick="showEventDetails('${item.EventId}')">
+                      `<a href="javascript:void(0);" class="event-link"  onclick="showEventDetails('${item.eventId}')">
                         <div class="event-rectangle">
                             <div class="text-wrap">
                                 <p class="text"> <b> Event: </b>${item.eventName}</p>
@@ -191,7 +191,7 @@ async function displayApplicants(eventDetails, applications) {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': 'https://jdelemos.github.io'
             },
-            body: JSON.stringify({ userId: userId, EventId: eventId })
+            body: JSON.stringify({ userId: userId, eventId: eventId })
         });
 
         if (!response.ok) {
@@ -228,7 +228,7 @@ async function displayApplicants(eventDetails, applications) {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': 'https://jdelemos.github.io'
             },
-            body: JSON.stringify({ userId: userId, EventId: eventId })
+            body: JSON.stringify({ userId: userId, eventId: eventId })
         });
 
         if (!response.ok) {

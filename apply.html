@@ -92,9 +92,10 @@ async function displayData(data) {
         let applyText = 'Apply';
         let applyClass = '';
         let pointerEvents = 'auto';
-
+        console.log(item)
         const application = userApplications.find(app => app.eventId === item.eventId && app.userId === userId);
         if (application) {
+            console.log(application)
             applyText = application.status;
             applyClass = application.status.toLowerCase();
             pointerEvents = 'none';

@@ -266,6 +266,29 @@ async function displayApplicants(eventDetails, applications) {
     }
                 
             }
+
+        async function deleteEvent(eventId) {
+  try {
+    var response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/delete-event?eventId=${eventId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'https://jdelemos.github.io'
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    var result = await response.text();
+    console.log(result);
+    // Handle the response here (e.g., show a success message)
+  } catch (error) {
+    console.error('Error:', error);
+    // Handle the error here (e.g., show an error message)
+  }
+}
             
     </script>        
 </div>

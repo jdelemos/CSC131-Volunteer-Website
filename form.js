@@ -3,7 +3,7 @@ window.onload = setMaxDate();
 window.onload = function() {
     var userId = sessionStorage.getItem('googleId'); 
 
-    fetch('/user-data?userId=' + userId)
+    fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=' + userId)
     .then(response => {
         if (!response.ok) {
             throw new Error('User not found');

@@ -165,11 +165,11 @@ function setMaxDate(){
           if (!isValid) {
             // Invalid input: set border color to red
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
-            document.getElementById('zipcodeLabel').style.display = 'block';
+            document.getElementById('enameLabel').style.display = 'block';
           } else {
             // Valid input: set border color to green
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
-            document.getElementById('zipcodeLabel').style.display = 'none';
+            document.getElementById('enameLabel').style.display = 'none';
           }
         }
       }
@@ -187,7 +187,7 @@ function setMaxDate(){
           if (!isValid) {
             // Invalid input: set border color to red
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
-            document.getElementById('enameLabel').style.display = 'block';
+            document.getElementById('ephoneLabel').style.display = 'block';
 
           } else {
             // Valid input: set border color to green
@@ -206,22 +206,24 @@ function setMaxDate(){
         if (inputValue === '') {
           // Blank input: set border color to white
           inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
-          document.getElementById('bdayLabel').style.display = 'block';
+          document.getElementById('bdayLabel').style.display = 'none';
 
         } else {
           var isValid = /^\d{4}-\d{2}-\d{2}$/.test(inputValue);
           if(new Date(document.getElementById('bday').value) > maxDate){
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
-            document.getElementById('bdayLabel').style.display = 'none';
+            document.getElementById('bdayLabel').style.display = 'block';
 
           }
   
           if (!isValid) {
             // Invalid input: set border color to red
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
+		              document.getElementById('bdayLabel').style.display = 'block';
           } else {
             // Valid input: set border color to green
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
+		            document.getElementById('bdayLabel').style.display = 'none';
           }
         }
       }

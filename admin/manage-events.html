@@ -166,14 +166,14 @@ async function displayApplicants(eventDetails, applications) {
         borderColor = '#861414'; // Red for denied
       }
 
-    function approved(eventName, userEmail) {
+    function approvedEmail(eventName, userEmail) {
           var subject = "UPDATE: Volunteer application";
           var body = `UPDATE: The volunteer application for ${eventName} been accepted by LiHelp!`;
           var facultybody = `UPDATE: The volunteer application for ${userinfo.name} has been accepted. For documentation purposes, the event will occur ${edate}.`;
           window.location = `mailto:${userEmail}?subject=${subject}&body=${body}`;
         }
 
-    function denied(eventName, userEmail) {
+    function deniedEmail(eventName, userEmail) {
           var subject = "UPDATE: Volunteer application";
           var body = `UPDATE: Your volunteer application for ${ename} has been denied. Feel free to apply for future events.`;
           window.location = `mailto:${gotemail}?subject=${subject}&body=${body}`;
@@ -189,7 +189,7 @@ async function displayApplicants(eventDetails, applications) {
           <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
           <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}</p>
         </div>
-        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(${eName}, $(eMail))'>Accept</div>
+        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event); approvedEmail(${ename},${eMail})'>Accept</div>
         <div class="deny-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='denied(event)'>Deny</div>
       </div>`;
     }

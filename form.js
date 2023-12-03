@@ -8,7 +8,7 @@ window.onload = async function() {
         day = day < 10 ? '0' + day : day;
         document.getElementById('bday').max = `${year}-${month}-${day}`;
     var userId = sessionStorage.getItem('googleId'); 
-
+	console.log(userId)
  try {
       var response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${userId}`);
       if (!response.ok) {
@@ -20,7 +20,7 @@ window.onload = async function() {
       return userinfo;
     } catch (error) {
       console.error('Error fetching user data:', error);
-      return null; // Handle the error as needed
+      return null; 
     }
   };
 

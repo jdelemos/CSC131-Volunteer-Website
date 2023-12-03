@@ -91,7 +91,7 @@ async function displayData(data) {
         let applyClass = '';
         let pointerEvents = 'auto';
 
-        const application = userApplications.find(app => app.EventId === item.EventId && app.userId === userId);
+        const application = userApplications.find(app => app.eventId === item.eventId && app.userId === userId);
         if (application) {
             applyText = application.status;
             applyClass = application.status.toLowerCase();
@@ -107,7 +107,7 @@ async function displayData(data) {
                     <p class="text"> <strong>Time:</strong> ${item.time}</p>
                     <p class="text"> <strong>Location:</strong> ${item.location}</p>
                 </div>  
-                <div class="apply-box ${applyClass}" data-event-id="${item.EventId}" id="apply-${item.EventId}" alt="apply" onclick="apply(event)" style="pointer-events: ${pointerEvents};">${applyText}</div>
+                <div class="apply-box ${applyClass}" data-event-id="${item.eventId}" id="apply-${item.eventId}" alt="apply" onclick="apply(event)" style="pointer-events: ${pointerEvents};">${applyText}</div>
             </div>`;
     });
 
@@ -136,8 +136,8 @@ async function checkUserApplications() {
 
         const eventElements = document.querySelectorAll('.apply-box');
         eventElements.forEach(element => {
-            const EventId = element.getAttribute('data-event-id');
-            const application = userApplications.find(app => app.EventId === EventId && app.userId === userId);
+            const eventId = element.getAttribute('data-event-id');
+            const application = userApplications.find(app => app.eventId === eventId && app.userId === userId);
 
             if (application) {
                 element.innerHTML = application.status; // Display the application status
@@ -173,10 +173,10 @@ async function checkUserApplications() {
     event.preventDefault();
 
     // Retrieve the data-event-id attribute from the clicked element
-    const EventId = event.target.getAttribute('data-event-id');
-      console.log(EventId)
+    const eventId = event.target.getAttribute('data-event-id');
+      console.log(eventId)
 
-    if (!EventId) {
+    if (!eventId) {
       throw new Error('Data-event-id attribute is undefined or null.');
     }
 
@@ -189,7 +189,7 @@ async function checkUserApplications() {
 
     const formData = {
       userId: localStorage.getItem('googleId'),
-      EventId: EventId,
+      eventId: eventId,
         status: 'pending',
     };
 

@@ -591,6 +591,10 @@ margin-right: calc(140px*var(--scaling-factor));
     height: calc(80px*var(--scaling-factor));
     margin-left: 3%;
 }
+.delete-event{
+    height: calc(80px*var(--scaling-factor));
+    margin-left: 10%;
+}
 
 .event-options{
 display: flex;

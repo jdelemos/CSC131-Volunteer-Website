@@ -1,43 +1,4 @@
-window.onload = async function() {
-    try {
-        // Fetch user data and populate form fields
-        await fetchUserDataAndPopulateForm();
-        setMaxDate(); // Ensure max date is set
-    } catch (error) {
-        console.error('Error:', error);
-    }
-};
-
-async function fetchUserDataAndPopulateForm() {
-    const userId = localStorage.getItem('googleId');
-
-    // Check if a userId is available
-    if (userId) {
-        // Fetch user data from the server
-        try {
-            const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${userId}`);
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-            const data = await response.json();
-
-            // Populate the form fields with retrieved data
-            document.getElementById('name').value = data.name || '';
-            document.getElementById('email').value = data.email || '';
-            document.getElementById('phone').value = data.phone || '';
-            document.getElementById('address').value = data.address || '';
-            document.getElementById('city').value = data.city || '';
-            document.getElementById('zipcode').value = data.zipcode || '';
-            document.getElementById('ename').value = data.ename || '';
-            document.getElementById('ephone').value = data.ephone || '';
-            document.getElementById('bday').value = data.bday || '';
-        } catch (error) {
-            console.error('Error fetching user data:', error);
-            throw error;
-        }
-    }
-}
+window.onload = setMaxDate();
 function setMaxDate(){
     const today = new Date();
         const year = today.getFullYear();

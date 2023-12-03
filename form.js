@@ -1,6 +1,12 @@
-window.onload = setMaxDate();
 
 window.onload = function() {
+	const today = new Date();
+        const year = today.getFullYear();
+        let month = today.getMonth() + 1;
+        let day = today.getDate();
+        month = month < 10 ? '0' + month : month;
+        day = day < 10 ? '0' + day : day;
+        document.getElementById('bday').max = `${year}-${month}-${day}`;
     var userId = sessionStorage.getItem('googleId'); 
 
     fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=' + userId)
@@ -17,17 +23,10 @@ window.onload = function() {
         console.error('Error:', error);
         
     });
+	
 };
 
-function setMaxDate(){
-    const today = new Date();
-        const year = today.getFullYear();
-        let month = today.getMonth() + 1;
-        let day = today.getDate();
-        month = month < 10 ? '0' + month : month;
-        day = day < 10 ? '0' + day : day;
-        document.getElementById('bday').max = `${year}-${month}-${day}`;
-  }
+
 
   function checkValid(event) {
     var inputElement = event.target;

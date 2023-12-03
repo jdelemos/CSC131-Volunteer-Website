@@ -50,7 +50,9 @@
     // Check if the response is JSON
     if (contentType && contentType.includes('application/json')) {
       const data = await response.json();
+        console.log(data)
       displayData(data);
+        
     } else {
       throw new Error('Unexpected response format: Not JSON');
     }
@@ -70,7 +72,7 @@ function displayData(data) {
                 // Wrap each event rectangle in an anchor tag with the appropriate href
                 htmlContent += 
                     htmlContent +=
-                      `<a href="javascript:void(0);" class="event-link"  onclick="showEventDetails('${item.eventId}')">
+                      `<a href="javascript:void(0);" class="event-link"  onclick="showEventDetails('${item.EventId}')">
                         <div class="event-rectangle">
                             <div class="text-wrap">
                                 <p class="text"> <b> Event: </b>${item.eventName}</p>

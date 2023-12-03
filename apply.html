@@ -136,8 +136,8 @@ async function checkUserApplications() {
 
         const eventElements = document.querySelectorAll('.apply-box');
         eventElements.forEach(element => {
-            const eventId = element.getAttribute('data-event-id');
-            const application = userApplications.find(app => app.eventId === eventId && app.userId === userId);
+            const EventId = element.getAttribute('data-event-id');
+            const application = userApplications.find(app => app.EventId === EventId && app.userId === userId);
 
             if (application) {
                 element.innerHTML = application.status; // Display the application status
@@ -173,9 +173,9 @@ async function checkUserApplications() {
     event.preventDefault();
 
     // Retrieve the data-event-id attribute from the clicked element
-    const eventId = event.target.getAttribute('data-event-id');
+    const EventId = event.target.getAttribute('data-event-id');
 
-    if (!eventId) {
+    if (!EventId) {
       throw new Error('Data-event-id attribute is undefined or null.');
     }
 
@@ -188,7 +188,7 @@ async function checkUserApplications() {
 
     const formData = {
       userId: localStorage.getItem('googleId'),
-      EventId: eventId,
+      EventId: EventId,
         status: 'pending',
     };
 

@@ -174,6 +174,8 @@ async function displayApplicants(eventDetails, applications) {
     var bodyAccept = `UPDATE: The volunteer application for ${eventName} been accepted by LiHelp!`;
     var facultybodyAccept = `UPDATE: The volunteer application for ${fullName} has been accepted. For documentation purposes, the event will occur ${eventStart}.`;
 
+          var bodyDeclined = `UPDATE: Your volunteer application for ${ename} has been denied. Feel free to apply for future events.`;
+
 
       htmlContent += `
         <div class="user-rectangle" id="rectangle-border" data-rectangle-id="${uniqueId}" style="border-color: ${borderColor};">                        
@@ -182,8 +184,8 @@ async function displayApplicants(eventDetails, applications) {
           <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
           <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}</p>
         </div>
-        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event); window.location = mailto:${userEmail}?subject=${subjectAccept}&body=${bodyAccept};'>Accept</div>
-        <div class="deny-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='denied(event)'>Deny</div>
+        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event); window.location = "mailto:${userEmail}?subject=${subjectAccept}&body=${bodyAccept}";'>Accept</div>
+        <div class="deny-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='denied(event); window.location = "mailto:${userEmail}?subject=${subjectAccept}&body=${bodyDeclined}";'>Deny</div>
       </div>`;
     }
   });
@@ -191,11 +193,6 @@ async function displayApplicants(eventDetails, applications) {
   outputContainer.innerHTML = htmlContent;
 }
 
-   async function deniedEmail(eventName, userEmail) {
-          var subject = "UPDATE: Volunteer application";
-          var body = `UPDATE: Your volunteer application for ${ename} has been denied. Feel free to apply for future events.`;
-          window.location = `mailto:${gotemail}?subject=${subject}&body=${body}`;
-        }
         async function approved(event) {          
                 var rectangleId = event.target.getAttribute('data-rectangle-id');
                 var rectangle = document.querySelector(`.user-rectangle[data-rectangle-id="${rectangleId}"]`);

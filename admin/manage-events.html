@@ -170,6 +170,10 @@ async function displayApplicants(eventDetails, applications) {
     eventStart = eventDetails.startDate;
     userEmail  = userinfo.email; 
 
+    var subjectAccept = "UPDATE: Volunteer application";
+    var bodyAccept = `UPDATE: The volunteer application for ${eventName} been accepted by LiHelp!`;
+    var facultybodyAccept = `UPDATE: The volunteer application for ${fullName} has been accepted. For documentation purposes, the event will occur ${eventStart}.`;
+
 
       htmlContent += `
         <div class="user-rectangle" id="rectangle-border" data-rectangle-id="${uniqueId}" style="border-color: ${borderColor};">                        
@@ -178,7 +182,7 @@ async function displayApplicants(eventDetails, applications) {
           <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
           <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}</p>
         </div>
-        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event); approvedEmail()'>Accept</div>
+        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event); window.location = mailto:${userEmail}?subject=${subject}&body=${body};'>Accept</div>
         <div class="deny-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='denied(event)'>Deny</div>
       </div>`;
     }
@@ -186,12 +190,6 @@ async function displayApplicants(eventDetails, applications) {
 
   outputContainer.innerHTML = htmlContent;
 }
-            async function approvedEmail() {
-          var subject = "UPDATE: Volunteer application";
-          var body = `UPDATE: The volunteer application for ${eventName} been accepted by LiHelp!`;
-          var facultybody = `UPDATE: The volunteer application for ${fullName} has been accepted. For documentation purposes, the event will occur ${eventStart}.`;
-          window.location = `mailto:${userEmail}?subject=${subject}&body=${body}`;
-        }
 
    async function deniedEmail(eventName, userEmail) {
           var subject = "UPDATE: Volunteer application";

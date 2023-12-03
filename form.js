@@ -9,7 +9,7 @@ window.onload = async function() {
         document.getElementById('bday').max = `${year}-${month}-${day}`;
     var userId = sessionStorage.getItem('googleId'); 
 
-try {
+ try {
       var response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${userId}`);
       if (!response.ok) {
         throw new Error(`Error: ${response.status} - ${response.statusText}`);
@@ -18,7 +18,11 @@ try {
       var userinfo = await response.json();
       console.log('userinfo found:', userinfo);
       return userinfo;
-	console.log(userinfo)
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      return null; // Handle the error as needed
+    }
+  }
 	
 };
 

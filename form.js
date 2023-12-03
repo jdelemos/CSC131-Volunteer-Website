@@ -20,9 +20,9 @@ function fetchUserDataAndPopulateForm() {
                 document.getElementById('address').value = data.address || '';
                 document.getElementById('city').value = data.city || '';
                 document.getElementById('zipcode').value = data.zipcode || '';
-                document.getElementById('ename').value = data.emergencyContact || '';
-                document.getElementById('ephone').value = data.emergencyNumber || '';
-                document.getElementById('bday').value = data.birthday || '';
+                document.getElementById('ename').value = data.ename || '';
+                document.getElementById('ephone').value = data.ephone || '';
+                document.getElementById('bday').value = data.bday || '';
             })
             .catch(error => {
                 console.error('Error fetching user data:', error);

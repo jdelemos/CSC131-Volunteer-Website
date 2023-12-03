@@ -93,7 +93,7 @@ async function displayData(data) {
         let applyClass = '';
         let pointerEvents = 'auto';
         console.log(item)
-        const application = userApplications.find(app => app.eventId === item.eventId && app.userId === userId);
+        const application = userApplications.find(app => app.eventId === item.EventId && app.userId === userId);
         if (application) {
             console.log(application)
             applyText = application.status;

@@ -60,7 +60,8 @@
 }
     
 function displayData(data) {
-        const outputContainer = document.getElementById('output-container');
+       const outputContainer = document.getElementById('output-container');
+  outputContainer.innerHTML = ''; // Clear existing content
         if (data.length === 0) {
             outputContainer.innerHTML = '<p>No data available.</p>';
         } else {

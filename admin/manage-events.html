@@ -36,6 +36,15 @@
         </div>
     <script>
             window.onload=fetchData(); 
+
+
+
+let eventName = "";
+let fullName  = "";
+let eventStart = "";
+let userEmail = ""; 
+
+        
             async function fetchData() {
   try {
     var response = await fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/events-data');
@@ -166,7 +175,7 @@ async function displayApplicants(eventDetails, applications) {
           <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
           <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}</p>
         </div>
-        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event); approvedEmail('${eventDetails.eventName}', '${userinfo.email}', '${eventDetails.startDate}', '${userinfo.name}');'>Accept</div>
+        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event); approvedEmail()'>Accept</div>
         <div class="deny-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='denied(event)'>Deny</div>
       </div>`;
     }
@@ -174,7 +183,7 @@ async function displayApplicants(eventDetails, applications) {
 
   outputContainer.innerHTML = htmlContent;
 }
-            async function approvedEmail(eventName, userEmail, eventStart, fullName) {
+            async function approvedEmail() {
           var subject = "UPDATE: Volunteer application";
           var body = `UPDATE: The volunteer application for ${eventName} been accepted by LiHelp!`;
           var facultybody = `UPDATE: The volunteer application for ${fullName} has been accepted. For documentation purposes, the event will occur ${eventStart}.`;

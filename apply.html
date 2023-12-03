@@ -63,29 +63,57 @@
   }
 }
     
-function displayData(data) {
+async function displayData(data) {
     const outputContainer = document.getElementById('output-container');
     if (data.length === 0) {
         outputContainer.innerHTML = '<p>No data available.</p>';
-    } else {
-        let htmlContent = '';
-        data.forEach(item => {
-            htmlContent += `
-                <div class="event-rectangle">
-                    <div class="text-wrap">
-                        <p class="text"> <b> Event: </b>${item.eventName}</p>
-                        <p class="text"> <strong>Description: </strong>${item.description}</p>
-                        <p class="text"> <strong>Dates: </strong>${item.startDate} - ${item.endDate}</p>
-                        <p class="text"> <strong>Time: </strong>${item.time}</p>
-                        <p class="text"> <strong>Location: </strong>${item.location}</p>
-                    </div>  
-                    <div class="apply-box" data-event-id="${item.eventId}" id="apply" alt="apply" onclick="apply(event)">Apply</div>
-                </div>`;
-        });
-
-        outputContainer.innerHTML = htmlContent;
-        checkUserApplications(); // Call after events are loaded
+        return;
     }
+
+    // Fetch user applications
+    let userApplications = [];
+    const userId = localStorage.getItem('googleId');
+    if (userId) {
+        try {
+            const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-apply-data?userId=${userId}`);
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} - ${response.statusText}`);
+            }
+            userApplications = await response.json();
+        } catch (error) {
+            console.error('Error fetching user applications:', error);
+            // Handle error - decide how you want to proceed if the applications cannot be fetched
+        }
+    }
+
+    // Create HTML content for each event
+    let htmlContent = '';
+    data.forEach(item => {
+        let applyText = 'Apply';
+        let applyClass = '';
+        let pointerEvents = 'auto';
+
+        const application = userApplications.find(app => app.eventId === item.eventId && app.userId === userId);
+        if (application) {
+            applyText = application.status;
+            applyClass = application.status.toLowerCase();
+            pointerEvents = 'none';
+        }
+
+        htmlContent += `
+            <div class="event-rectangle">
+                <div class="text-wrap">
+                    <p class="text"> <b> Event: </b>${item.eventName}</p>
+                    <p class="text"> <strong>Description: </strong>${item.description}</p>
+                    <p class="text"> <strong>Dates: </strong>${item.startDate} - ${item.endDate}</p>
+                    <p class="text"> <strong>Time: </strong>${item.time}</p>
+                    <p class="text"> <strong>Location: </strong>${item.location}</p>
+                </div>  
+                <div class="apply-box ${applyClass}" data-event-id="${item.eventId}" id="apply" alt="apply" onclick="apply(event)" style="pointer-events: ${pointerEvents};">${applyText}</div>
+            </div>`;
+    });
+
+    outputContainer.innerHTML = htmlContent;
 }
 
 async function checkUserApplications() {

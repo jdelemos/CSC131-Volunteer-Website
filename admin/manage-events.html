@@ -113,10 +113,6 @@ async function showEventDetails(eventId) {
   }
 }
 
-let eName = ""; 
-let eMail = ""; 
-let fullName ="";
-
 async function displayApplicants(eventDetails, applications) {
   var outputContainer = document.getElementById('output-container');
   console.log(eventDetails);
@@ -180,9 +176,7 @@ async function displayApplicants(eventDetails, applications) {
           window.location = `mailto:${gotemail}?subject=${subject}&body=${body}`;
         }
 
-        eName = eventDetails.eventName;
-        eMail=  userinfo.email;
-        fullName = userinfo.name;
+
 
       htmlContent += `
         <div class="user-rectangle" id="rectangle-border" data-rectangle-id="${uniqueId}" style="border-color: ${borderColor};">                        
@@ -191,7 +185,7 @@ async function displayApplicants(eventDetails, applications) {
           <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
           <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}</p>
         </div>
-        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event); approvedEmail(${ename},${eMail}, ${fullName})'>Accept</div>
+        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event); approvedEmail(${eventDetails.eventName},${userinfo.email}, ${userinfo.name})'>Accept</div>
         <div class="deny-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='denied(event)'>Deny</div>
       </div>`;
     }

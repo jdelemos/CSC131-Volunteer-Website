@@ -182,7 +182,7 @@ async function displayApplicants(eventDetails, applications) {
           <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
           <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}</p>
         </div>
-        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event); window.location = mailto:${userEmail}?subject=${subject}&body=${body};'>Accept</div>
+        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event); window.location = mailto:${userEmail}?subject=${subjectAccept}&body=${bodyAccept};'>Accept</div>
         <div class="deny-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='denied(event)'>Deny</div>
       </div>`;
     }

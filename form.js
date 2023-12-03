@@ -179,7 +179,7 @@ function setMaxDate(){
         if (inputValue === '') {
           // Blank input: set border color to white
           inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
-          document.getElementById('ephoneLabel').style.display = 'none';
+          document.getElementById('enumberLabel').style.display = 'none';
 
         } else {
           var isValid = /^[0-9]{10}$/.test(inputValue);
@@ -187,12 +187,12 @@ function setMaxDate(){
           if (!isValid) {
             // Invalid input: set border color to red
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
-            document.getElementById('ephoneLabel').style.display = 'block';
+            document.getElementById('enumberLabel').style.display = 'block';
 
           } else {
             // Valid input: set border color to green
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
-            document.getElementById('ephoneLabel').style.display = 'none';
+            document.getElementById('enumberLabel').style.display = 'none';
 
           }
         }

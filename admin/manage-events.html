@@ -129,7 +129,7 @@ async function displayApplicants(eventDetails, applications) {
     <div class="return-arrow-container">
       <img class="return-arrow" onclick='fetchData()' src="/VW/images/return-arrow.png" alt="">
     </div>
-    <img class="delete-event"  src="/VW/images/delete-event.png" alt="">
+    <button class="delete-event-button" onclick="deleteEvent('${item.eventId}')">Delete Event</button>`;
     </div>`;
 
   async function fetchUserData(userId) {
@@ -283,7 +283,9 @@ async function displayApplicants(eventDetails, applications) {
 
     var result = await response.text();
     console.log(result);
-    // Handle the response here (e.g., show a success message)
+
+    // Call the displayData function to refresh the event list after successful deletion
+    fetchData();
   } catch (error) {
     console.error('Error:', error);
     // Handle the error here (e.g., show an error message)

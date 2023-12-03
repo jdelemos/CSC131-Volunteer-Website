@@ -1,4 +1,24 @@
 window.onload = setMaxDate();
+
+window.onload = function() {
+    var userId = sessionStorage.getItem('googleId'); 
+
+    fetch('/user-data?userId=' + userId)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('User not found');
+        }
+        return response.json();
+    })
+    .then(data => {
+        document.getElementById('name').value = data.name; 
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        
+    });
+};
+
 function setMaxDate(){
     const today = new Date();
         const year = today.getFullYear();
@@ -8,6 +28,7 @@ function setMaxDate(){
         day = day < 10 ? '0' + day : day;
         document.getElementById('bday').max = `${year}-${month}-${day}`;
   }
+
   function checkValid(event) {
     var inputElement = event.target;
   

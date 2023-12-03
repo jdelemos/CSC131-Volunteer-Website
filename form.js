@@ -158,18 +158,18 @@ function setMaxDate(){
         if (inputValue === '') {
           // Blank input: set border color to white
           inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid white';
-          document.getElementById('enameLabel').style.display = 'none';
+          document.getElementById('emergencynameLabel').style.display = 'none';
         } else {
           var isValid = /^[A-Z a-z]+$/.test(inputValue);
   
           if (!isValid) {
             // Invalid input: set border color to red
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid red';
-            document.getElementById('enameLabel').style.display = 'block';
+            document.getElementById('emergencynameLabel').style.display = 'block';
           } else {
             // Valid input: set border color to green
             inputElement.style.borderBottom = 'calc(5px*var(--scaling-factor)) solid green';
-            document.getElementById('enameLabel').style.display = 'none';
+            document.getElementById('emergencynameLabel').style.display = 'none';
           }
         }
       }

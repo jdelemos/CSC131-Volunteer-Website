@@ -39,7 +39,42 @@ app.get('/data', async (req, res) => {
 });
 
 
+app.route('/delete-event')
+  .options((req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://jdelemos.github.io');
+    res.header('Access-Control-Allow-Methods', 'DELETE');
+    res.status(200).send();
+  })
+  .delete(async (req, res) => {
+    const eventIdToDelete = req.query.eventId;
 
+    try {
+      const db = client.db('SSVOLV1');
+      const collection = db.collection('Events');
+
+      // Check if the event exists before deletion
+      const existingEvent = await collection.findOne({ eventId: eventIdToDelete });
+
+      if (existingEvent) {
+        // Delete the event with the given eventId
+        const deleteResult = await collection.deleteOne({ eventId: eventIdToDelete });
+
+        if (deleteResult.deletedCount === 1) {
+          console.log('Event deleted successfully');
+          res.status(200).send('Event deleted successfully');
+        } else {
+          console.log('Failed to delete event:', deleteResult);
+          res.status(500).send('Failed to delete event');
+        }
+      } else {
+        console.log('Event not found');
+        res.status(404).send('Event not found');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
 
 
 async function run() {
@@ -84,12 +119,13 @@ app.route('/user-submit')
     try {
       
       // Convert googleId to the appropriate type if needed, e.g., ObjectId
-      googleId = data.id;
-      const existingUser = await client.db('SSVOLV1').collection('Users').findOne({ id: googleId });
+      googleId = data.userId;
+      console.log(googleId)
+      const existingUser = await client.db('SSVOLV1').collection('Users').findOne({ userId: googleId });
     
       if (existingUser) {
         // If a user with the same Google ID exists, delete the record
-        const deleteResult = await client.db('SSVOLV1').collection('Users').deleteOne({ id: googleId });
+        const deleteResult = await client.db('SSVOLV1').collection('Users').deleteOne({ userId: googleId });
         console.log('Delete result:', deleteResult);
     
         if (deleteResult.deletedCount === 1) {
@@ -269,7 +305,7 @@ app.get('/application-data', async (req, res) => {
     const applicationDocuments = await collection.find({ eventId: eventId }).toArray();
 
     // Check if any application documents were found
-    if (applicationDocuments.length > 0) {
+    if (applicationDocuments.length) {
       res.json(applicationDocuments);
     } else {
       // Handle the case where no applications are found
@@ -436,3 +472,4 @@ app.get('/user-apply-data', async (req, res) => {
       res.status(500).send('Internal Server Error');
   }
 });
+

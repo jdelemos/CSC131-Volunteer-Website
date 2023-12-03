@@ -22,9 +22,7 @@ window.onload = async function() {
       console.error('Error fetching user data:', error);
       return null; // Handle the error as needed
     }
-  }
-	
-};
+  };
 
 
 

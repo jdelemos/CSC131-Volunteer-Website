@@ -40,14 +40,12 @@
   try {
     var response = await fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/events-data');
       console.log(response)
-    // Check if the response is not successful (status code in the range 200-299)
     if (!response.ok) {
       throw new Error(`Error: ${response.status} - ${response.statusText}`);
     }
 
     var contentType = response.headers.get('content-type');
     
-    // Check if the response is JSON
     if (contentType && contentType.includes('application/json')) {
       var data = await response.json();
         console.log(data)
@@ -70,7 +68,6 @@ function displayData(data) {
             let htmlContent = '';
             data.forEach(item => {
                 console.log(item)
-                // Wrap each event rectangle in an anchor tag with the appropriate href
                     htmlContent +=
                       `<a href="javascript:void(0);" class="event-link"  onclick="showEventDetails('${item.eventId}')">
                         <div class="event-rectangle">
@@ -91,7 +88,6 @@ function displayData(data) {
 
 async function showEventDetails(eventId) {
   try {
-    // Fetch event details for the specified eventId
       console.log(eventId)
     var eventResponse = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/event-data?eventId=${eventId}`);
     if (!eventResponse.ok) {
@@ -99,7 +95,6 @@ async function showEventDetails(eventId) {
     }
     var eventDetails = await eventResponse.json();
 
-    // Fetch applications for the specified eventId
     var appResponse = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/application-data?eventId=${eventId}`);
     if (!appResponse.ok) {
       throw new Error(`Error: ${appResponse.status} - ${appResponse.statusText}`);
@@ -125,7 +120,6 @@ async function displayApplicants(eventDetails, applications) {
       <img class="return-arrow" onclick='fetchData()' src="/VW/images/return-arrow.png" alt="">
     </div>`;
 
-  // Define a function to fetch user data for a single user
   async function fetchUserData(userId) {
     try {
       var response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${userId}`);
@@ -142,7 +136,6 @@ async function displayApplicants(eventDetails, applications) {
     }
   }
 
-  // Use Promise.all to fetch user data for all applicants concurrently
   var userPromises = applications
     .filter(app => app.userId)
     .map(app => fetchUserData(app.userId));
@@ -154,7 +147,6 @@ async function displayApplicants(eventDetails, applications) {
         console.log(userinfo)
       var uniqueId = Math.random().toString(16).slice(2);
 
-      // Assuming that the applications array has a corresponding order with userDataArray
       var applicationStatus = applications[index].status;
       var borderColor = 'defaultBorderColor'; // Default color
       if (applicationStatus === 'accepted') {
@@ -191,7 +183,6 @@ async function displayApplicants(eventDetails, applications) {
     }
   });
 
-  // Set the content of outputContainer
   outputContainer.innerHTML = htmlContent;
 }
         async function approved(event) {          
@@ -253,10 +244,8 @@ async function displayApplicants(eventDetails, applications) {
 
         var result = await response.text();
         console.log(result);
-        // Handle the response here (e.g., show a success message)
     } catch (error) {
         console.error('Error:', error);
-        // Handle the error here (e.g., show an error message)
     }
                 if (rectangle) {
         rectangle.style.borderColor = '#861414'; // or any color you prefer

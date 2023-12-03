@@ -92,6 +92,7 @@ function displayData(data) {
 async function showEventDetails(eventId) {
   try {
     // Fetch event details for the specified eventId
+      console.log(eventId)
     const eventResponse = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/event-data?eventId=${eventId}`);
     if (!eventResponse.ok) {
       throw new Error(`Error: ${eventResponse.status} - ${eventResponse.statusText}`);

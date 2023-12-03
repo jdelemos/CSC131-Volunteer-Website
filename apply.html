@@ -90,7 +90,7 @@ async function displayData(data) {
         let applyClass = '';
         let pointerEvents = 'auto';
 
-        const application = userApplications.find(app => app.EventId === item.eventId && app.userId === userId);
+        const application = userApplications.find(app => app.EventId === item.EventId && app.userId === userId);
         if (application) {
             applyText = application.status;
             applyClass = application.status.toLowerCase();
@@ -112,7 +112,7 @@ async function displayData(data) {
 
     outputContainer.innerHTML = htmlContent;
 }
-
+        
 async function checkUserApplications() {
     console.log('Checking user applications...');
     const userId = localStorage.getItem('googleId');

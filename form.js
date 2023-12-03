@@ -1,31 +1,13 @@
-
-window.onload = async function() {
-	const today = new Date();
+window.onload = setMaxDate();
+function setMaxDate(){
+    const today = new Date();
         const year = today.getFullYear();
         let month = today.getMonth() + 1;
         let day = today.getDate();
         month = month < 10 ? '0' + month : month;
         day = day < 10 ? '0' + day : day;
         document.getElementById('bday').max = `${year}-${month}-${day}`;
-    var userId = sessionStorage.getItem('googleId'); 
-	console.log(userId)
- try {
-      var response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${userId}`);
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} - ${response.statusText}`);
-      }
-
-      var userinfo = await response.json();
-      console.log('userinfo found:', userinfo);
-      return userinfo;
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-      return null; 
-    }
-  };
-
-
-
+  }
   function checkValid(event) {
     var inputElement = event.target;
   

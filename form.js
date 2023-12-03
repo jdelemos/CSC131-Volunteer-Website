@@ -1,5 +1,5 @@
 
-window.onload = function() {
+window.onload = async function() {
 	const today = new Date();
         const year = today.getFullYear();
         let month = today.getMonth() + 1;
@@ -9,20 +9,16 @@ window.onload = function() {
         document.getElementById('bday').max = `${year}-${month}-${day}`;
     var userId = sessionStorage.getItem('googleId'); 
 
-    fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=' + userId)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('User not found');
-        }
-        return response.json();
-    })
-    .then(data => {
-        document.getElementById('name').value = data.name; 
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        
-    });
+try {
+      var response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${userId}`);
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+      }
+
+      var userinfo = await response.json();
+      console.log('userinfo found:', userinfo);
+      return userinfo;
+	console.log(userinfo)
 	
 };
 

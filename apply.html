@@ -86,17 +86,17 @@ async function displayData(data) {
     }
 
     let htmlContent = '';
-    data.forEach(item => {
-        let applyText = 'Apply';
-        let applyClass = '';
-        let pointerEvents = 'auto';
+data.forEach(item => {
+    let applyText = 'Apply';
+    let applyClass = 'apply'; // Default class for 'Apply'
+    let pointerEvents = 'auto';
 
-        const application = userApplications.find(app => app.eventId === item.eventId && app.userId === userId);
-        if (application) {
-            applyText = application.status;
-            applyClass = application.status.toLowerCase();
-            pointerEvents = 'none';
-        }
+    const application = userApplications.find(app => app.eventId === item.eventId && app.userId === userId);
+    if (application) {
+        applyText = application.status;
+        applyClass = application.status.toLowerCase(); // This will be 'pending', 'accepted', or 'denied'
+        pointerEvents = 'none';
+    }
 
         htmlContent += `
             <div class="event-rectangle">
@@ -107,8 +107,10 @@ async function displayData(data) {
                     <p class="text"> <strong>Time:</strong> ${item.time}</p>
                     <p class="text"> <strong>Location:</strong> ${item.location}</p>
                 </div>  
-                <div class="apply-box ${applyClass}" data-event-id="${item.eventId}" id="apply-${item.eventId}" alt="apply" onclick="apply(event)" style="pointer-events: ${pointerEvents};">${applyText}</div>
-            </div>`;
+            <div class="apply-box ${applyClass}" data-event-id="${item.eventId}" id="apply-${item.eventId}" alt="apply" onclick="apply(event)" style="pointer-events: ${pointerEvents};">${applyText}</div>
+        </div>`;
+});
+
     });
 
     outputContainer.innerHTML = htmlContent;

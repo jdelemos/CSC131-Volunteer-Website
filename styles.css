@@ -249,6 +249,33 @@ body {
     cursor: pointer;
     
 }
+.apply-box.apply,
+.apply-box.pending,
+.apply-box.accepted,
+.apply-box.denied {
+    transition: background-color 0.3s ease; /* Smooth transition for background color change */
+}
+
+.apply-box.apply {
+    background-color: white; /* Default color for 'Apply' */
+    color: black; /* Text color for visibility */
+}
+
+.apply-box.pending {
+    background-color: #f0ad4e; /* A yellow/orange color for 'Pending' */
+    color: white;
+}
+
+.apply-box.accepted {
+    background-color: #5cb85c; /* Green color for 'Accepted' */
+    color: white;
+}
+
+.apply-box.denied {
+    background-color: #d9534f; /* Red color for 'Denied' */
+    color: white;
+}
+
 .accept-box{
     width: calc(200px*var(--scaling-factor)); 
     height: calc(80px*var(--scaling-factor)); 

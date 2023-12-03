@@ -1,4 +1,34 @@
-window.onload = setMaxDate();
+window.onload = function() {
+    // Fetch user data and populate form fields
+    fetchUserDataAndPopulateForm();
+    setMaxDate(); // Ensure max date is set
+};
+
+function fetchUserDataAndPopulateForm() {
+    const userId = localStorage.getItem('googleId');
+
+    // Check if a userId is available
+    if (userId) {
+        // Fetch user data from the server
+        fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${userId}`)
+            .then(response => response.json())
+            .then(data => {
+                // Populate the form fields with retrieved data
+                document.getElementById('name').value = data.name || '';
+                document.getElementById('email').value = data.email || '';
+                document.getElementById('phone').value = data.phone || '';
+                document.getElementById('address').value = data.address || '';
+                document.getElementById('city').value = data.city || '';
+                document.getElementById('zipcode').value = data.zipcode || '';
+                document.getElementById('ename').value = data.emergencyContact || '';
+                document.getElementById('ephone').value = data.emergencyNumber || '';
+                document.getElementById('bday').value = data.birthday || '';
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+            });
+    }
+}
 function setMaxDate(){
     const today = new Date();
         const year = today.getFullYear();

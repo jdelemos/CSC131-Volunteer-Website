@@ -1,249 +1,438 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="/VW/adminRedirect.js" defer></script>
-        <link rel = "stylesheet" href = "/VW/styles.css">
-        <title>Sample Event Creation</title>
-        <script src="/VW/userpopout.js" defer></script>
-        <script src="/VW/login.js" defer></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        handleLoginState();
-    });
-    </script>
-    </head>
-<body>
-   <header class="header">
-    const rectangleId = event.target.getAttribute('data-rectangle-id');
-    const rectangle = document.querySelector(`.user-rectangle[data-rectangle-id='${rectangleId}']`);
-        <div class="logo"><a href = "/VW/admin.html"><img src="/VW/images/image3.png" alt=""></div></a>  
-        <a href="manage-events"><h1 class="title">Manage Events</h1> </a>
-        <a href="event-creation.html"><h1 class="title">Create Event</h1></a>
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const express = require('express');
+const app = express();
+const cors = require('cors');
 
-         <div class="right-items"> 
-             <a href="userinfo.html" class="title hidden" id="update"><h1 class="title"></h1></a>
-            <h1 class="title hidden" id="signout" onclick="signOut()">Sign Out</h1>
-        </div>
+app.use(cors());
+app.use(express.json());
 
-        <div class="circle" id="userButton" onclick="checkbutton()">
-            <div class="login-icon">
-                <img src="/VW/images/user.png" alt="Login">
-            </div>
-        </div>
-    </header>
-<div class = "apply-page">
-    <h1><br><br></h1>
+const uri =
+  'mongodb+srv://jonmichaeldelemos:go22HHane5J8xFWE@cluster0.stcij7x.mongodb.net/SSVOL1';
 
-        <div id="output-container">
-            <!-- Content will be printed here -->
-        </div>
-    <script>
-            window.onload=fetchData(); 
-            async function fetchData() {
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
+
+app.get('/data', async (req, res) => {
   try {
-    const response = await fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/events-data');
-    
-    // Check if the response is not successful (status code in the range 200-299)
-    if (!response.ok) {
-      throw new Error(`Error: ${response.status} - ${response.statusText}`);
-    }
+    const client = new MongoClient(mongoURI, { useNewUrlParser: true });
+    await client.connect();
 
-    const contentType = response.headers.get('content-type');
-    
-    // Check if the response is JSON
-    if (contentType && contentType.includes('application/json')) {
-      const data = await response.json();
-      displayData(data);
-    } else {
-      throw new Error('Unexpected response format: Not JSON');
-    }
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+
+    const data = await collection.find().toArray();
+
+    res.json(data);
+
+    client.close();
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
+
+
+
+async function run() {
+  try {
+    // Connect the client to the server
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db('admin').command({ ping: 1 });
+    console.log('Pinged your deployment. You successfully connected to MongoDB!');
+  } catch (error) {
+    console.error('MongoDB connection error:', error);
   }
 }
-    
-function displayData(data) {
-        const outputContainer = document.getElementById('output-container');
-        if (data.length === 0) {
-            outputContainer.innerHTML = '<p>No data available.</p>';
-        } else {
-            let htmlContent = '';
-            data.forEach(item => {
-                // Wrap each event rectangle in an anchor tag with the appropriate href
-                htmlContent += 
-                    `<a href="javascript:void(0);" class="event-link"  onclick="showEventDetails('${item.eventId}')">
-                        <div class="event-rectangle">
-                            <div class="text-wrap">
-                                <p class="text"> <b> Event: </b>${item.eventName}</p>
-                                <p class="text"> <strong>Description: </strong>${item.description}</p>
-                                <p class="text"> <strong>Dates: </strong>${item.startDate} - ${item.endDate}</p>
-                                <p class="text"> <strong>Time: </strong>${item.time}</p>
-                                <p class="text"> <strong>Location: </strong>${item.location}</p>
-                            </div>  
-                        </div>
-                    </a>`;
-            });
 
-            outputContainer.innerHTML = htmlContent;
-        }
-    }
+run().catch(console.dir);
 
-    async function showEventDetails(eventId) {
+// Middleware for handling CORS preflight requests
+app.options('/submit', (req, res) => {
+  res.header('Access-Control-Allow-Origin', 'https://jdelemos.github.io');
+  res.header('Access-Control-Allow-Methods', 'POST');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.status(200).send();
+});
+
+// Serve static files from the root directory
+app.use(express.static(__dirname));
+
+// Handle requests to the root URL
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/event.html');
+});
+// Handle CORS preflight and POST request to submit data for user information
+app.route('/user-submit')
+  .options((req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://jdelemos.github.io');
+    res.header('Access-Control-Allow-Methods', 'POST');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.status(200).send();
+  })
+  .post(async (req, res) => {
+    const data = req.body;
     try {
-        const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/application-data?eventId=${eventId}`);
-        
-        if (!response.ok) {
-            throw new Error(`Error: ${response.status} - ${response.statusText}`);
-        }
-
-        const applications = await response.json(); 
-        console.log('Applications found:', applications);
-        displayApplicants(applications, eventId);
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-
-async function displayApplicants(applications, eventId) {
-
+      
+      // Convert googleId to the appropriate type if needed, e.g., ObjectId
+      googleId = data.id;
+      const existingUser = await client.db('SSVOLV1').collection('Users').findOne({ id: googleId });
     
-    const outputContainer = document.getElementById('output-container');
-    const fetchEventData = async (eventId) => {
-            
-            
-            try {
-                const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/event-data?eventId=${eventId}`);
-                if (!response.ok) {
-                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
-                }
-
-                const eventinfo = await response.json();
-                console.log('userinfo found:', userinfo);
-                return userinfo;
-            } catch (error) {
-                console.error('Error fetching user data:', error);
-                return null; // Handle the error as needed
-            }
-        };
+      if (existingUser) {
+        // If a user with the same Google ID exists, delete the record
+        const deleteResult = await client.db('SSVOLV1').collection('Users').deleteOne({ id: googleId });
+        console.log('Delete result:', deleteResult);
     
-    if (Array.isArray(applications)) {
-        let htmlContent = '';
-
-        // Define a separate async function for fetching user data
-        const fetchUserData = async (userId) => {
-            
-            
-            try {
-                const response = await fetch(`https://vast-wave-12355-e83778ef23ea.herokuapp.com/user-data?userId=${userId}`);
-                if (!response.ok) {
-                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
-                }
-
-                const userinfo = await response.json();
-                console.log('userinfo found:', userinfo);
-                return userinfo;
-            } catch (error) {
-                console.error('Error fetching user data:', error);
-                return null; // Handle the error as needed
-            }
-        };
-
-        // Use Promise.all to wait for all fetchUserData promises to resolve
-        const userPromises = applications
-            .filter(app => app.userId)
-            .map(app => fetchUserData(app.userId));
-
-        const userDataArray = await Promise.all(userPromises);
-
-        // Generate HTML content after all user data has been fetched
-        userDataArray.forEach(userinfo => {
-            if (userinfo) {
-                var uniqueId = Math.random().toString(16).slice(2)
-                htmlContent +=
-                    `<div class="user-rectangle" id="rectangle-border">
-                        <img src="/VW/images/usericon.png" alt="" class="usericon">
-                        <p class="text"><b> Name: </b>${userinfo.name}<br><b> Phone: </b>${userinfo.phone}<br><b> Email: </b>${userinfo.email}<br><b> DOB: </b>${userinfo.bday}</p>
-                        <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
-                        <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}
-                        </div>
-                        <div class="accept-box" data-event-id='${eventId}' data-user-id=${userinfo.userId} id="accept" alt="accept" onclick='approved(event)'>Accept</div>
-                        <div class="deny-box" data-event-id='${eventId}' data-rectangle-id=${uniqueId} data-user-id=${userinfo.userId} id="deny" alt="deny" onclick='denied(event)'>Deny</div>
-                        
-                    </div>`;
-            }
-        });
-
-        // Set the content of outputContainer
-        outputContainer.innerHTML = htmlContent;
-    }
-}
-        async function approved(event) {          
-                const rectangleId = event.target.getAttribute('data-rectangle-id');
-                const rectangle = document.querySelector(`.user-rectangle[data-rectangle-id="${rectangleId}"]`);
-                console.log(rectangle)
-                const eventId = event.target.getAttribute('data-event-id');
-                const userId = event.target.getAttribute('data-user-id');
-                try {
-        const response = await fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/accept', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://jdelemos.github.io'
-            },
-            body: JSON.stringify({ userId: userId, eventId: eventId })
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+        if (deleteResult.deletedCount === 1) {
+          console.log('Existing record deleted successfully');
+        } else {
+          console.log('Failed to delete existing record:', deleteResult);
         }
-
-        const result = await response.text();
-        console.log(result);
-        // Handle the response here (e.g., show a success message)
+      }
+    
+      // Insert data into MongoDB
+      const result = await client.db('SSVOLV1').collection('Users').insertOne(data);
+      console.log('Insert result:', result);
+    
+      if (result.insertedCount === 1) {
+        console.log('Data inserted successfully');
+        res.send('Data inserted successfully');
+      } else {
+        console.log('Data not inserted successfully:', result);
+        res.status(500).send('Data not inserted successfully');
+      }
     } catch (error) {
-        console.error('Error:', error);
-        // Handle the error here (e.g., show an error message)
+      console.error('Error:', error);
+      res.status(500).send('Internal Server Error');
     }
-                if (rectangle) {
-        rectangle.style.borderColor = '#093813'; // or any color you prefer
-                    console.log("is a rectangle")
-    }else{
-      console.log("is not a rectangle")
+  });
+
+//// Handle CORS preflight and POST request to retrieve data for user information
+app.get('/user-data', async (req, res) => {
+  // Assuming the Google ID is sent in the request body with the key 'googleId'
+  const googleId = req.query.userId;
+  console.log(googleId)
+  
+  try {
+    const db = client.db('SSVOLV1');
+    const collection = db.collection('Users');
+
+    // Find the user document based on Google ID
+    const userDocument = await collection.findOne({ userId: googleId });
+
+    // Check if the user document was found
+    if (userDocument) {
+      res.json(userDocument);
+    } else {
+      // Handle the case where no user is found
+      res.status(404).send('User not found');
     }
-                
-            }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
-        async function denied(event) {          
-                const eventId = event.target.getAttribute('data-event-id');
-                const userId = event.target.getAttribute('data-user-id');
-                try {
-        const response = await fetch('https://vast-wave-12355-e83778ef23ea.herokuapp.com/deny', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'https://jdelemos.github.io'
-            },
-            body: JSON.stringify({ userId: userId, eventId: eventId })
-        });
+//// Handle CORS preflight and POST request to retrieve data for user information
+app.get('/event-data', async (req, res) => {
+  // Assuming the Google ID is sent in the request body with the key 'googleId'
+  const eventId = req.query.eventId;
+  console.log(eventId)
+  
+  try {
+    const db = client.db('SSVOLV1');
+    const collection = db.collection('Events');
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+    // Find the user document based on Google ID
+    const userDocument = await collection.findOne({ eventId: eventId });
+
+    // Check if the user document was found
+    if (userDocument) {
+      res.json(userDocument);
+    } else {
+      // Handle the case where no user is found
+      res.status(404).send('Event not found');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+// Handle CORS preflight and POST request to submit data for event creation
+app.route('/event-submit')
+  .options((req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://jdelemos.github.io');
+    res.header('Access-Control-Allow-Methods', 'POST');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.status(200).send();
+  })
+  .post(async (req, res) => {
+    const data = req.body;
+
+    try {
+      // Insert data into MongoDB
+      const result = await client.db('SSVOLV1').collection('Events').insertOne(data);
+      console.log('Insert result:', result);
+
+      if (result.insertedCount === 1) {
+        console.log('Data inserted successfully');
+        res.send('Data inserted successfully');
+      } else {
+        console.log('Data not inserted successfully:', result);
+        res.status(500).send('Data not inserted successfully');
+      }
+    } catch (error) {
+      console.error('Error inserting data:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
+// Handle request to fetch Event Data
+app.get('/events-data', async (req, res) => {
+  try {
+    const db = client.db('SSVOLV1');
+    const collection = db.collection('Events');
+    const data = await collection.find().toArray();
+    res.json(data);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.route('/apply')
+  .options((req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://jdelemos.github.io');
+    res.header('Access-Control-Allow-Methods', 'POST');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.status(200).send();
+  })
+  .post(async (req, res) => {
+    const data = req.body;
+
+    try {
+      // Insert data into MongoDB
+      const result = await client.db('SSVOLV1').collection('Applications').insertOne(data);
+      console.log('Insert result:', result);
+
+      if (result.insertedCount === 1) {
+        console.log('Data inserted successfully');
+        res.send('Data inserted successfully');
+      } else {
+        console.log('Data not inserted successfully:', result);
+        res.status(500).send('Data not inserted successfully');
+      }
+    } catch (error) {
+      console.error('Error inserting data:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
+  app.get('/apply-data', async (req, res) => {
+    const googleId = req.query.userId;
+    const eventId = req.query.eventId;
+    try {
+        const db = client.db('SSVOLV1');
+        const collection = db.collection('Applications');
+        const data = await collection.find({ userId: googleId, eventId: eventId }).toArray();
+        res.json(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
+
+app.get('/application-data', async (req, res) => {
+  // Assuming the event ID is sent in the request query parameters with the key 'eventId'
+  const eventId = req.query.eventId;
+
+  try {
+    const db = client.db('SSVOLV1');
+    const collection = db.collection('Applications');
+
+    // Find all application documents based on event ID
+    const applicationDocuments = await collection.find({ eventId: eventId }).toArray();
+
+    // Check if any application documents were found
+    if (applicationDocuments.length > 0) {
+      res.json(applicationDocuments);
+    } else {
+      // Handle the case where no applications are found
+      res.status(404).send('No applications found');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.route('/accept')
+  .options((req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://jdelemos.github.io');
+    res.header('Access-Control-Allow-Methods', 'POST');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.status(200).send();
+  })
+  .post(async (req, res) => {
+    const data = req.body;
+    try {
+      const googleId = data.userId;
+      const eventId = data.eventId;
+
+      // Check if an application with the same userId and eventId exists
+      const existingApplication = await client
+        .db('SSVOLV1')
+        .collection('Applications')
+        .findOne({ userId: googleId, eventId: eventId });
+
+      if (existingApplication) {
+        // Update existing application
+        await client
+          .db('SSVOLV1')
+          .collection('Applications')
+          .updateOne({ userId: googleId, eventId: eventId }, { $set: { status: 'accepted' } });
+
+        res.status(200).send('Application status updated to accepted');
+      } else {
+        // Create a new application if it doesn't exist
+        await client
+          .db('SSVOLV1')
+          .collection('Applications')
+          .insertOne({ userId: googleId, eventId: eventId, status: 'accepted' });
+
+        res.status(200).send('Application created and status updated to accepted');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
+  app.route('/deny')
+  .options((req, res) => {
+    res.header('Access-Control-Allow-Origin', 'https://jdelemos.github.io');
+    res.header('Access-Control-Allow-Methods', 'POST');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.status(200).send();
+  })
+  .post(async (req, res) => {
+    const data = req.body;
+    try {
+      const googleId = data.userId;
+      const eventId = data.eventId;
+
+      // Check if an application with the same userId and eventId exists
+      const existingApplication = await client
+        .db('SSVOLV1')
+        .collection('Applications')
+        .findOne({ userId: googleId, eventId: eventId });
+
+      if (existingApplication) {
+        // Update existing application
+        await client
+          .db('SSVOLV1')
+          .collection('Applications')
+          .updateOne({ userId: googleId, eventId: eventId }, { $set: { status: 'denied' } });
+
+        res.status(200).send('Application status updated to denied');
+      } else {
+        // Create a new application if it doesn't exist
+        await client
+          .db('SSVOLV1')
+          .collection('Applications')
+          .insertOne({ userId: googleId, eventId: eventId, status: 'denied' });
+
+        res.status(200).send('Application created and status updated to denied');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
+  app.get('/admin-check', async (req, res) => {
+    const googleId = req.query.userId;
+    console.log(googleId);
+    
+    try {
+        const db = client.db('SSVOLV1');
+        const collection = db.collection('Admins');
+
+        // Find the user document based on Google ID
+        const userDocument = await collection.findOne({ userId: googleId });
+
+        // Check if the user document was found and if they are an admin
+        if (userDocument) {
+            res.json({ isAdmin: true });
+        } else {
+            res.json({ isAdmin: false });
         }
-
-        const result = await response.text();
-        console.log(result);
-        // Handle the response here (e.g., show a success message)
     } catch (error) {
-        console.error('Error:', error);
-        // Handle the error here (e.g., show an error message)
+        console.error(error);
+        res.status(500).send('Internal Server Error');
     }
-            }
-            
-    </script>        
-</div>
-<script src="/VW/scalingfactor.js"></script>
+});
 
-</body>
-</html>
+app.get('/user-check', async (req, res) => {
+  const googleId = req.query.userId;
+  console.log('Checking user for Google ID:', googleId);
+  
+  try {
+      const db = client.db('SSVOLV1');
+      const collection = db.collection('Users');
+
+      // Find the user document based on Google ID
+      const userDocument = await collection.findOne({ userId: googleId });
+
+      // Check if the user document was found
+      if (userDocument) {
+          res.json({ isUser: true });
+      } else {
+          console.log(`No user found with Google ID: ${googleId}`);
+          res.json({ isUser: false });
+      }
+  } catch (error) {
+      console.error('Error while checking user:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
+//user apply data
+app.get('/user-apply-data', async (req, res) => {
+  const googleId = req.query.userId;
+  console.log('Checking user for Google ID:', googleId);
+
+  try {
+      const db = client.db('SSVOLV1');
+      const collection = db.collection('Applications');
+
+      // Find the user document based on Google ID
+      const userDocuments = await collection.find({ userId: googleId }).toArray();
+
+      // Check if any documents were found
+      if (userDocuments) {
+          res.json(userDocuments);
+      } else {
+          console.log(`No user found with Google ID: ${googleId}`);
+          res.status(404).json({ message: "No applications found for this user" });
+      }
+  } catch (error) {
+      console.error('Error while checking user:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});

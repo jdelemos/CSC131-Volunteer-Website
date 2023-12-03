@@ -115,6 +115,7 @@ async function showEventDetails(eventId) {
 
 let eName = ""; 
 let eMail = ""; 
+let fullName ="";
 
 async function displayApplicants(eventDetails, applications) {
   var outputContainer = document.getElementById('output-container');
@@ -166,10 +167,10 @@ async function displayApplicants(eventDetails, applications) {
         borderColor = '#861414'; // Red for denied
       }
 
-    function approvedEmail(eventName, userEmail) {
+    function approvedEmail(eventName, userEmail, userFullName) {
           var subject = "UPDATE: Volunteer application";
           var body = `UPDATE: The volunteer application for ${eventName} been accepted by LiHelp!`;
-          var facultybody = `UPDATE: The volunteer application for ${userinfo.name} has been accepted. For documentation purposes, the event will occur ${edate}.`;
+          var facultybody = `UPDATE: The volunteer application for ${userFullName} has been accepted. For documentation purposes, the event will occur ${edate}.`;
           window.location = `mailto:${userEmail}?subject=${subject}&body=${body}`;
         }
 
@@ -181,6 +182,7 @@ async function displayApplicants(eventDetails, applications) {
 
         eName = eventDetails.eventName;
         eMail=  userinfo.email;
+        fullName = userinfo.name;
 
       htmlContent += `
         <div class="user-rectangle" id="rectangle-border" data-rectangle-id="${uniqueId}" style="border-color: ${borderColor};">                        
@@ -189,7 +191,7 @@ async function displayApplicants(eventDetails, applications) {
           <p class="text"><b> Street: </b>${userinfo.address}<br><b> City: </b>${userinfo.city}<br><b> Zipcode: </b>${userinfo.zipcode}</p>
           <p class="text"><b> Emergency Contact: </b>${userinfo.ename}<br><b> Emergency Number: </b>${userinfo.enumber}</p>
         </div>
-        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event); approvedEmail(${ename},${eMail})'>Accept</div>
+        <div class="accept-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='approved(event); approvedEmail(${ename},${eMail}, ${fullName})'>Accept</div>
         <div class="deny-box" data-event-id='${eventDetails.eventId}' data-user-id='${userinfo.userId}' data-rectangle-id='${uniqueId}' onclick='denied(event)'>Deny</div>
       </div>`;
     }

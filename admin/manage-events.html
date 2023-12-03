@@ -125,8 +125,11 @@ async function displayApplicants(eventDetails, applications) {
       Event: ${eventDetails.eventName}
     </h2>
     <div class="event-title-underline"></div>
+    <div class="event-options">
     <div class="return-arrow-container">
       <img class="return-arrow" onclick='fetchData()' src="/VW/images/return-arrow.png" alt="">
+       <img class="return-arrow"  src="/VW/images/delete-event.png" alt="">
+    </div>
     </div>`;
 
   async function fetchUserData(userId) {

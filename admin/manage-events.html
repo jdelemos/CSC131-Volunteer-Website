@@ -155,7 +155,7 @@ async function displayApplicants(eventDetails, applications) {
         borderColor = '#861414'; // Red for denied
       }
 
-    function approvedEmail() {
+    async function approvedEmail() {
           var subject = "UPDATE: Volunteer application";
           var body = `UPDATE: The volunteer application for ${eventDetails.eventName} been accepted by LiHelp!`;
           var facultybody = `UPDATE: The volunteer application for ${userinfo.name} has been accepted. For documentation purposes, the event will occur ${eventDetails.startDay}.`;

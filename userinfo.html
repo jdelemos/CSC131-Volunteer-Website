@@ -9,6 +9,7 @@
     <script src="userpopout.js" defer></script>
     <script src="login.js"></script>
 
+
           <script src = "form.js"></script>
 </head>
 <body onload="setMinDate()">
@@ -20,7 +21,6 @@
             <a href="userinfo.html" class="title hidden" id="update"><h1 class="title"><u>Update Information</u></h1></a>
             <h1 class="title hidden" id="signout" onclick="signOut()">Sign Out</h1>
         </div>
-
     <div class="circle" id="userButton" onclick="checkbutton()">
         <div class="login-icon">
             <img src="images/user.png" alt="Login">
@@ -46,7 +46,6 @@
         <label for ="First and Last name" 
           id ="nameLabel" 
           style = "display: none; color: red; transform: translate(calc(-352px*var(--scaling-factor)), calc(-33px*var(--scaling-factor))); font-size: calc(22px*var(--scaling-factor));">Please enter a valid input.</label>
-
     </div>
     <div class = "email">
         <input type = "email"
@@ -60,7 +59,6 @@
                <label for ="Email" 
                  id ="emailLabel" 
                  style = "display: none;color: red; transform: translate(calc(-396px*var(--scaling-factor)), calc(-33px*var(--scaling-factor))); font-size: calc(22px*var(--scaling-factor));">Please enter a valid input.</label>
-
         </div>
     <div class = "phone">
         <input type = "text" 
@@ -74,7 +72,6 @@
                 <label for ="Phone" 
                   id ="phoneLabel" 
                   style = "display: none;white-space: nowrap; color: red; transform: translate(calc(-322px*var(--scaling-factor)), calc(-33px*var(--scaling-factor))); font-size: calc(22px*var(--scaling-factor));">Please enter a valid input.</label>
-
           </div>
     <div class = "address">
         <input type = "text" 
@@ -88,7 +85,6 @@
               <label for ="Address" 
                 id ="addressLabel" 
                 style = "display: none;color: red; transform: translate(calc(-553px*var(--scaling-factor)), calc(-33px*var(--scaling-factor))); font-size: calc(22px*var(--scaling-factor));">Please enter a valid input.</label>
-
           </div>
     <div class = "city">
         <input type = "text" 
@@ -115,7 +111,6 @@
                     <label for ="Zipcode" 
                       id ="zipcodeLabel" 
                       style = "display: none;white-space: nowrap;color: red; transform: translate(calc(-194px*var(--scaling-factor)), calc(-33px*var(--scaling-factor))); font-size: calc(22px*var(--scaling-factor));">Please enter a valid input.</label>
-
           </div>
     <div class = "ename">
         <input type = "text" 
@@ -129,7 +124,6 @@
               <label for ="Emergency Contact" 
                 id ="emergencynameLabel" 
                 style = "display: none;color: red; transform: translate(calc(-332px*var(--scaling-factor)), calc(-33px*var(--scaling-factor))); font-size: calc(22px*var(--scaling-factor));">Please enter a valid input.</label>
-
           </div>
     <div class = "enumber">
         <input type = "text" 
@@ -143,12 +137,12 @@
                 <label for ="Emergency Phone Number" 
                   id ="enumberLabel" 
                   style = "display: none;color: red; transform: translate(calc(-307px*var(--scaling-factor)), calc(-33px*var(--scaling-factor))); font-size: calc(22px*var(--scaling-factor));">Please enter a valid input.</label>
-
           </div>
     <div class = "bday">
-        <input type = "date" 
+        <input type = "text" 
         class = "bdayO" 
         max = "" 
+        onfocus = "(this.type ='date')"
         name = "birthday" 
         id = "bday" 
         placeholder = "Birthday" 
@@ -157,7 +151,6 @@
               <label for ="Birthday" 
                 id ="bdayLabel" 
                 style = "display: none;white-space: nowrap;color: red; transform: translate(calc(-414px*var(--scaling-factor)), calc(-33px*var(--scaling-factor))); font-size: calc(22px*var(--scaling-factor));">Please enter a valid input.</label>
-
     </div>
         <div class = "button">
         <input type = "image" 
